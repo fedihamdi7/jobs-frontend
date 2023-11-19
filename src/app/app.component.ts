@@ -6,7 +6,6 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'jobs-frontend';
 
   constructor(private primengConfig: PrimeNGConfig) {}
 

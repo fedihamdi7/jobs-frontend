@@ -1,0 +1,64 @@
+.container{
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+form{
+    display: flex;
+    width: 50vw;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 1%;
+    flex-direction: column;
+}
+
+
+input{
+    width: 257px;
+}
+form .formLeft, .formRight{
+    /* border : 1px solid red; */
+    width: 23vw;
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+
+:host ::ng-deep .custom .p-inputtext {
+    width: 257px;
+}
+
+form .formLeft > *, form .formRight > *{
+    margin: 30px 0 0 0;
+}
+
+form .formLeft .switcher{
+    display: flex;
+    align-items: center;
+    gap : 12px;
+}
+
+
+
+form .formLeft .phone, form .formRight .birthDate{
+    display: flex;
+    flex-direction: column;
+}
+
+form .formRight{
+    /* border : 1px solid green; */
+    margin-left: 2%;
+    padding-top: 5%;
+
+}
+
+.devider{
+    display: flex;
+
+}
+p-button{
+    margin-left: 44%;
+    margin-top: 1%;
+}

@@ -80,11 +80,9 @@ export class AuthComponent implements OnInit {
     if (this.form.value.governorate) {
       this.form.value.governorate = this.form.value.governorate.name;
     }
+    
     this.authService.register(this.form.value).subscribe((res:any) => {
- 
-      //check for status
-      
- 
+      this.messageService.add({ severity: 'success', summary: 'Register Successfully', detail: "Your profile is created, check your email" });
       this.form.reset();
     },err =>{
       console.log(err.error);

@@ -49,18 +49,6 @@ export class AuthComponent implements OnInit {
     { name: 'Zaghouan', code: 'Zaghouan' }
   ]
   ngOnInit(): void {
-    // this.form = new FormGroup({
-    //   name: new FormControl(null, {validators:[Validators.required]}),
-    //   email: new FormControl(null, {validators:[Validators.required, Validators.email]}),
-    //   password: new FormControl(null, {validators:[Validators.required]}),
-    //   profilePic: new FormControl(null, {}),
-    //   isCompany: new FormControl(false, {}),
-    //   phone: new FormControl(null, {}),
-    //   birthDate: new FormControl(null, {}),
-    //   governorate: new FormControl(null, {}),
-    //   resume: new FormControl(null, {}),
-    //   links: new FormControl(null, {}),
-    // });
     this.form = this.fb.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],

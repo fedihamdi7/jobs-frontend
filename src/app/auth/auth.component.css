@@ -62,11 +62,9 @@ form .formRight{
 
 }
 p-button{
-    /* margin-left: 44%;
-    margin-top: 1%; */
     position: absolute;
     bottom: 1%;
-    left: 44%;
+    left: 42%;
     margin: 1%;
 }
 
@@ -81,4 +79,18 @@ p-button{
 
 :host ::ng-deep .links-row .p-inputtext{
  width: 100%;
+}
+
+.msg-name{
+    position: absolute;
+    right: -19%;
+    top: 36%;
+    z-index: 10;
+}
+.msg-mail-invalid {
+    right: -13%;
+}
+
+.required-container{
+    position: relative;
 }

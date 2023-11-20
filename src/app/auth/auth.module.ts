@@ -19,6 +19,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { VerifyComponent } from './verify/verify.component';
+import { MessageModule } from 'primeng/message';
 @NgModule({
   declarations: [
     AuthComponent,
@@ -38,7 +39,8 @@ import { VerifyComponent } from './verify/verify.component';
     InputMaskModule,
     CalendarModule,
     DropdownModule,
-    ToastModule
+    ToastModule,
+    MessageModule,
   ],
   providers:[MessageService]
 })

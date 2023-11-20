@@ -13,41 +13,36 @@
         </div>
 
 
-        <div>
+        <div class="required-container">
           @if (form.value.isCompany) {
           <label for="name"> Company Name* </label> <br>
           }@else{
           <label for="name"> Name* </label> <br>
           }
 
-          <input type="text" id="name" pInputText formControlName="name" [ngClass]="{'ng-invalid': form.get('name').errors?.['required'] && form.get('name').touched,
-            'ng-dirty' : form.get('name').touched
-            }" aria-describedby="name-error" /> <br>
-          <small id="name-error" class="p-error"
-            *ngIf="form.get('name').errors?.['required'] && form.get('name').touched">Name is required</small>
+          <input type="text" id="name" pInputText formControlName="name" 
+          [ngClass]="{'ng-invalid': form.get('name').errors?.['required'] && form.get('name').touched,'ng-dirty' : form.get('name').touched}" /> 
+            <p-message class="msg-name" severity="error" *ngIf="form.get('name').errors?.['required'] && form.get('name').touched"  text="Field is required"></p-message>
         </div>
 
-        <div>
+        <div class="required-container">
           <label for="email"> Email* </label> <br>
-          <input type="text" pInputText formControlName="email" [ngClass]="{'ng-invalid': form.get('email').errors?.['required'] && form.get('email').touched,
-            'ng-dirty' : form.get('email').touched
-            }" aria-describedby="email-error" /> <br>
-          <small id="email-error" class="p-error"
-            *ngIf="form.get('email').errors?.['required'] && form.get('email').touched">Email is required</small>
-          <small id="email-error" class="p-error"
-            *ngIf="form.get('email').errors?.['email'] && form.get('email').touched">Please enter a valid email</small>
+          <input type="text" pInputText formControlName="email" 
+          [ngClass]="{'ng-invalid': ((form.get('email').errors?.['required'] ||form.get('email').errors?.['email'] ) && form.get('email').touched),'ng-dirty' : form.get('email').touched}" /> 
+
+            <p-message class="msg-name" severity="error" *ngIf="form.get('email').errors?.['required'] && form.get('email').touched"  text="Field is required"></p-message>
+            <p-message class="msg-name msg-mail-invalid" severity="error"  *ngIf="form.get('email').errors?.['email'] && form.get('email').touched"  text="Email Invalid"></p-message>
+
         </div>
 
 
-        <div>
+        <div class="required-container">
           <label for="password"> Password* </label> <br>
           <p-password formControlName="password" [toggleMask]="true" id="password" [ngClass]="{'ng-invalid': form.get('password').errors?.['required'] && form.get('password').touched,
             'ng-dirty' : form.get('password').touched
             }" aria-describedby="password-error">
           </p-password> <br>
-          <small id="password-error" class="p-error"
-            *ngIf="form.get('password').errors?.['required'] && form.get('password').touched">Password is
-            required</small>
+          <p-message class="msg-name" severity="error" *ngIf="form.get('password').errors?.['required'] && form.get('password').touched"  text="Field is required"></p-message>
         </div>
 
 

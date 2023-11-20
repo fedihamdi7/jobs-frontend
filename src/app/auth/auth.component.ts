@@ -1,13 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, signal } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FileUpload, FileUploadHandlerEvent } from 'primeng/fileupload';
 import { AuthService } from './auth.service';
 import { MessageService } from 'primeng/api';
 
-interface UploadEvent {
-  originalEvent: Event;
-  files: File[];
-}
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -17,7 +14,8 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private authService : AuthService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private fb: FormBuilder
   ) { }
 
   form: FormGroup;
@@ -51,17 +49,37 @@ export class AuthComponent implements OnInit {
     { name: 'Zaghouan', code: 'Zaghouan' }
   ]
   ngOnInit(): void {
-    this.form = new FormGroup({
-      name: new FormControl(null, {validators:[Validators.required]}),
-      email: new FormControl(null, {validators:[Validators.required, Validators.email]}),
-      password: new FormControl(null, {validators:[Validators.required]}),
-      profilePic: new FormControl(null, {}),
-      isCompany: new FormControl(false, {}),
-      phone: new FormControl(null, {}),
-      birthDate: new FormControl(null, {}),
-      governorate: new FormControl(null, {}),
-      resume: new FormControl(null, {}),
-      links: new FormControl(null, {}),
+    // this.form = new FormGroup({
+    //   name: new FormControl(null, {validators:[Validators.required]}),
+    //   email: new FormControl(null, {validators:[Validators.required, Validators.email]}),
+    //   password: new FormControl(null, {validators:[Validators.required]}),
+    //   profilePic: new FormControl(null, {}),
+    //   isCompany: new FormControl(false, {}),
+    //   phone: new FormControl(null, {}),
+    //   birthDate: new FormControl(null, {}),
+    //   governorate: new FormControl(null, {}),
+    //   resume: new FormControl(null, {}),
+    //   links: new FormControl(null, {}),
+    // });
+    this.form = this.fb.group({
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required],
+      profilePic: [null],
+      isCompany: [false],
+      phone: [null],
+      birthDate: [null],
+      governorate: [null],
+      resume: [null],
+      links: this.fb.group({
+        github: [null],
+        linkedin: [null],
+        facebook: [null],
+        twitter: [null],
+        instagram: [null],
+        website: [null],
+        location: [null]
+      })
     });
   }
 

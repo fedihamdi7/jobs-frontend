@@ -15,26 +15,23 @@
 
         <div>
           @if (form.value.isCompany) {
-            <label for="name"> Company Name* </label> <br>
+          <label for="name"> Company Name* </label> <br>
           }@else{
-            <label for="name"> Name* </label> <br>
+          <label for="name"> Name* </label> <br>
           }
-          
-          <input type="text" id="name" pInputText formControlName="name" 
-          [ngClass]="{'ng-invalid': form.get('name').errors?.['required'] && form.get('name').touched,
+
+          <input type="text" id="name" pInputText formControlName="name" [ngClass]="{'ng-invalid': form.get('name').errors?.['required'] && form.get('name').touched,
             'ng-dirty' : form.get('name').touched
-            }"
-          aria-describedby="name-error" /> <br>
+            }" aria-describedby="name-error" /> <br>
           <small id="name-error" class="p-error"
             *ngIf="form.get('name').errors?.['required'] && form.get('name').touched">Name is required</small>
         </div>
+
         <div>
-          <label for="email"> Email </label> <br>
-          <input type="text" pInputText formControlName="email"
-          [ngClass]="{'ng-invalid': form.get('email').errors?.['required'] && form.get('email').touched,
+          <label for="email"> Email* </label> <br>
+          <input type="text" pInputText formControlName="email" [ngClass]="{'ng-invalid': form.get('email').errors?.['required'] && form.get('email').touched,
             'ng-dirty' : form.get('email').touched
-            }"
-             aria-describedby="email-error" /> <br>
+            }" aria-describedby="email-error" /> <br>
           <small id="email-error" class="p-error"
             *ngIf="form.get('email').errors?.['required'] && form.get('email').touched">Email is required</small>
           <small id="email-error" class="p-error"
@@ -43,12 +40,10 @@
 
 
         <div>
-          <label for="password"> Password </label> <br>
-          <p-password formControlName="password" [toggleMask]="true" id="password"
-          [ngClass]="{'ng-invalid': form.get('password').errors?.['required'] && form.get('password').touched,
+          <label for="password"> Password* </label> <br>
+          <p-password formControlName="password" [toggleMask]="true" id="password" [ngClass]="{'ng-invalid': form.get('password').errors?.['required'] && form.get('password').touched,
             'ng-dirty' : form.get('password').touched
-            }"
-             aria-describedby="password-error">
+            }" aria-describedby="password-error">
           </p-password> <br>
           <small id="password-error" class="p-error"
             *ngIf="form.get('password').errors?.['required'] && form.get('password').touched">Password is
@@ -70,24 +65,66 @@
       </div>
 
       <div class="formRight">
-
+        @if (!form.value.isCompany) {
         <div class="birthDate">
           <span>Birthday</span>
           <p-calendar dateFormat="dd/mm/yy" formControlName="birthDate" [showIcon]="true" placeholder="Choose a date">
           </p-calendar>
         </div>
+      }
 
         <div>
-          <p-dropdown placeholder="Select a City" formControlName="governorate" [options]="cities" optionLabel="name">
+          <p-dropdown id="citiesDropDown" placeholder="Select a City" formControlName="governorate" [options]="cities"
+            optionLabel="name">
           </p-dropdown>
         </div>
+        <hr width="70%">
+        <div class="links" formGroupName="links">
+          <h3>Links</h3>
+          <div class="links-row">
+            <span class="p-float-label" >
+              <input pInputText id="github" formControlName="github" />
+              <label for="github">Github</label>
+            </span> <br>
+            <span class="p-float-label" >
+              <input pInputText id="linkedin" formControlName="linkedin" />
+              <label for="linkedin">LinkedIn</label>
+            </span>
+          </div>
+          <br>
+          <div class="links-row">
+            <span class="p-float-label" >
+              <input pInputText id="facebook" formControlName="facebook" />
+              <label for="facebook">Facebook</label>
+            </span> <br>
+            <span class="p-float-label" >
+              <input pInputText id="twitter" formControlName="twitter" />
+              <label for="twitter">Twitter</label>
+            </span>
+          </div>
+          <br>
+          <div class="links-row">
+            <span class="p-float-label" >
+              <input pInputText id="instagram" formControlName="instagram" />
+              <label for="instagram">Instagram</label>
+            </span> <br>
+            @if (form.value.isCompany) {
 
+              <span class="p-float-label" >
+                <input pInputText id="location" formControlName="location" />
+                <label for="location">Location (maps)</label>
+              </span>
+            }
+          </div>
+        </div>
+        
         @if (!form.value.isCompany) {
-            <div class="resume">
-                <p-fileUpload mode="basic" chooseLabel="Upload a resume" accept="image/* , application/pdf" [maxFileSize]='10000000'
-                  (uploadHandler)="onFilePicked($event,false)" #resumeUpload [customUpload]="true">
-                </p-fileUpload>
-            </div>
+          <hr width="70%">
+        <div class="resume">
+          <p-fileUpload mode="basic" chooseLabel="Upload a resume" accept="image/* , application/pdf"
+            [maxFileSize]='10000000' (uploadHandler)="onFilePicked($event,false)" #resumeUpload [customUpload]="true">
+          </p-fileUpload>
+        </div>
         }
 
 

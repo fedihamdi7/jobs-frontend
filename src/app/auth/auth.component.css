@@ -8,16 +8,22 @@
 }
 form{
     display: flex;
-    width: 50vw;
     border: 2px solid white;
     border-radius: 20px;
     padding: 1%;
     flex-direction: column;
+    position: relative;
+    height: 75%;
+    overflow: hidden;
 }
 
 
-input{
-    width: 257px;
+input, :host ::ng-deep .custom .p-inputtext, :host ::ng-deep #password .p-password-input{
+    width: 300px;
+}
+
+:host ::ng-deep #citiesDropDown .p-dropdown {
+    width: 277px;
 }
 form .formLeft, .formRight{
     /* border : 1px solid red; */
@@ -26,9 +32,6 @@ form .formLeft, .formRight{
     padding-bottom: 2%;
 }
 
-:host ::ng-deep .custom .p-inputtext {
-    width: 257px;
-}
 
 form .formLeft > *, form .formRight > *{
     margin: 30px 0 0 0;
@@ -50,7 +53,7 @@ form .formLeft .phone, form .formRight .birthDate{
 form .formRight{
     /* border : 1px solid green; */
     margin-left: 2%;
-    padding-top: 5%;
+    padding-top: 1%;
 
 }
 
@@ -59,6 +62,23 @@ form .formRight{
 
 }
 p-button{
-    margin-left: 44%;
-    margin-top: 1%;
+    /* margin-left: 44%;
+    margin-top: 1%; */
+    position: absolute;
+    bottom: 1%;
+    left: 44%;
+    margin: 1%;
+}
+
+/* LINKS */
+.links-row{
+    display: flex;
+    gap: 10px;
+}
+.links-row span {
+    width: 50%;
+}
+
+:host ::ng-deep .links-row .p-inputtext{
+ width: 100%;
 }

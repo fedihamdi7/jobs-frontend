@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:10% ;
+    text-align:  center;
+    font-size: 30px;
+}
+.Error{
+    color: #893B3B;
+    font-weight: bold;
+}
+.mail{
+    color: aqua;
+}
+.jobs{
+    color: #4C176C;
+    font-size: 64px;
+    font-weight: 800;
+}
+.msg{
+    color: green;
+}
+
+a{
+    text-decoration: none;
+    color: #893B3B;
+    font-weight: bold;
+    font-size: 25px;
+}

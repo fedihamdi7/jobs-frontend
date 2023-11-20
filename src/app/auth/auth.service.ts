@@ -28,4 +28,8 @@ export class AuthService {
     
     return this.http.post(this.API_URL+"/auth/register",formData);
   }
+
+  verify(token : string){
+    return this.http.get(this.API_URL+"/auth/verify/"+token);
+  }
 }

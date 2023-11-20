@@ -18,9 +18,11 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { VerifyComponent } from './verify/verify.component';
 @NgModule({
   declarations: [
-    AuthComponent
+    AuthComponent,
+    VerifyComponent
   ],
   imports: [
     CommonModule,

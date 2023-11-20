@@ -1,0 +1,20 @@
+<div class="container">
+    @if (!isSuccessful) {
+        <h1 class="Error"> {{errMessage}} </h1>
+        <h3> Please try again later <br>
+          If the problem persists contact moderator at : <br>
+          <span class="mail">
+            {{"mods@jobs.tn"}}
+          </span> </h3>
+    }
+    @else {
+
+        <h1 class="success">Welcome to <span class="jobs">JOBS</span></h1>
+        <h3> Your Account has been verified successfully <br>
+          <a routerLink="../../login">click here to login</a>
+            
+        </h3>
+    }
+
+
+</div>

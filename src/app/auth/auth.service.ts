@@ -12,7 +12,7 @@ export class AuthService {
   ) { }
 
   register(user : any){   
-    const formData = new FormData();
+    const formData = new FormData();    
     formData.append('name', user.name);
     formData.append('email', user.email);
     formData.append('password', user.password);
@@ -23,7 +23,7 @@ export class AuthService {
     if (!user.isCompany){
       formData.append('resume',user.resume);
     }
-    formData.append('links',user.links);
+    formData.append('links',JSON.stringify(user.links));
     user.isCompany ? formData.append('role','company') : formData.append('role','user')
     
     return this.http.post(this.API_URL+"/auth/register",formData);

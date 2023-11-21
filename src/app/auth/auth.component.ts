@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, signal } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FileUpload, FileUploadHandlerEvent } from 'primeng/fileupload';
 import { AuthService } from './auth.service';
 import { MessageService } from 'primeng/api';
 import { LocalStorageService } from '../shared/local-storage.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class AuthComponent implements OnInit {
     private authService : AuthService,
     private messageService: MessageService,
     private fb: FormBuilder,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private route: ActivatedRoute
   ) { }
 
   form: FormGroup;
@@ -89,6 +91,7 @@ export class AuthComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }else if ( res.code == 200){
         this.localStorageService.saveToken(res.token);
+        this.localStorageService.saveUser(res.user);        
         this.messageService.add({ severity: 'success', summary: 'Login Successfully', detail: "You are logged in" });
       }
       

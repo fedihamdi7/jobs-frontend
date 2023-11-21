@@ -19,4 +19,21 @@ export class LocalStorageService {
     localStorage.removeItem('token');
   }
 
+  saveUser(user : any){
+    localStorage.setItem('user',JSON.stringify(user));
+  }
+
+  getUser(){
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  removeUser(){
+    localStorage.removeItem('user');
+  }
+
+  clear(){
+    localStorage.clear();
+  }
+  
+
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { FileUpload, FileUploadHandlerEvent } from 'primeng/fileupload';
 import { AuthService } from './auth.service';
 import { MessageService } from 'primeng/api';
+import { LocalStorageService } from '../shared/local-storage.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class AuthComponent implements OnInit {
   constructor(
     private authService : AuthService,
     private messageService: MessageService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private localStorageService: LocalStorageService
   ) { }
 
   form: FormGroup;
@@ -77,9 +79,19 @@ export class AuthComponent implements OnInit {
     })
   }
   onSubmitLogin(){
-    console.log(this.loginForm.value);
+    this.authService.login(this.loginForm.value).subscribe((res:any) => {
+      
+      if (res.code == 401){
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+      }else if ( res.code == 200){
+        this.localStorageService.saveToken(res.token);
+        this.messageService.add({ severity: 'success', summary: 'Login Successfully', detail: "You are logged in" });
+      }
+      
+    })
     
   }
+
   onSubmit() {
     this.profilePicUpload.upload();
     if(this.resumeUpload){

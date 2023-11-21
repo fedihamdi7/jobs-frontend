@@ -32,4 +32,8 @@ export class AuthService {
   verify(token : string){
     return this.http.get(this.API_URL+"/auth/verify/"+token);
   }
+
+  login(loginCredentials : {email : string, password: string}){
+    return this.http.post(this.API_URL+"/auth/login",loginCredentials);
+  }
 }

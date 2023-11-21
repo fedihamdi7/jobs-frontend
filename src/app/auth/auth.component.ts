@@ -78,6 +78,10 @@ export class AuthComponent implements OnInit {
       password: new FormControl(null, Validators.required)
     })
   }
+
+  alterLoginRegister(){
+    this.isRegister = !this.isRegister;
+  }
   onSubmitLogin(){
     this.authService.login(this.loginForm.value).subscribe((res:any) => {
       

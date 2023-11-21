@@ -17,7 +17,7 @@ section{
 /* ############################ LEFT Section ############################  */
 #register-form{
     display: flex;
-    border: 2px solid white;
+    border: 2px solid #9eade6;
     border-radius: 20px;
     padding: 1%;
     flex-direction: column;
@@ -110,12 +110,12 @@ input, :host ::ng-deep .custom .p-inputtext, :host ::ng-deep #password .p-passwo
 /* ############################ RIGHT Section ############################  */
 .right-section{
     display: flex;
-    border: 2px solid white;
+    border: 2px solid #9eade6;
     border-radius: 20px;
     padding: 1%;
     flex-direction: column;
     position: relative;
-    height: 73vh;
+    height: 66vh;
     width: 23vw;
     overflow: hidden;
     box-shadow: 0px 0px 61.5px 3px #9eace633;
@@ -127,6 +127,12 @@ input, :host ::ng-deep .custom .p-inputtext, :host ::ng-deep #password .p-passwo
 .section-footer #login{
     color: #9eade6;
     font-weight: 800;
+    cursor: pointer;
+}
+
+.right-section .header span{
+    color: #9eade6;
+
 }
 
 
@@ -134,12 +140,11 @@ input, :host ::ng-deep .custom .p-inputtext, :host ::ng-deep #password .p-passwo
 /* ############################ LOGIN FORM ############################  */
 #login-form{
     display: flex;
-    border: 2px solid white;
+    border: 2px solid #9eade6;
     border-radius: 20px;
     padding: 1%;
     flex-direction: column;
     position: relative;
-    /* overflow: hidden; */
     box-shadow: 0px 0px 61.5px 3px #9eace633;
     height: 44vh;
     width: 31vw;

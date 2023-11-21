@@ -5,7 +5,9 @@
   </div>
 
   <section>
+    <p-toast></p-toast>
 
+    @if (isRegister) {
     <form id="register-form" [formGroup]="form" (submit)="onSubmit()">
       <div class="devider">
         <div class="formLeft">
@@ -141,11 +143,41 @@
 
       </div>
 
-      <p-button type="submit" label="Submit" [disabled]="form.status == 'INVALID'"></p-button>
+      <p-button id="signup-button" type="submit" label="Submit" [disabled]="form.status == 'INVALID'"></p-button>
 
     </form>
-    <p-toast></p-toast>
+  }
+  @else {
+    <form id="login-form" [formGroup]="loginForm" (submit)="onSubmitLogin()">
+      <div class="required-container">
+        <label for="email"> Email* </label> <br>
+        <input type="text" pInputText formControlName="email"
+          [ngClass]="{'ng-invalid': ((loginForm.get('email').errors?.['required'] ||loginForm.get('email').errors?.['email'] ) && loginForm.get('email').touched),'ng-dirty' : loginForm.get('email').touched}" />
 
+        <p-message class="msg-name" severity="error"
+          *ngIf="loginForm.get('email').errors?.['required'] && loginForm.get('email').touched" text="Field is required">
+        </p-message>
+        <p-message class="msg-name msg-mail-invalid" severity="error"
+          *ngIf="loginForm.get('email').errors?.['email'] && loginForm.get('email').touched" text="Email Invalid"></p-message>
+
+      </div>
+
+
+      <div class="required-container">
+        <label for="password"> Password* </label> <br>
+        <p-password [feedback]="false" formControlName="password" [toggleMask]="true" id="password" [ngClass]="{'ng-invalid': loginForm.get('password').errors?.['required'] && loginForm.get('password').touched,
+        'ng-dirty' : loginForm.get('password').touched
+        }" aria-describedby="password-error">
+        </p-password> <br>
+        <p-message class="msg-name" severity="error"
+          *ngIf="loginForm.get('password').errors?.['required'] && loginForm.get('password').touched"
+          text="Field is required"></p-message>
+      </div>
+
+      <p-button id="signin-button" type="submit" label="Submit" [disabled]="loginForm.status == 'INVALID'"></p-button>
+
+    </form>
+  }
 
 
     <div class="right-section">

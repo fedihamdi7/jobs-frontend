@@ -19,6 +19,8 @@ export class AuthComponent implements OnInit {
   ) { }
 
   form: FormGroup;
+  loginForm: FormGroup;
+  isRegister = false;
   @ViewChild('profilePicUpload') profilePicUpload: FileUpload;
   @ViewChild('resumeUpload') resumeUpload: FileUpload;
 
@@ -69,8 +71,15 @@ export class AuthComponent implements OnInit {
         location: [null]
       })
     });
+    this.loginForm = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, Validators.required)
+    })
   }
-
+  onSubmitLogin(){
+    console.log(this.loginForm.value);
+    
+  }
   onSubmit() {
     this.profilePicUpload.upload();
     if(this.resumeUpload){

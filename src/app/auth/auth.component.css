@@ -15,7 +15,7 @@ section{
 }
 
 /* ############################ LEFT Section ############################  */
-form{
+#register-form{
     display: flex;
     border: 2px solid white;
     border-radius: 20px;
@@ -35,7 +35,7 @@ input, :host ::ng-deep .custom .p-inputtext, :host ::ng-deep #password .p-passwo
 :host ::ng-deep #citiesDropDown .p-dropdown {
     width: 277px;
 }
-form .formLeft, .formRight{
+#register-form .formLeft, .formRight{
     /* border : 1px solid red; */
     width: 23vw;
     padding-left: 2%;
@@ -43,11 +43,11 @@ form .formLeft, .formRight{
 }
 
 
-form .formLeft > *, form .formRight > *{
+#register-form .formLeft > *, #register-form .formRight > *{
     margin: 30px 0 0 0;
 }
 
-form .formLeft .switcher{
+#register-form .formLeft .switcher{
     display: flex;
     align-items: center;
     gap : 12px;
@@ -55,12 +55,12 @@ form .formLeft .switcher{
 
 
 
-form .formLeft .phone, form .formRight .birthDate{
+#register-form .formLeft .phone, #register-form .formRight .birthDate{
     display: flex;
     flex-direction: column;
 }
 
-form .formRight{
+#register-form .formRight{
     /* border : 1px solid green; */
     margin-left: 2%;
     padding-top: 1%;

@@ -6,6 +6,15 @@
     justify-content: center;
 
 }
+section{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    gap: 4%;
+
+}
+
+/* ############################ LEFT Section ############################  */
 form{
     display: flex;
     border: 2px solid white;
@@ -13,8 +22,9 @@ form{
     padding: 1%;
     flex-direction: column;
     position: relative;
-    height: 75%;
+    height: 73vh;
     overflow: hidden;
+    box-shadow: 0px 0px 61.5px 3px #9eace633;
 }
 
 
@@ -93,4 +103,28 @@ p-button{
 
 .required-container{
     position: relative;
+}
+
+
+
+/* ############################ RIGHT Section ############################  */
+.right-section{
+    display: flex;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 1%;
+    flex-direction: column;
+    position: relative;
+    height: 73vh;
+    width: 23vw;
+    overflow: hidden;
+    box-shadow: 0px 0px 61.5px 3px #9eace633;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+}
+.section-footer #login{
+    color: #9eade6;
+    font-weight: 800;
 }

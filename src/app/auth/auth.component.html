@@ -4,138 +4,165 @@
     <p-image src="./../../assets/Logo_JOBS.png" alt="Image" width="250"></p-image>
   </div>
 
+  <section>
 
-  <form [formGroup]="form" (submit)="onSubmit()">
-    <div class="devider">
-      <div class="formLeft">
-        <div class="switcher"> <span>User</span>
-          <p-inputSwitch formControlName="isCompany"></p-inputSwitch> <span>Company</span>
-        </div>
-
-
-        <div class="required-container">
-          @if (form.value.isCompany) {
-          <label for="name"> Company Name* </label> <br>
-          }@else{
-          <label for="name"> Name* </label> <br>
-          }
-
-          <input type="text" id="name" pInputText formControlName="name" 
-          [ngClass]="{'ng-invalid': form.get('name').errors?.['required'] && form.get('name').touched,'ng-dirty' : form.get('name').touched}" /> 
-            <p-message class="msg-name" severity="error" *ngIf="form.get('name').errors?.['required'] && form.get('name').touched"  text="Field is required"></p-message>
-        </div>
-
-        <div class="required-container">
-          <label for="email"> Email* </label> <br>
-          <input type="text" pInputText formControlName="email" 
-          [ngClass]="{'ng-invalid': ((form.get('email').errors?.['required'] ||form.get('email').errors?.['email'] ) && form.get('email').touched),'ng-dirty' : form.get('email').touched}" /> 
-
-            <p-message class="msg-name" severity="error" *ngIf="form.get('email').errors?.['required'] && form.get('email').touched"  text="Field is required"></p-message>
-            <p-message class="msg-name msg-mail-invalid" severity="error"  *ngIf="form.get('email').errors?.['email'] && form.get('email').touched"  text="Email Invalid"></p-message>
-
-        </div>
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="devider">
+        <div class="formLeft">
+          <div class="switcher"> <span>User</span>
+            <p-inputSwitch formControlName="isCompany"></p-inputSwitch> <span>Company</span>
+          </div>
 
 
-        <div class="required-container">
-          <label for="password"> Password* </label> <br>
-          <p-password formControlName="password" [toggleMask]="true" id="password" [ngClass]="{'ng-invalid': form.get('password').errors?.['required'] && form.get('password').touched,
+          <div class="required-container">
+            @if (form.value.isCompany) {
+            <label for="name"> Company Name* </label> <br>
+            }@else{
+            <label for="name"> Name* </label> <br>
+            }
+
+            <input type="text" id="name" pInputText formControlName="name"
+              [ngClass]="{'ng-invalid': form.get('name').errors?.['required'] && form.get('name').touched,'ng-dirty' : form.get('name').touched}" />
+            <p-message class="msg-name" severity="error"
+              *ngIf="form.get('name').errors?.['required'] && form.get('name').touched" text="Field is required">
+            </p-message>
+          </div>
+
+          <div class="required-container">
+            <label for="email"> Email* </label> <br>
+            <input type="text" pInputText formControlName="email"
+              [ngClass]="{'ng-invalid': ((form.get('email').errors?.['required'] ||form.get('email').errors?.['email'] ) && form.get('email').touched),'ng-dirty' : form.get('email').touched}" />
+
+            <p-message class="msg-name" severity="error"
+              *ngIf="form.get('email').errors?.['required'] && form.get('email').touched" text="Field is required">
+            </p-message>
+            <p-message class="msg-name msg-mail-invalid" severity="error"
+              *ngIf="form.get('email').errors?.['email'] && form.get('email').touched" text="Email Invalid"></p-message>
+
+          </div>
+
+
+          <div class="required-container">
+            <label for="password"> Password* </label> <br>
+            <p-password formControlName="password" [toggleMask]="true" id="password" [ngClass]="{'ng-invalid': form.get('password').errors?.['required'] && form.get('password').touched,
             'ng-dirty' : form.get('password').touched
             }" aria-describedby="password-error">
-          </p-password> <br>
-          <p-message class="msg-name" severity="error" *ngIf="form.get('password').errors?.['required'] && form.get('password').touched"  text="Field is required"></p-message>
-        </div>
-
-
-        <div class="profilePic">
-          <p-fileUpload mode="basic" chooseLabel="Choose Profile Picture" accept="image/*" [maxFileSize]='10000000'
-            (uploadHandler)="onFilePicked($event,true)" #profilePicUpload [customUpload]="true">
-          </p-fileUpload>
-        </div>
-
-        <div class="phone">
-          <span>Phone</span>
-          <p-inputMask class="custom" mask="99 999 999" formControlName="phone" placeholder="12 345 678"></p-inputMask>
-        </div>
-
-      </div>
-
-      <div class="formRight">
-        @if (!form.value.isCompany) {
-        <div class="birthDate">
-          <span>Birthday</span>
-          <p-calendar dateFormat="dd/mm/yy" formControlName="birthDate" [showIcon]="true" placeholder="Choose a date">
-          </p-calendar>
-        </div>
-      }
-
-        <div>
-          <p-dropdown id="citiesDropDown" placeholder="Select a City" formControlName="governorate" [options]="cities"
-            optionLabel="name">
-          </p-dropdown>
-        </div>
-        <hr width="70%">
-        <div class="links" formGroupName="links">
-          <h3>Links</h3>
-          <div class="links-row">
-            <span class="p-float-label" >
-              <input pInputText id="github" formControlName="github" />
-              <label for="github">Github</label>
-            </span> <br>
-            <span class="p-float-label" >
-              <input pInputText id="linkedin" formControlName="linkedin" />
-              <label for="linkedin">LinkedIn</label>
-            </span>
+            </p-password> <br>
+            <p-message class="msg-name" severity="error"
+              *ngIf="form.get('password').errors?.['required'] && form.get('password').touched"
+              text="Field is required"></p-message>
           </div>
-          <br>
-          <div class="links-row">
-            <span class="p-float-label" >
-              <input pInputText id="facebook" formControlName="facebook" />
-              <label for="facebook">Facebook</label>
-            </span> <br>
-            <span class="p-float-label" >
-              <input pInputText id="twitter" formControlName="twitter" />
-              <label for="twitter">Twitter</label>
-            </span>
-          </div>
-          <br>
-          <div class="links-row">
-            <span class="p-float-label" >
-              <input pInputText id="instagram" formControlName="instagram" />
-              <label for="instagram">Instagram</label>
-            </span> <br>
-            @if (form.value.isCompany) {
 
-              <span class="p-float-label" >
+
+          <div class="profilePic">
+            <p-fileUpload mode="basic" chooseLabel="Choose Profile Picture" accept="image/*" [maxFileSize]='10000000'
+              (uploadHandler)="onFilePicked($event,true)" #profilePicUpload [customUpload]="true">
+            </p-fileUpload>
+          </div>
+
+          <div class="phone">
+            <span>Phone</span>
+            <p-inputMask class="custom" mask="99 999 999" formControlName="phone" placeholder="12 345 678">
+            </p-inputMask>
+          </div>
+
+        </div>
+
+        <div class="formRight">
+          @if (!form.value.isCompany) {
+          <div class="birthDate">
+            <span>Birthday</span>
+            <p-calendar dateFormat="dd/mm/yy" formControlName="birthDate" [showIcon]="true" placeholder="Choose a date">
+            </p-calendar>
+          </div>
+          }
+
+          <div>
+            <p-dropdown id="citiesDropDown" placeholder="Select a City" formControlName="governorate" [options]="cities"
+              optionLabel="name">
+            </p-dropdown>
+          </div>
+          <hr width="70%">
+          <div class="links" formGroupName="links">
+            <h3>Links</h3>
+            <div class="links-row">
+              <span class="p-float-label">
+                <input pInputText id="github" formControlName="github" />
+                <label for="github">Github</label>
+              </span> <br>
+              <span class="p-float-label">
+                <input pInputText id="linkedin" formControlName="linkedin" />
+                <label for="linkedin">LinkedIn</label>
+              </span>
+            </div>
+            <br>
+            <div class="links-row">
+              <span class="p-float-label">
+                <input pInputText id="facebook" formControlName="facebook" />
+                <label for="facebook">Facebook</label>
+              </span> <br>
+              <span class="p-float-label">
+                <input pInputText id="twitter" formControlName="twitter" />
+                <label for="twitter">Twitter</label>
+              </span>
+            </div>
+            <br>
+            <div class="links-row">
+              <span class="p-float-label">
+                <input pInputText id="instagram" formControlName="instagram" />
+                <label for="instagram">Instagram</label>
+              </span> <br>
+              @if (form.value.isCompany) {
+
+              <span class="p-float-label">
                 <input pInputText id="location" formControlName="location" />
                 <label for="location">Location (maps)</label>
               </span>
-            }
+              }
+            </div>
           </div>
-        </div>
-        
-        @if (!form.value.isCompany) {
+
+          @if (!form.value.isCompany) {
           <hr width="70%">
-        <div class="resume">
-          <p-fileUpload mode="basic" chooseLabel="Upload a resume" accept="image/* , application/pdf"
-            [maxFileSize]='10000000' (uploadHandler)="onFilePicked($event,false)" #resumeUpload [customUpload]="true">
-          </p-fileUpload>
+          <div class="resume">
+            <p-fileUpload mode="basic" chooseLabel="Upload a resume" accept="image/* , application/pdf"
+              [maxFileSize]='10000000' (uploadHandler)="onFilePicked($event,false)" #resumeUpload [customUpload]="true">
+            </p-fileUpload>
+          </div>
+          }
+
+
+
+
+
+
         </div>
-        }
-
-
-
-
 
 
       </div>
 
+      <p-button type="submit" label="Submit" [disabled]="form.status == 'INVALID'"></p-button>
 
+    </form>
+    <p-toast></p-toast>
+
+
+
+    <div class="right-section">
+      <div class="header">
+        <h1>Welcome To JOBS</h1>
+      </div>
+      <div class="section-middle">
+        <h5>Unlock Your Career Potential</h5>
+        <h5>Join JOBS Today and Empoyer Your Tomorrow!</h5>
+      </div>
+      <div class="section-footer">
+        <h5>Have an account already ?</h5>
+        <h5 id="login"> Click here to login</h5>
+      </div>
     </div>
 
-    <p-button type="submit" label="Submit" [disabled]="form.status == 'INVALID'"></p-button>
-
-  </form>
-  <p-toast></p-toast>
+  </section>
 
 
 

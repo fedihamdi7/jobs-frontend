@@ -4,7 +4,7 @@ import { FileUpload, FileUploadHandlerEvent } from 'primeng/fileupload';
 import { AuthService } from './auth.service';
 import { MessageService } from 'primeng/api';
 import { LocalStorageService } from '../shared/local-storage.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
     private messageService: MessageService,
     private fb: FormBuilder,
     private localStorageService: LocalStorageService,
-    private route: ActivatedRoute
+    private router: Router
   ) { }
 
   form: FormGroup;
@@ -89,12 +89,19 @@ export class AuthComponent implements OnInit {
       
       if (res.code == 401){
         this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
-      }else if ( res.code == 200){
+      }else if ( res.code == 200){        
         this.localStorageService.saveToken(res.token);
-        this.localStorageService.saveUser(res.user);        
-        this.messageService.add({ severity: 'success', summary: 'Login Successfully', detail: "You are logged in" });
+        this.localStorageService.saveUser(res.user);  
+        this.messageService.add({ severity: 'success', summary: 'Login Successfully', detail: "You are logged in, Welcome back" });
+        if(res.user.role == "user"){
+          this.router.navigate(['/home-user']);
+        }else if (res.user.role == "company"){
+          this.router.navigate(['/home-company']);
+        }
       }
       
+    },err =>{
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error.message });
     })
     
   }

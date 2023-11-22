@@ -6,13 +6,19 @@ export const IsNotAuthGuard: CanActivateFn = (route, state) => {
 
   const localStorageService : LocalStorageService = inject(LocalStorageService);
   const router = inject(Router);
-  const token = localStorageService.getToken();
+  const user = localStorageService.getUser();
   
-  if (token) {
-    router.navigate(['/home'],
-                    { 
+  
+  if (user) {
+    if (user.role === 'user') {
+      router.navigate(['/home-user'],{ 
                       state: {redirectedFromAuthGuard : true}
                     });
+    }else if (user.role === 'company') {
+      router.navigate(['/home-company'],{ 
+                      state: {redirectedFromAuthGuard : true}
+                    });
+    }
     return false;
   }else{
     return true;

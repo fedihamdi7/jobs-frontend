@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { ToastModule } from 'primeng/toast';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    ToastModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

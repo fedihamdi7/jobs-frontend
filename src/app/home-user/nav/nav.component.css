@@ -1,0 +1,25 @@
+p-avatar {
+    cursor: pointer;
+  }
+  
+  nav {
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #161D21;
+    margin: -7px;
+  }
+  nav .navbar-left a {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  nav .navbar-middle img {
+    width: 111px;
+    height: 62px;
+    margin-top: 18%;
+  }
+  

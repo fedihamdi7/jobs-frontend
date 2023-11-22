@@ -1,0 +1,17 @@
+<nav class="navbar">
+    <div class="navbar-left">
+      <a routerLink="/home">HOME</a>
+    </div>
+    <div class="navbar-middle">
+      <img src="/assets/Logo_JOBS.png" alt="JOBS_LOGO">
+    </div>
+    <div class="navbar-right">
+      <p-avatar image="http://localhost:3000/assets/profile-pics/{{user.profilePic}}" styleClass="mr-2" size="normal" (click)="menuAvatar.toggle($event)"
+        shape="circle"></p-avatar>
+      <p-menu #menuAvatar [model]="items" [popup]="true"></p-menu>
+    </div>
+</nav>
+<p-toast></p-toast>
+
+
+<router-outlet></router-outlet>

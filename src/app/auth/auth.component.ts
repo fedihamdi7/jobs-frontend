@@ -93,6 +93,7 @@ export class AuthComponent implements OnInit {
         this.localStorageService.saveToken(res.token);
         this.localStorageService.saveUser(res.user);  
         this.messageService.add({ severity: 'success', summary: 'Login Successfully', detail: "You are logged in, Welcome back" });
+        // TODO : el message nhotouh fel home
         if(res.user.role == "user"){
           this.router.navigate(['/home-user']);
         }else if (res.user.role == "company"){

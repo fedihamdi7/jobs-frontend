@@ -1,0 +1,119 @@
+.container {
+  background-color: #161D21;
+  width: 95vw;
+  margin: 3% auto;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.container .card {
+  display: flex;
+  margin-top: 2%;
+}
+#searchInput{
+  margin-left: 2%;
+}
+.company-info {
+  flex-basis: 17vw;
+}
+
+.company-info .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.company-info .logo .company-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #797B7D;
+
+}
+.company-info img {
+    width: 200px;
+    border-radius: 50%;
+  }
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+  flex-basis: 80vw;
+}
+
+.post-info .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-info .post-header .post-title {
+  color: #9EADE6;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.post-info .post-header .date-of-creation {
+  color: #87898A;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.post-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-body .chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1% 0;
+  gap: 1%;
+}
+
+.post-body .post-description {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-info .post-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.post-info .post-footer {
+  color: #87898A;
+}
+
+
+.post-button {
+  flex-basis: 14vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-button button{
+    border-radius: 17px;
+    border: 4px solid #263238;
+    background: #263238;
+    box-shadow: 7px 4px 12.5px 0px #121212;
+    color: #D6D6D6;
+}
+
+.chips p-chip img{
+    margin-left: -3%;
+    width: 25px;
+}
+
+
+
+

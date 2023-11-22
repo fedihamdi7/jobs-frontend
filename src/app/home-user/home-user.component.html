@@ -1,2 +1,84 @@
-<p>home-user works!</p>
-<p-toast></p-toast>
+
+<div class="container">
+  <p-dataView #dv [value]="products" [rows]="2" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="applicants" >
+    <ng-template pTemplate="header">
+      <div>
+          <p-dropdown [options]="sortOptions" placeholder="Sort By Applicants" (onChange)="onSortChange($event)"></p-dropdown>
+          <span class="p-input-icon-left" id="searchInput">
+            <i class="pi pi-search"></i>
+            <input  type="text" pInputText [(ngModel)]="filterValue" (keyup)="applyFilter($event)" />
+        </span>
+      </div>
+      
+  </ng-template>
+    <ng-template let-product pTemplate="listItem">
+      <div class="card">
+        <div class="company-info">
+          <div class="logo">
+            <img src="/assets/fedi.jpg" alt="company_logo">
+            <h3 class="company-name">Company Name</h3>
+          </div>
+        </div>
+
+        <div class="post-info">
+          <div class="post-header">
+            <div class="post-title">
+              FULL STACK DEVELOPER
+            </div>
+            <div class="date-of-creation">
+              Posted : 24/11/2023
+            </div>
+          </div>
+          <div class="post-body">
+            <div class="chips">
+              <p-chip label="Work experience">
+                <img alt="school icon" src="/assets/chips-icons/work.svg">
+              </p-chip>
+              <p-chip label="Education level">
+                <img alt="school icon" src="/assets/chips-icons/school.svg">
+              </p-chip>
+              <p-chip label="Salary">
+                <img alt="school icon" src="/assets/chips-icons/salary.svg">
+              </p-chip>
+            </div>
+            <div class="post-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ut voluptatum asperiores ratione
+              expedita
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ut voluptatum asperiores ratione
+              expedita
+              minus praesentium repellendus, nesciunt maiores adipisci magni velit ex? Lorem ipsum dolor sit amet
+              consectetur, adipisicing elit. Corrupti, doloribus? Asperiores eveniet delectus quidem sit consectetur
+              deleniti magnam illo sed fugiat accusamus laborum molestiae aperiam in, error libero quia vitae. Illum
+              consequatur impedit ratione ab accusantium! Placeat voluptates odit nostrum!
+              minus praesentium repellendus, nesciunt maiores adipisci magni velit ex? Lorem ipsum dolor sit amet
+              consectetur, adipisicing elit. Corrupti, doloribus? Asperiores eveniet delectus quidem sit consectetur
+              deleniti magnam illo sed fugiat accusamus laborum molestiae aperiam in, error libero quia vitae. Illum
+              consequatur impedit ratione ab accusantium! Placeat voluptates odit nostrum!
+              minus praesentium repellendus, nesciunt maiores adipisci magni velit ex? Lorem ipsum dolor sit amet
+              consectetur, adipisicing elit. Corrupti, doloribus? Asperiores eveniet delectus quidem sit consectetur
+              deleniti magnam illo sed fugiat accusamus laborum molestiae aperiam in, error libero quia vitae. Illum
+              consequatur impedit ratione ab accusantium! Placeat voluptates odit nostrum!
+
+            </div>
+          </div>
+
+          <div class="post-footer">
+            <div class="available-positions">
+              Available Positions : 2
+            </div>
+
+            <div class="applicants-count">
+              Applicants : {{product.applicants}}
+            </div>
+          </div>
+        </div>
+
+        <div class="post-button">
+          <button pButton pRipple label="Read more" class="p-button-success"></button>
+        </div>
+      </div>
+
+    </ng-template>
+  </p-dataView>
+
+</div>

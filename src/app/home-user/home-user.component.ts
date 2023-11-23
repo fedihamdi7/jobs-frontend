@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LocalStorageService } from '../shared/local-storage.service';
 import { SelectItem } from 'primeng/api';
+import { UserServiceService } from './user-service.service';
 
 @Component({
   selector: 'app-home-user',
@@ -10,56 +11,7 @@ import { SelectItem } from 'primeng/api';
 export class HomeUserComponent implements OnInit {
   //TODO : get the products from the backend
   isFromAuthGuard = false;
-  products: any[] = [
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      applicants: 1,
-      inventoryStatus: 'INSTOCK',
-      rating: 5
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      applicants: 2,
-      inventoryStatus: 'INSTOCK',
-      rating: 5
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      applicants: 3,
-      inventoryStatus: 'INSTOCK',
-      rating: 5
-    },
-    {
-      id: '2000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      applicants: 4,
-      inventoryStatus: 'INSTOCK',
-      rating: 5
-    }
-  ];
+  posts: any[] = [];
   connectedUser: any;
   sortOptions!: SelectItem[];
 
@@ -68,7 +20,8 @@ export class HomeUserComponent implements OnInit {
   sortField!: string;
   filterValue!: string;
   constructor(
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private userService: UserServiceService
   ) { }
 
 
@@ -80,6 +33,10 @@ export class HomeUserComponent implements OnInit {
       { label: 'Price High to Low', value: '!applicants' },
       { label: 'Price Low to High', value: 'applicants' }
     ];
+
+    this.userService.getAllPosts().subscribe((data: any) => {
+      this.posts = data;     
+    })
   }
 
 
@@ -101,17 +58,17 @@ export class HomeUserComponent implements OnInit {
 
     // If the original products array is not yet initialized, store a copy
     if (!this.originalProducts) {
-      this.originalProducts = [...this.products];
+      this.originalProducts = [...this.posts];
     }
 
-    // Filter products by applicants
-    this.products = this.originalProducts.filter((product: any) => {
+    // Filter posts by applicants
+    this.posts = this.originalProducts.filter((product: any) => {
       return product.applicants.toString().toLowerCase().includes(filterValue.toLowerCase());
     });
 
-    // If empty filter, return all original products
+    // If empty filter, return all original posts
     if (filterValue === '') {
-      this.products = [...this.originalProducts];
+      this.posts = [...this.originalProducts];
     }
   }
 }

@@ -15,6 +15,7 @@ import { ChipModule } from 'primeng/chip';
 import { RippleModule } from 'primeng/ripple';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InputTextModule } from 'primeng/inputtext';
   imports: [
     CommonModule,
     HomeUserRoutingModule,
+    HttpClientModule,
     ToastModule,
     DataViewModule,
     MenuModule,

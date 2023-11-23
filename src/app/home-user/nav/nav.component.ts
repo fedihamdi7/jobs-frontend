@@ -25,6 +25,10 @@ export class NavComponent implements OnInit,AfterViewInit{
         this.isFromAuthGuard = true;
       }else if (this.router.getCurrentNavigation()?.extras?.state['redirectedAfterAuth']) {
         this.isFromAfterAuth = true;
+        // remove the state from the url
+      }
+      if (history.state) {
+        history.replaceState({}, '', this.router.url.split('?')[0]);
       }
     }
    }

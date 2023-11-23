@@ -24,6 +24,9 @@ export class AuthComponent implements OnInit, AfterViewInit {
     if (this.router.getCurrentNavigation()?.extras?.state) {
       if (this.router.getCurrentNavigation()?.extras?.state['NotLoggedIn']) {
         this.NotLoggedIn = true;
+        if (history.state) {
+          history.replaceState({}, '', this.router.url.split('?')[0]);
+        }
       }
     }
   }

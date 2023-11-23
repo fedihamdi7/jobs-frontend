@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FileUpload, FileUploadHandlerEvent } from 'primeng/fileupload';
 import { AuthService } from './auth.service';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, AfterViewInit {
 
   constructor(
     private authService : AuthService,
@@ -20,8 +20,15 @@ export class AuthComponent implements OnInit {
     private fb: FormBuilder,
     private localStorageService: LocalStorageService,
     private router: Router
-  ) { }
+  ) { 
+    if (this.router.getCurrentNavigation()?.extras?.state) {
+      if (this.router.getCurrentNavigation()?.extras?.state['NotLoggedIn']) {
+        this.NotLoggedIn = true;
+      }
+    }
+  }
 
+  NotLoggedIn = false;
   form: FormGroup;
   loginForm: FormGroup;
   isRegister = false;
@@ -81,6 +88,12 @@ export class AuthComponent implements OnInit {
     })
   }
 
+  ngAfterViewInit(): void {
+   if(this.NotLoggedIn){
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You need to login first' });
+
+   }
+  }
   alterLoginRegister(){
     this.isRegister = !this.isRegister;
   }

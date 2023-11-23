@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LocalStorageService } from '../shared/local-storage.service';
 import { SelectItem } from 'primeng/api';
 import { UserServiceService } from './user-service.service';
+import { parse } from 'angular-html-parser';
 
 @Component({
   selector: 'app-home-user',
@@ -9,12 +10,11 @@ import { UserServiceService } from './user-service.service';
   styleUrl: './home-user.component.css'
 })
 export class HomeUserComponent implements OnInit {
-  //TODO : get the products from the backend
   isFromAuthGuard = false;
   posts: any[] = [];
   connectedUser: any;
   sortOptions!: SelectItem[];
-
+  text!: string;
   sortOrder!: number;
 
   sortField!: string;
@@ -24,12 +24,9 @@ export class HomeUserComponent implements OnInit {
     private userService: UserServiceService
   ) { }
 
-
-
   ngOnInit(): void {
     this.connectedUser = this.localStorageService.getUser();
     this.sortOptions = [
-      // TODO : to be changed to sort by date
       { label: 'Price High to Low', value: '!applicants' },
       { label: 'Price Low to High', value: 'applicants' }
     ];

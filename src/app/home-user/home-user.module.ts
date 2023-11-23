@@ -16,7 +16,6 @@ import { RippleModule } from 'primeng/ripple';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
-
 @NgModule({
   declarations: [
     HomeUserComponent,

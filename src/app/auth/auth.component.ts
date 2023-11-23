@@ -92,10 +92,11 @@ export class AuthComponent implements OnInit {
       }else if ( res.code == 200){        
         this.localStorageService.saveToken(res.token);
         this.localStorageService.saveUser(res.user);  
-        this.messageService.add({ severity: 'success', summary: 'Login Successfully', detail: "You are logged in, Welcome back" });
         // TODO : el message nhotouh fel home
         if(res.user.role == "user"){
-          this.router.navigate(['/home-user']);
+          this.router.navigate(['/home-user'],{
+            state: {redirectedAfterAuth : true}
+          });
         }else if (res.user.role == "company"){
           this.router.navigate(['/home-company']);
         }

@@ -13,7 +13,7 @@ export class NavComponent implements OnInit,AfterViewInit{
   user : any;
   items: any[] = [];
   isFromAuthGuard = false;
-  
+  isFromAfterAuth = false;
   constructor(
     private messageService: MessageService,
     private router: Router,
@@ -23,6 +23,8 @@ export class NavComponent implements OnInit,AfterViewInit{
     if (this.router.getCurrentNavigation()?.extras?.state) {
       if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {
         this.isFromAuthGuard = true;
+      }else if (this.router.getCurrentNavigation()?.extras?.state['redirectedAfterAuth']) {
+        this.isFromAfterAuth = true;
       }
     }
    }
@@ -31,6 +33,9 @@ export class NavComponent implements OnInit,AfterViewInit{
   ngAfterViewInit(): void {
     if (this.isFromAuthGuard) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You are already logged in' });
+    }
+    if (this.isFromAfterAuth) {
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login Successfully, Welcome back' });
     }
   }
   ngOnInit(): void {

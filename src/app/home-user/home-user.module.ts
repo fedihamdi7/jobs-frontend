@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
 @NgModule({
   declarations: [
     HomeUserComponent,
@@ -37,7 +39,8 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
     RippleModule,
     FormsModule,
     InputTextModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    NgScrollbarModule
   ],
   providers: [DialogService]
 })

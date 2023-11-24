@@ -5,7 +5,11 @@
   padding: 2%;
   border-radius: 10px;
 }
-
+::ng-deep .scrollbar{
+  background-color: rgb(172, 171, 171) !important;
+  border-radius: 4px !important;
+  
+}
 .container .card {
   display: flex;
   margin-top: 2%;

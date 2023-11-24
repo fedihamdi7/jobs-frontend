@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../shared/local-storage.service';
 import { SelectItem } from 'primeng/api';
 import { UserServiceService } from './user-service.service';
-import { parse } from 'angular-html-parser';
 
 @Component({
   selector: 'app-home-user',

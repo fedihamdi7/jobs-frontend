@@ -7,7 +7,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '', component: NavComponent, children: [
-      { path: 'home', component: HomeUserComponent }
+      { path: 'home', component: HomeUserComponent },
+      { path : 'post/:id', loadChildren : () => import('../post/post.module').then(m => m.PostModule)}
+
     ]
   }
 ];

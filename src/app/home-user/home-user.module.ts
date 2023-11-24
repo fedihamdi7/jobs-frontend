@@ -16,6 +16,7 @@ import { RippleModule } from 'primeng/ripple';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 @NgModule({
   declarations: [
     HomeUserComponent,
@@ -35,7 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     ChipModule,
     RippleModule,
     FormsModule,
-    InputTextModule
-  ]
+    InputTextModule,
+    DynamicDialogModule
+  ],
+  providers: [DialogService]
 })
 export class HomeUserModule { }

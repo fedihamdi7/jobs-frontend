@@ -9,6 +9,8 @@ p-avatar {
     align-items: center;
     background-color: #161D21;
     margin: -7px;
+    position: sticky;
+    top: 0;
   }
   nav .navbar-left a {
     color: #fff;

@@ -58,7 +58,8 @@
         </div>
 
         <div class="post-button">
-          <button routerLink="post/{{post._id}}" pButton pRipple label="Read more" class="p-button-success"></button>
+          <button (click)="show(post)" pButton pRipple label="Read more" class="p-button-success"></button>
+          <!-- <button routerLink="../post/{{post._id}}" pButton pRipple label="Read more" class="p-button-success"></button> -->
         </div>
       </div>
 

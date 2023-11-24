@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../shared/local-storage.service';
 import { SelectItem } from 'primeng/api';
 import { UserServiceService } from './user-service.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-home-user',
@@ -18,9 +20,11 @@ export class HomeUserComponent implements OnInit {
 
   sortField!: string;
   filterValue!: string;
+  ref: DynamicDialogRef | undefined;
   constructor(
     private localStorageService: LocalStorageService,
-    private userService: UserServiceService
+    private userService: UserServiceService,
+    public dialogService: DialogService
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +38,10 @@ export class HomeUserComponent implements OnInit {
       this.posts = data;     
     })
   }
+
+  show(post) {
+    this.ref = this.dialogService.open(PostComponent, { header: 'Post Details',data : post,maximizable: true,height: '100%'});
+}
 
 
   onSortChange(event: any) {

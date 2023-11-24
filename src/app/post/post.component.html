@@ -1,0 +1,105 @@
+<div class="container">
+
+  <div class="company-details">
+    <div class="header">
+      <div class="logo">
+        <img src="http://localhost:3000/assets/profile-pics/{{post.company.profilePic}}" alt="logo">
+      </div>
+      <div class="company-name">
+        <h1>{{post.company.name}} </h1>
+      </div>
+    </div>
+    <p-divider></p-divider>
+
+    <div class="company-infos">
+      <div class="info">
+        <img src="../../assets/post-icons/Email.svg" alt="" class="info-logo">
+        <div class="info-text">{{post.company.email || 'N/A'}} </div>
+      </div>
+      @if (post.company.phone) {
+      <div class="info">
+        <img src="../../assets/post-icons/Phone.svg" alt="" class="info-logo">
+        <div class="info-text">{{post.company.phone || 'N/A'}}</div>
+      </div>
+      }
+      @if (post.company.links.location) {
+      <div class="info">
+        <img src="../../assets/post-icons/Address.svg" alt="" class="info-logo">
+        <a href="{{post.company.links.location || 'N/A'}}" target="_blank">{{post.company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (post.company.links.facebook) {
+
+      <div class="info">
+        <img src="../../assets/post-icons/Facebook.svg" alt="" class="info-logo">
+        <a href="{{post.company.links.facebook || 'N/A'}}" target="_blank">{{post.company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (post.company.links.linkedin) {
+
+      <div class="info">
+        <img src="../../assets/post-icons/LinkedIn.svg" alt="" class="info-logo">
+        <a href="{{post.company.links.linkedin || 'N/A'}}" target="_blank">{{post.company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (post.company.links.twitter) {
+
+      <div class="info">
+        <img src="../../assets/post-icons/TwitterX.svg" alt="" class="info-logo">
+        <a href="{{post.company.links.twitter || 'N/A'}}" target="_blank">{{post.company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (post.company.links.instagram ){
+      <div class="info">
+        <img src="../../assets/post-icons/Instagram.svg" alt="" class="info-logo">
+        <a href="{{post.company.links.instagram || 'N/A'}}" target="_blank">{{post.company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (post.company.links.website) {
+      <div class="info">
+        <img src="../../assets/post-icons/Website.svg" alt="" class="info-logo">
+        <a href="{{post.company.links.website || 'N/A'}}" target="_blank">{{post.company.name || 'N/A'}}</a>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="post-details">
+    <div class="post-header">
+      <h1> {{post.title}} </h1>
+      <button pButton severity="success" label="APPLY NOW" class="p-button-info"></button>
+    </div>
+
+    <div class="post-reqs">
+      <div class="left-side-reqs">
+        <div class="req-title">Contract Type : <span class="req-data"> {{post.typeOfEmployment || 'N/A'}} </span></div>
+        <div class="req-title">Education : <span class="req-data">{{post.levelOfStudy || 'N/A'}}</span></div>
+        <div class="req-title">Experience : <span class="req-data">{{post.experienceLevel || 'N/A'}}</span></div>
+        <div class="req-title">Salary : <span class="req-data">{{post.salary || 'N/A'}}</span></div>
+      </div>
+
+      <div class="right-side-reqs">
+        <div class="req-title">Language : <span class="req-data">{{post.language || 'N/A'}}</span></div>
+        <div class="req-title">Available Positions : <span class="req-data">{{post.numberOfAvailablePositions || 'N/A'}}</span></div>
+        <div class="req-title">Posted Date : <span class="req-data">{{post.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
+        <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration || 'N/A'}}</span></div>
+      </div>
+    </div>
+    <!-- DIVIDER -->
+    <p-divider></p-divider>
+
+    <div class="post-description">
+      <h2>Description</h2>
+      <div class="divider">
+        <p-divider></p-divider>
+      </div>
+
+      <div [innerHTML]="post.description">
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

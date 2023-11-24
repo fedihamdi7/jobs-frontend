@@ -108,7 +108,6 @@ export class AuthComponent implements OnInit, AfterViewInit {
       }else if ( res.code == 200){        
         this.localStorageService.saveToken(res.token);
         this.localStorageService.saveUser(res.user);  
-        // TODO : el message nhotouh fel home
         if(res.user.role == "user"){
           this.router.navigate(['/home-user'],{
             state: {redirectedAfterAuth : true}

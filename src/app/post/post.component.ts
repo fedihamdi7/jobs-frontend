@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { LocalStorageService } from '../shared/local-storage.service';
+import { PostService } from './post.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-post',
@@ -12,7 +14,9 @@ export class PostComponent implements OnInit{
   alreadyApplied : boolean = false;
   constructor(
     public config: DynamicDialogConfig,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private postService : PostService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -20,5 +24,18 @@ export class PostComponent implements OnInit{
     if(this.localStorageService.getUser().postsAppliedIn.includes(this.post._id)){
       this.alreadyApplied = true;
     }
+  }
+// TODO : make it that applying open another dialog and in that dialog the user can write a message to the post owner + select resume to send
+  apply(){
+    this.postService.applyToPost(this.localStorageService.getUser()._id,this.post._id).subscribe(
+      (res)=>{
+        this.alreadyApplied = true;
+        this.messageService.add({severity:'success', summary: 'Success', detail: 'Applied Successfully'});
+      },
+      (err)=>{
+        console.log(err);
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Error Applying'});
+      }
+    );
   }
 }

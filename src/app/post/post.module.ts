@@ -8,6 +8,8 @@ import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { MessageModule } from 'primeng/message';
 import { MessageService } from 'primeng/api';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     PostComponent
@@ -15,10 +17,12 @@ import { MessageService } from 'primeng/api';
   imports: [
     CommonModule,
     PostRoutingModule,
+    HttpClientModule,
     DividerModule,
     ButtonModule,
     TooltipModule,
-    MessageModule
+    MessageModule,
+    ToastModule
   ],
   providers:[MessageService]
 })

@@ -57,7 +57,7 @@ export class NavComponent implements OnInit,AfterViewInit{
             }
           },
           {
-            label: 'Applications',
+            label: 'My Applications',
             icon: 'pi pi-file',
             routerLink: '/fileupload'
           },

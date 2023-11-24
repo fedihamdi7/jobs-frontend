@@ -8,7 +8,7 @@
     <div class="navbar-right">
       <p-avatar image="http://localhost:3000/assets/profile-pics/{{user.profilePic}}" styleClass="mr-2" size="normal" (click)="menuAvatar.toggle($event)"
         shape="circle"></p-avatar>
-      <p-menu #menuAvatar [model]="items" [popup]="true"></p-menu>
+      <p-menu #menuAvatar [model]="items" [popup]="true" class="menu"></p-menu>
     </div>
 </nav>
 <p-toast></p-toast>

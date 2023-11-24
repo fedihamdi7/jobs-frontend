@@ -26,3 +26,6 @@ p-avatar {
     margin-top: 18%;
   }
   
+  :host ::ng-deep .menu .p-menu{
+    width: 11%;
+  }

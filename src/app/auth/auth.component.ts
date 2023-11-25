@@ -67,6 +67,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       name: [null, Validators.required],
+      //  TODO add regex to email
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
       profilePic: [null],

@@ -10,7 +10,8 @@ const routes: Routes = [
     path: '', component: NavComponent, children: [
       { path: 'home', component: HomeUserComponent },
       { path : 'post/:id', loadChildren : () => import('../post/post.module').then(m => m.PostModule)},
-      { path : 'my-posts', component : AppliedInPostsComponent}
+      { path : 'my-posts', component : AppliedInPostsComponent},
+      { path : 'negotiation', loadChildren : () => import('../negotiation/negotiation.module').then(m => m.NegotiationModule)}
     ]
   }
 ];

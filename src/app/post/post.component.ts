@@ -25,7 +25,8 @@ export class PostComponent implements OnInit{
       this.alreadyApplied = true;
     }
   }
-// TODO : make it that applying open another dialog and in that dialog the user can write a message to the post owner + select resume to send
+// TODO : make it that applying open another dialog and in that dialog the user can write a message to the post owner + select resume to send 
+// and update user in localstorage
   apply(){
     this.postService.applyToPost(this.localStorageService.getUser()._id,this.post._id).subscribe(
       (res)=>{

@@ -20,4 +20,11 @@ export class UserServiceService {
     
     return this.http.get(`${this.API_URL}/post`, {headers});
   }
+
+  getNegotiations() {
+    const token = this.localStorageService.getToken();
+    const headers = { 'Authorization': `${token}` }; 
+    
+    return this.http.get(`${this.API_URL}/negotiation/getNegotiationsByUser`, {headers});
+  }
 }

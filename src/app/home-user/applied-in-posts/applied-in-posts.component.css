@@ -1,0 +1,15 @@
+.flex{
+    display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+
+.gap-2{
+    gap: 2rem;
+}
+
+::ng-deep .p-datatable{
+  width: 80vw;
+  margin: 2% auto;
+}

@@ -18,12 +18,16 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
+import { AppliedInPostsComponent } from './applied-in-posts/applied-in-posts.component';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { MultiSelectModule } from 'primeng/multiselect';
 @NgModule({
   declarations: [
     HomeUserComponent,
     NavComponent,
-    HomePostsComponent
+    HomePostsComponent,
+    AppliedInPostsComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,10 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     FormsModule,
     InputTextModule,
     DynamicDialogModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    TableModule,
+    TagModule,
+    MultiSelectModule
   ],
   providers: [DialogService]
 })

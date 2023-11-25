@@ -59,7 +59,7 @@ export class NavComponent implements OnInit,AfterViewInit{
           {
             label: 'My Applications',
             icon: 'pi pi-file',
-            routerLink: '/fileupload'
+            routerLink: 'my-posts'
           },
           {
             label: 'Logout',

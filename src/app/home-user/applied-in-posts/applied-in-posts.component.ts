@@ -39,7 +39,7 @@ export class AppliedInPostsComponent implements OnInit {
   ];
 
   
-  getSeverity(status: string) {
+  getSeverity(status: string) {    
     switch (status.toLowerCase()) {
       case 'pending':
         return 'warning';
@@ -49,14 +49,8 @@ export class AppliedInPostsComponent implements OnInit {
 
       case 'rejected':
         return 'danger';
-
-      case 'pending_user_confirmation':
-        return 'info';
-
-      case 'pending_company_confirmation':
-        return 'info';
     }
-    return 'primary';
+    return 'info';
   }
   activityValues: number[] = [0, 100];
 }

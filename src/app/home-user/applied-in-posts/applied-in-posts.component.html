@@ -69,7 +69,7 @@
                             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                                 <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Pick a status">
                                     <ng-template let-option pTemplate="item">
-                                        <p-tag [value]="option.value" [severity]="getSeverity(option.label)"></p-tag>
+                                        <p-tag [value]="option.label" [severity]="getSeverity(option.label)"></p-tag>
                                     </ng-template>
                                 </p-dropdown>
                             </ng-template>
@@ -107,7 +107,7 @@
                     {{ customer.post_id.numberOfAvailablePositions }}
                 </td>
                 <td>
-                    <p-tag [value]="customer.status" [severity]="getSeverity(customer.status)"></p-tag>
+                    <p-tag [value]="customer.status | titlecase" [severity]="getSeverity(customer.status)"></p-tag>
                 </td>
                 <td>
                     <button pButton pRipple class="p-button-rounded">See Details</button>

@@ -114,3 +114,6 @@ a {
 .divider{
   width: 11vw;
 }
+.description{
+  word-wrap: break-word;
+}

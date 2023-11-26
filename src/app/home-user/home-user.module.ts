@@ -23,6 +23,7 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { StatusPipe } from '../pipes/status.pipe';
+import { ConfirmationService } from 'primeng/api';
 @NgModule({
   declarations: [
     HomeUserComponent,
@@ -51,6 +52,6 @@ import { StatusPipe } from '../pipes/status.pipe';
     MultiSelectModule,
     StatusPipe
   ],
-  providers: [DialogService]
+  providers: [DialogService,ConfirmationService]
 })
 export class HomeUserModule { }

@@ -78,27 +78,91 @@
   margin-bottom: 2%;
 }
 
-.negotiation-header .status{
-    display: flex;
-    align-items: center;
-    color: #fff;
-    gap: 20px;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
+.negotiation-header .status {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 20px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
 }
 
-.negotiation-body{
-    display: flex;
-    place-content: center;
-}
 
-.applied-date{
+.applied-date {
   display: flex;
   gap: 9%;
   width: 13vw;
 }
 
-.applied-date-data{
+.applied-date-data {
   font-weight: 700;
+}
+
+.negotiation-body-pending-rejected {
+  display: flex;
+  place-content: center;
+}
+
+/* PENDING USER CONFIRMATION */
+.negotiation-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  align-items: flex-start;
+}
+
+.company-suggestion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.small-title , .additional-info-title{
+  color: #C0DCED;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.infos{
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: 3% 0 3% 0;
+}
+
+.date-of-interview{
+  flex-basis: 33vw;
+}
+.place-of-interview{
+  flex-basis: 33vw;
+}
+.link{
+  flex-basis: 33vw;
+}
+
+.infos .title{
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+
+/* BUTTONS  */
+
+.btns{
+  display: flex;
+  gap: 2%;
+  margin-top: 2%;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+::ng-deep .toolta .p-tooltip-text {
+  width: 322px;
+}
+::ng-deep .tooltip-suggest .p-tooltip-text {
+  width: 200px;
 }

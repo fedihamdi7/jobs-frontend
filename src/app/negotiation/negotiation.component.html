@@ -85,18 +85,112 @@
       </div>
     </div>
 
-    <div class="negotiation-body">
+    @if (negotiation.status == "PENDING" || negotiation.status == "REJECTED"){
+    <div class="negotiation-body-pending-rejected">
       @if (negotiation.status == "PENDING") {
       <div class="waiting-response">
         <h2>Waiting For The Company's Response</h2>
       </div>
       }
       @if (negotiation.status == "REJECTED") {
-        <!-- TODO : Add a functionality that when company rejects the user can’t re-apply -->
+      <!-- TODO : Add a functionality that when company rejects the user can’t re-apply -->
       <div class="waiting-response">
         <h2 style="color: rgb(240, 183, 183);">Your applications has been rejected</h2>
       </div>
       }
     </div>
+    }
+
+
+    @if (negotiation.status == "PENDING_USER_CONFIRMATION") {
+    <p-divider></p-divider>
+    <div class="negotiation-body">
+      <div class="company-suggestion">
+        <div class="small-title">
+          Company's Suggestions
+        </div>
+        <div class="infos">
+          <div class="date-of-interview">
+            <div class="title">Date Of The Interview</div>
+            <div class="data">Nov 24, 2023</div>
+            <!-- <div class="data">{{negotiation.dateOfInterview | date:'mediumDate' || 'N/A'}}</div> -->
+          </div>
+          <div class="place-of-interview">
+            <div class="title">Place Of The Interview</div>
+            <div class="data">{{negotiation.placeOfInterview || 'N/A'}}</div>
+          </div>
+          <div class="link">
+            <div class="title">Link</div>
+            <input type="text" pInputText [value]="negotiation.link" readonly />
+          </div>
+        </div>
+        <div class="additional-info">
+          <!-- <div class="additional-info-title">Additional Informations</div> -->
+          <div class="additional-info-data">
+            <p-editor [readonly]="true" [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
+              <ng-template pTemplate="header">
+                <div class="additional-info-title">Additional Informations</div>
+              </ng-template>
+            </p-editor>
+          </div>
+        </div>
+      </div>
+      <p-divider></p-divider>
+
+      <div class="company-suggestion">
+        <div class="small-title">
+          User's Suggestions
+        </div>
+        <div class="infos">
+          <div class="date-of-interview">
+            <div class="title">Date Of The Interview</div>
+            <div class="data">
+              <!-- TODO : add ngModel -->
+              <p-calendar></p-calendar>
+            </div>
+            <!-- <div class="data">{{negotiation.dateOfInterview | date:'mediumDate' || 'N/A'}}</div> -->
+          </div>
+          <div class="place-of-interview">
+            <div class="title">Place Of The Interview</div>
+            <div class="data">
+              <!-- TODO : add ngModel -->
+              <p-dropdown [options]="[{name : 'Online', code : 'online'},{name : 'On Site', code : 'onsite'}]"
+                optionLabel="name" [showClear]="true" placeholder="Select Place"></p-dropdown>
+            </div>
+          </div>
+          <!-- <div class="link">
+            <div class="title">Link</div>
+            <input type="text" pInputText [value]="negotiation.link" readonly />
+          </div> -->
+        </div>
+        <div class="additional-info">
+          <div class="additional-info-title">Additional Informations</div>
+          <div class="additional-info-data">
+            <p-editor [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
+
+            </p-editor>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <p-confirmPopup></p-confirmPopup>
+        <button pButton pRipple label="Accept" (click)="confirmAccept($event)" tooltipStyleClass="toolta" tooltipPosition="top" pTooltip="Confirm The Company's Suggestions" class="p-button-success"></button>
+        <button pButton pRipple label="Suggess" (click)="confirmSuggest($event)" tooltipStyleClass="tooltip-suggest" tooltipPosition="right" pTooltip="Request For Changes" class="p-button-info"></button>
+      </div>
+    </div>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
 </div>

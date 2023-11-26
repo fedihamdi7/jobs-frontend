@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({
@@ -8,15 +9,75 @@ import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 })
 export class NegotiationComponent implements OnInit {
   constructor(
-    private config: DynamicDialogConfig
+    private config: DynamicDialogConfig,
+    private confirmationService: ConfirmationService
   ) { }
   negotiation: any;
   ngOnInit() {
     this.negotiation = this.config.data;
     console.log(this.negotiation);
-    
-  }
 
+  }
+  // TODO add logic with backend
+  confirmAccept(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure that you want to proceed?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+
+      },
+      reject: () => {
+
+      }
+    });
+  }
+  confirmSuggest(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure that you want to proceed?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+
+      },
+      reject: () => {
+
+      }
+    });
+  }
+  additionalInfoCompany: string = `<h2>Nous cherchons pour notre client à Paris un développeur Java/React.</h2>
+  <p>Votre rôle consiste à créer, déployer et améliorer les fonctionnalités à travers toutes les couches de l’application.</p>
+  <p>Vous travaillez en étroite collaboration avec le Product Owner pour implémenter ces fonctionnalités et garantir la stabilité technique et la cohérence.</p>
+  <p>Vous êtes un membre clé de l’équipe qui possède la responsabilité totale du produit.</p>
+
+  <h3>La stack technique :</h3>
+  <ul>
+      <li>Java (8 et 11)</li>
+      <li>Springboot</li>
+      <li>React</li>
+      <li>API REST</li>
+      <li>MySQL, MongoDB</li>
+      <li>Docker, Kubernetes</li>
+      <li>CI/CD : Gitlab ou Jenkins</li>
+      <li>Connaissance dans le Cloud (Aws, ou Azure)</li>
+  </ul>
+  <h2>Nous cherchons pour notre client à Paris un développeur Java/React.</h2>
+  <p>Votre rôle consiste à créer, déployer et améliorer les fonctionnalités à travers toutes les couches de l’application.</p>
+  <p>Vous travaillez en étroite collaboration avec le Product Owner pour implémenter ces fonctionnalités et garantir la stabilité technique et la cohérence.</p>
+  <p>Vous êtes un membre clé de l’équipe qui possède la responsabilité totale du produit.</p>
+
+  <h3>La stack technique :</h3>
+  <ul>
+      <li>Java (8 et 11)</li>
+      <li>Springboot</li>
+      <li>React</li>
+      <li>API REST</li>
+      <li>MySQL, MongoDB</li>
+      <li>Docker, Kubernetes</li>
+      <li>CI/CD : Gitlab ou Jenkins</li>
+      <li>Connaissance dans le Cloud (Aws, ou Azure)</li>
+  </ul>
+  `;
   // negotiation = {
   //   "_id": "6560b82024fdf8eba271ba44",
   //   "user_id": "65571e3058e66cbe3e84aa8c",

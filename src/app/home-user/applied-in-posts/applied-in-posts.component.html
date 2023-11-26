@@ -24,41 +24,21 @@
                 <th style="min-width:15rem">
                     <div class="flex align-items-center">
                         Company Name
-                        <!-- TODO : Contiune here -->
                         <p-columnFilter type="text" field="company_id.name" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:15rem" pSortableColumn="creationDate">
                         Applied Date
-                        <!-- <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter> -->
                         <p-sortIcon field="creationDate"></p-sortIcon>
                 </th>
                 <th style="min-width:15rem">
                     <div class="flex align-items-center">
                         Post Title
-                        <!-- <p-columnFilter field="representative" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
-                            <ng-template pTemplate="header">
-                                <div class="px-3 pt-3 pb-0">
-                                    <span class="font-bold">Agent Picker</span>
-                                </div>
-                            </ng-template>
-                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                                <p-multiSelect [ngModel]="value" placeholder="Any" [options]="representatives" (onChange)="onInputChange($event)" optionLabel="name">
-                                    <ng-template let-option pTemplate="item">
-                                        <div class="inline-block vertical-align-middle">
-                                            <img [alt]="option.label" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ option.image }}" width="24" class="vertical-align-middle" />
-                                            <span class="ml-1 mt-1">{{ option.name }}</span>
-                                        </div>
-                                    </ng-template>
-                                </p-multiSelect>
-                            </ng-template>
-                        </p-columnFilter> -->
                     </div>
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
                         Available Positions
-                        <!-- <p-columnFilter type="numeric" field="numberOfAvailablePositions" display="menu"></p-columnFilter> -->
                     </div>
                 </th>
          
@@ -79,15 +59,8 @@
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
                         Details
-                        <!-- <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter> -->
                     </div>
                 </th>
-                <!-- <th style="width: 1rem">
-                    <div class="flex align-items-center">
-                        Verified
-                        <p-columnFilter type="boolean" field="verified" display="menu"></p-columnFilter>
-                    </div>
-                </th> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-customer>
@@ -96,11 +69,9 @@
                     {{ customer.company_id.name }}
                 </td>
                 <td>
-                    <!-- <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + customer.country.code" style="width: 20px" /> -->
                     <span class="ml-1 vertical-align-middle">{{ customer.creationDate | date : "mediumDate" }}</span>
                 </td>
                 <td>
-                    <!-- <img [alt]="customer.representative.name" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ customer.representative.image }}" width="32" style="vertical-align: middle" /> -->
                     <span class="ml-1 vertical-align-middle">{{ customer.post_id.title }}</span>
                 </td>
                 <td>
@@ -112,10 +83,6 @@
                 <td>
                     <button pButton pRipple class="p-button-rounded" (click)="seeDetails(customer)">See Details</button>
                 </td>
-
-                <!-- <td class="text-center">
-                    <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': customer.verified, 'text-red-500 pi-times-circle': !customer.verified }"></i>
-                </td> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

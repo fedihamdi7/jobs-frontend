@@ -33,13 +33,13 @@
           <div class="required-container">
             <label for="email"> Email* </label> <br>
             <input type="text" pInputText formControlName="email"
-              [ngClass]="{'ng-invalid': ((form.get('email').errors?.['required'] ||form.get('email').errors?.['email'] ) && form.get('email').touched),'ng-dirty' : form.get('email').touched}" />
+              [ngClass]="{'ng-invalid': ((form.get('email').errors?.['required'] ||form.get('email').errors?.['pattern'] ) && form.get('email').touched),'ng-dirty' : form.get('email').touched}" />
 
             <p-message class="msg-name" severity="error"
               *ngIf="form.get('email').errors?.['required'] && form.get('email').touched" text="Field is required">
             </p-message>
             <p-message class="msg-name msg-mail-invalid" severity="error"
-              *ngIf="form.get('email').errors?.['email'] && form.get('email').touched" text="Email Invalid"></p-message>
+              *ngIf="form.get('email').errors?.['pattern'] && form.get('email').touched" text="Email Invalid"></p-message>
 
           </div>
 
@@ -152,14 +152,14 @@
       <div class="required-container">
         <label for="email"> Email* </label> <br>
         <input type="text" pInputText formControlName="email"
-          [ngClass]="{'ng-invalid': ((loginForm.get('email').errors?.['required'] ||loginForm.get('email').errors?.['email'] ) && loginForm.get('email').touched),'ng-dirty' : loginForm.get('email').touched}" />
+          [ngClass]="{'ng-invalid': ((loginForm.get('email').errors?.['required'] ||loginForm.get('email').errors?.['pattern'] ) && loginForm.get('email').touched),'ng-dirty' : loginForm.get('email').touched}" />
 
         <p-message class="msg-name" severity="error"
           *ngIf="loginForm.get('email').errors?.['required'] && loginForm.get('email').touched"
           text="Field is required">
         </p-message>
         <p-message class="msg-name msg-mail-invalid" severity="error"
-          *ngIf="loginForm.get('email').errors?.['email'] && loginForm.get('email').touched" text="Email Invalid">
+          *ngIf="loginForm.get('email').errors?.['pattern'] && loginForm.get('email').touched" text="Email Invalid">
         </p-message>
 
       </div>

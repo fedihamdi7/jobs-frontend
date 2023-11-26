@@ -93,7 +93,6 @@
       </div>
       }
       @if (negotiation.status == "REJECTED") {
-      <!-- TODO : Add a functionality that when company rejects the user can’t re-apply -->
       <div class="waiting-response">
         <h2 style="color: rgb(240, 183, 183);">Your applications has been rejected</h2>
       </div>
@@ -177,7 +176,6 @@
             <div class="title">Date Of The Interview </div>
             
             <div class="data">
-              <!-- TODO : add ngModel -->
               <p-calendar [(ngModel)]="dateFromUserSuggestion" [showTime]="true" ></p-calendar>
             </div>
             <!-- <div class="data">{{negotiation.dateOfInterview | date:'mediumDate' || 'N/A'}}</div> -->
@@ -185,7 +183,6 @@
           <div class="place-of-interview">
             <div class="title">Place Of The Interview</div>
             <div class="data">
-              <!-- TODO : add ngModel -->
               <p-dropdown [(ngModel)]="placeFromUserSuggestion" [options]="[{name : 'Online', code : 'ONLINE'},{name : 'On Site', code : 'ONSITE'}]"
                 optionLabel="name" [showClear]="true" placeholder="Select Place"></p-dropdown>
             </div>

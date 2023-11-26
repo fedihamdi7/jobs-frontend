@@ -67,8 +67,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       name: [null, Validators.required],
-      //  TODO add regex to email
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       password: [null, Validators.required],
       profilePic: [null],
       isCompany: [false],
@@ -87,7 +86,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
       })
     });
     this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
       password: new FormControl(null, Validators.required)
     })
   }

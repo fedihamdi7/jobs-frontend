@@ -101,6 +101,39 @@
     </div>
     }
 
+    @if (negotiation.status == "ACCEPTED") {
+      <div class="negotiation-body">
+        <div class="company-suggestion">
+          <div class="small-title">
+            Company's Suggestions
+          </div>
+          <div class="infos">
+            <div class="date-of-interview">
+              <div class="title">Date Of The Interview</div>
+              <div class="data"> {{negotiation.agreedOnDate.when | date:'mediumDate' }} </div>
+            </div>
+            <div class="place-of-interview">
+              <div class="title">Place Of The Interview</div>
+              <div class="data">{{negotiation.agreedOnDate.where || 'N/A'}}</div>
+            </div>
+            <div class="link">
+              <div class="title">Link</div>
+              <input style="cursor: pointer;" type="text" pInputText [value]="negotiation.link" readonly (click)="copyToClipboard(negotiation.link)" pTooltip="Click To Copie To Clipboard"/>
+            </div>
+          </div>
+          <div class="additional-info">
+            <div class="additional-info-data">
+              <p-editor [readonly]="true" [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
+                <ng-template pTemplate="header">
+                  <div class="additional-info-title">Additional Informations</div>
+                </ng-template>
+              </p-editor>
+            </div>
+          </div>
+        </div>
+        </div>
+    }
+
 
     @if (negotiation.status == "PENDING_USER_CONFIRMATION") {
     <p-divider></p-divider>

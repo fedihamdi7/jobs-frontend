@@ -9,6 +9,9 @@ import { NegotiationService } from '../shared/negotiation.service';
   styleUrl: './negotiation.component.css'
 })
 export class NegotiationComponent implements OnInit {
+  additionalInfoCompany: string;
+  negotiation: any;
+
   constructor(
     private config: DynamicDialogConfig,
     private confirmationService: ConfirmationService,
@@ -18,12 +21,16 @@ export class NegotiationComponent implements OnInit {
   ) { 
     
   }
-  negotiation: any;
   ngOnInit() {
     this.negotiation = this.config.data;
-    
+    this.additionalInfoCompany = this.negotiation.additionalInfoCompany || 'No additional info';
   }
-  // TODO add logic with backend
+
+  copyToClipboard(text :string ){
+    navigator.clipboard.writeText(text);
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Copied to clipboard'});
+  }
+
   confirmAccept(event: Event) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
@@ -55,46 +62,4 @@ export class NegotiationComponent implements OnInit {
       }
     });
   }
-  additionalInfoCompany: string = `
-  `;
-  // negotiation = {
-  //   "_id": "6560b82024fdf8eba271ba44",
-  //   "user_id": "65571e3058e66cbe3e84aa8c",
-  //   "company_id": {
-  //     "_id": "6555f0cab19e1825b7ef617b",
-  //     "name": "company 1"
-  //   },
-  //   "post_id": {
-  //     "_id": "65587167efe08886ea9a7abd",
-  //     "title": "post of company 1",
-  //     "description": "desc1",
-  //     "company": "6555f0cab19e1825b7ef617b",
-  //     "numberOfAvailablePositions": 2,
-  //     "typeOfEmployment": "CIVP",
-  //     "applicants": 1,
-  //     "dateOfCreation": "2023-11-18T09:10:15.703Z",
-  //     "__v": 0,
-  //     "levelOfStudy": "Bac+3",
-  //     "salary": "1500",
-  //     "experienceLevel": "0-1"
-  //   },
-  //   "status": "PENDING",
-  //   "dateFromTheCompany": {
-  //     "when": null,
-  //     "where": null
-  //   },
-  //   "dateFromTheUser": {
-  //     "when": null,
-  //     "where": null
-  //   },
-  //   "agreedOnDate": {
-  //     "when": null,
-  //     "where": null
-  //   },
-  //   "link": null,
-  //   "additionalInfoCompany": null,
-  //   "additionalInfoUser": null,
-  //   "creationDate": "2023-11-24T15:50:08.507Z",
-  //   "__v": 0
-  // };
 }

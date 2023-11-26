@@ -22,6 +22,7 @@ import { AppliedInPostsComponent } from './applied-in-posts/applied-in-posts.com
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { StatusPipe } from '../pipes/status.pipe';
 @NgModule({
   declarations: [
     HomeUserComponent,
@@ -47,7 +48,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     NgScrollbarModule,
     TableModule,
     TagModule,
-    MultiSelectModule
+    MultiSelectModule,
+    StatusPipe
   ],
   providers: [DialogService]
 })

@@ -1,1 +1,102 @@
-<p>negotiation works!</p>
+<div class="container">
+
+  <div class="post-details">
+    <div class="post-header">
+      <div>
+        <h1> {{negotiation.post_id.title}} </h1>
+
+      </div>
+    </div>
+
+    <div class="post-reqs">
+      <div class="left-side-reqs">
+        <div class="req-title">Contract Type : <span class="req-data"> {{negotiation.post_id.typeOfEmployment || 'N/A'}}
+          </span>
+        </div>
+        <div class="req-title">Education : <span class="req-data">{{negotiation.post_id.levelOfStudy || 'N/A'}}</span>
+        </div>
+        <div class="req-title">Experience : <span
+            class="req-data">{{negotiation.post_id.experienceLevel || 'N/A'}}</span></div>
+        <div class="req-title">Salary : <span class="req-data">{{negotiation.post_id.salary || 'N/A'}}</span></div>
+      </div>
+
+      <div class="right-side-reqs">
+        <div class="req-title">Language : <span class="req-data">{{negotiation.post_id.language || 'N/A'}}</span></div>
+        <div class="req-title">Available Positions : <span
+            class="req-data">{{negotiation.post_id.numberOfAvailablePositions || 'N/A'}}</span></div>
+        <div class="req-title">Posted Date : <span
+            class="req-data">{{negotiation.post_id.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
+        <div class="req-title">Expiration Date : <span
+            class="req-data">{{negotiation.post_id.dateOfExpiration || 'N/A'}}</span>
+        </div>
+      </div>
+    </div>
+
+    <p-divider></p-divider>
+
+    <div class="post-description">
+      <h2>Description</h2>
+      <div class="divider">
+        <p-divider></p-divider>
+      </div>
+
+      <div class="description" [innerHTML]="negotiation.post_id.description">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="negotiation">
+    <div class="negotiation-header">
+      <div class="status">
+        <div class="status-title">Status</div>
+        @switch (negotiation.status) {
+        @case ("PENDING") {
+        <div class="status-data">
+          <p-tag severity="warning" value="Pending"></p-tag>
+        </div>
+        }
+        @case ("REJECTED") {
+        <div class="status-data">
+          <p-tag severity="danger" value="Rejected"></p-tag>
+        </div>
+        }
+        @case ("ACCEPTED") {
+        <div class="status-data">
+          <p-tag severity="success" value="Accepted"></p-tag>
+        </div>
+        }
+        @case ("PENDING_USER_CONFIRMATION") {
+        <div class="status-data">
+          <p-tag severity="info" value="Pending User Confirmation"></p-tag>
+        </div>
+        }
+        @case ("PENDING_COMPANY_CONFIRMATION") {
+        <div class="status-data">
+          <p-tag severity="info" value="Pending Company Confirmation"></p-tag>
+        </div>
+        }
+
+        }
+      </div>
+      <div class="applied-date">
+        <div class="applied-date-title">Applied Date :</div>
+        <div class="applied-date-data"> {{negotiation.creationDate| date:'mediumDate' || 'N/A'}} </div>
+      </div>
+    </div>
+
+    <div class="negotiation-body">
+      @if (negotiation.status == "PENDING") {
+      <div class="waiting-response">
+        <h2>Waiting For The Company's Response</h2>
+      </div>
+      }
+      @if (negotiation.status == "REJECTED") {
+        <!-- TODO : Add a functionality that when company rejects the user can’t re-apply -->
+      <div class="waiting-response">
+        <h2 style="color: rgb(240, 183, 183);">Your applications has been rejected</h2>
+      </div>
+      }
+    </div>
+  </div>
+</div>

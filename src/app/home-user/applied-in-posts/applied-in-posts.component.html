@@ -107,10 +107,10 @@
                     {{ customer.post_id.numberOfAvailablePositions }}
                 </td>
                 <td>
-                    <p-tag [value]="customer.status | titlecase" [severity]="getSeverity(customer.status)"></p-tag>
+                    <p-tag [value]="customer.status | status" [severity]="getSeverity(customer.status)"></p-tag>
                 </td>
                 <td>
-                    <button pButton pRipple class="p-button-rounded">See Details</button>
+                    <button pButton pRipple class="p-button-rounded" (click)="seeDetails(customer)">See Details</button>
                 </td>
 
                 <!-- <td class="text-center">

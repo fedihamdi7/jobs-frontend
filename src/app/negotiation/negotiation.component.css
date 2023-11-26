@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  gap: 2%;
+
+}
+
+.post-details {
+  /* TODO 121212 */
+  background-color: #121212;
+  border-radius: 19px;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  width: 45vw;
+  overflow: auto;
+  flex-basis: 45vw;
+  height: fit-content;
+
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.post-reqs {
+  display: flex;
+  gap: 3%;
+}
+
+.req-title {
+  color: #C0DCED;
+  margin-bottom: 5%;
+  font-weight: 700;
+}
+
+.req-data {
+  color: #fff;
+  font-weight: 400;
+}
+
+.left-side-reqs,
+.right-side-reqs {
+  flex-basis: 18vw;
+}
+
+.divider {
+  width: 11vw;
+}
+
+.description {
+  word-wrap: break-word;
+}
+
+
+
+/* NEGOTIATION  */
+
+.negotiation {
+  flex-basis: 55vw;
+  background-color: rgb(52, 61, 68);
+  border-radius: 19px;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.negotiation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.negotiation-header .status{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    gap: 20px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.negotiation-body{
+    display: flex;
+    place-content: center;
+}
+
+.applied-date{
+  display: flex;
+  gap: 9%;
+  width: 13vw;
+}
+
+.applied-date-data{
+  font-weight: 700;
+}

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserServiceService } from '../user-service.service';
 import { Table } from 'primeng/table';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { NegotiationComponent } from 'src/app/negotiation/negotiation.component';
 
 @Component({
   selector: 'app-applied-in-posts',
@@ -9,15 +11,16 @@ import { Table } from 'primeng/table';
 })
 export class AppliedInPostsComponent implements OnInit {
   @ViewChild('dt1') dt1: Table;
+  ref: DynamicDialogRef | undefined;
 
   negotiations: any[] = [];
   constructor(
-    private userService: UserServiceService
+    private userService: UserServiceService,
+    public dialogService: DialogService
   ) { }
 
   ngOnInit() {
     this.userService.getNegotiations().subscribe((res: any) => {
-      console.log(res);
       this.negotiations = res;
     });
   }
@@ -38,8 +41,19 @@ export class AppliedInPostsComponent implements OnInit {
     { label: 'Pending Company Confirmation', value: 'pending_company_confirmation' },
   ];
 
-  
-  getSeverity(status: string) {    
+  seeDetails(negotiation: any) {
+    this.ref = this.dialogService.open(NegotiationComponent, {
+      header: 'Negotiation Details',
+      width: '90%',
+      height: '90%',
+      baseZIndex: 10000,
+      data: negotiation,
+      maximizable: true
+    });
+  }
+
+
+  getSeverity(status: string) {
     switch (status.toLowerCase()) {
       case 'pending':
         return 'warning';

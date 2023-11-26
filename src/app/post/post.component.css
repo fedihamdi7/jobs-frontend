@@ -41,7 +41,7 @@
 .company-infos {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   margin-top: 4%;
   gap: 15px;

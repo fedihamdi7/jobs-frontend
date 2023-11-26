@@ -112,12 +112,11 @@
         <div class="infos">
           <div class="date-of-interview">
             <div class="title">Date Of The Interview</div>
-            <div class="data">Nov 24, 2023</div>
-            <!-- <div class="data">{{negotiation.dateOfInterview | date:'mediumDate' || 'N/A'}}</div> -->
+            <div class="data"> {{negotiation.dateFromTheCompany.when | date:'mediumDate' }} </div>
           </div>
           <div class="place-of-interview">
             <div class="title">Place Of The Interview</div>
-            <div class="data">{{negotiation.placeOfInterview || 'N/A'}}</div>
+            <div class="data">{{negotiation.dateFromTheCompany.where || 'N/A'}}</div>
           </div>
           <div class="link">
             <div class="title">Link</div>
@@ -125,7 +124,6 @@
           </div>
         </div>
         <div class="additional-info">
-          <!-- <div class="additional-info-title">Additional Informations</div> -->
           <div class="additional-info-data">
             <p-editor [readonly]="true" [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
               <ng-template pTemplate="header">

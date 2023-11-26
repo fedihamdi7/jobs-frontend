@@ -14,6 +14,8 @@ import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { RippleModule } from 'primeng/ripple';
+import { MessageModule } from 'primeng/message';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     NegotiationComponent,
@@ -31,8 +33,9 @@ import { RippleModule } from 'primeng/ripple';
     ButtonModule,
     TooltipModule,
     ConfirmPopupModule,
-    RippleModule
+    RippleModule,
+    MessageModule
   ],
-  providers:[]
+  providers:[MessageService]
 })
 export class NegotiationModule { }

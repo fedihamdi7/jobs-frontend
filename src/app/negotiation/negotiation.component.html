@@ -145,7 +145,7 @@
         <div class="infos">
           <div class="date-of-interview">
             <div class="title">Date Of The Interview</div>
-            <div class="data"> {{negotiation.dateFromTheCompany.when | date:'mediumDate' }} </div>
+            <div class="data"> {{negotiation.dateFromTheCompany.when | date:'MMM d, y, HH:mm' }} </div>
           </div>
           <div class="place-of-interview">
             <div class="title">Place Of The Interview</div>
@@ -178,7 +178,7 @@
             
             <div class="data">
               <!-- TODO : add ngModel -->
-              <p-calendar [(ngModel)]="dateFromUserSuggestion"></p-calendar>
+              <p-calendar [(ngModel)]="dateFromUserSuggestion" [showTime]="true" ></p-calendar>
             </div>
             <!-- <div class="data">{{negotiation.dateOfInterview | date:'mediumDate' || 'N/A'}}</div> -->
           </div>

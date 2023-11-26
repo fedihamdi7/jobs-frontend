@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { NegotiationService } from '../shared/negotiation.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-negotiation',
@@ -12,12 +13,17 @@ export class NegotiationComponent implements OnInit {
   additionalInfoCompany: string;
   negotiation: any;
 
+  additionalInfoUser: string;
+  dateFromUserSuggestion : any;
+  placeFromUserSuggestion : any;
+
   constructor(
     private config: DynamicDialogConfig,
     private confirmationService: ConfirmationService,
     private negotiationService : NegotiationService,
     private dialogRef: DynamicDialogRef,
-    private messageService : MessageService
+    private messageService : MessageService,
+    private datePipe: DatePipe
   ) { 
     
   }
@@ -50,15 +56,26 @@ export class NegotiationComponent implements OnInit {
     });
   }
   confirmSuggest(event: Event) {
+    // check for empty fields
     this.confirmationService.confirm({
       target: event.target as EventTarget,
       message: 'Are you sure that you want to proceed?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-
+        this.negotiation.dateFromTheUser.when = this.datePipe.transform(this.dateFromUserSuggestion, 'yyyy-MM-ddTHH:mm:ss.SSS');
+        this.negotiation.dateFromTheUser.where = this.placeFromUserSuggestion.code;
+        this.negotiation.additionalInfoUser = this.additionalInfoUser;
+        
+        this.negotiationService.userRequestChanges(this.negotiation).subscribe(res =>{
+          if(res){
+            this.messageService.add({severity:'info', summary: 'Changes Sent', detail: 'Status Updated'});
+            this.dialogRef.close();
+          }
+        });
       },
       reject: () => {
 
+        
       }
     });
   }

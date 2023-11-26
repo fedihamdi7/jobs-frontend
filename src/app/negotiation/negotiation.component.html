@@ -174,10 +174,11 @@
         </div>
         <div class="infos">
           <div class="date-of-interview">
-            <div class="title">Date Of The Interview</div>
+            <div class="title">Date Of The Interview </div>
+            
             <div class="data">
               <!-- TODO : add ngModel -->
-              <p-calendar></p-calendar>
+              <p-calendar [(ngModel)]="dateFromUserSuggestion"></p-calendar>
             </div>
             <!-- <div class="data">{{negotiation.dateOfInterview | date:'mediumDate' || 'N/A'}}</div> -->
           </div>
@@ -185,7 +186,7 @@
             <div class="title">Place Of The Interview</div>
             <div class="data">
               <!-- TODO : add ngModel -->
-              <p-dropdown [options]="[{name : 'Online', code : 'online'},{name : 'On Site', code : 'onsite'}]"
+              <p-dropdown [(ngModel)]="placeFromUserSuggestion" [options]="[{name : 'Online', code : 'ONLINE'},{name : 'On Site', code : 'ONSITE'}]"
                 optionLabel="name" [showClear]="true" placeholder="Select Place"></p-dropdown>
             </div>
           </div>
@@ -197,7 +198,7 @@
         <div class="additional-info">
           <div class="additional-info-title">Additional Informations</div>
           <div class="additional-info-data">
-            <p-editor [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
+            <p-editor [(ngModel)]="additionalInfoUser" [style]="{ height: '320px' }">
 
             </p-editor>
           </div>

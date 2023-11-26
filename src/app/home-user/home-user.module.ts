@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { HomeUserRoutingModule } from './home-user-routing.module';
 import { HomeUserComponent } from './home-user.component';
@@ -52,6 +52,6 @@ import { ConfirmationService } from 'primeng/api';
     MultiSelectModule,
     StatusPipe
   ],
-  providers: [DialogService,ConfirmationService]
+  providers: [DialogService,ConfirmationService,DatePipe]
 })
 export class HomeUserModule { }

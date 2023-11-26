@@ -8,6 +8,7 @@ import { environment } from 'src/environment/environment.prod';
 })
 export class UserServiceService {
   API_URL = environment.apiUrl;
+  headers = { 'Authorization': `${this.localStorageService.getToken()}` }; 
 
   constructor(
     private http: HttpClient,
@@ -15,16 +16,10 @@ export class UserServiceService {
   ) { }
 
   getAllPosts() {
-    const token = this.localStorageService.getToken();
-    const headers = { 'Authorization': `${token}` }; 
-    
-    return this.http.get(`${this.API_URL}/post`, {headers});
+    return this.http.get(`${this.API_URL}/post`, {headers:this.headers});
   }
 
-  getNegotiations() {
-    const token = this.localStorageService.getToken();
-    const headers = { 'Authorization': `${token}` }; 
-    
-    return this.http.get(`${this.API_URL}/negotiation/getNegotiationsByUser`, {headers});
+  getNegotiations() {    
+    return this.http.get(`${this.API_URL}/negotiation/getNegotiationsByUser`, {headers:this.headers});
   }
 }

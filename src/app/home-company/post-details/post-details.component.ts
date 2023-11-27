@@ -8,15 +8,17 @@ import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 })
 export class PostDetailsComponent implements OnInit {
   post : any;
-
+  isEdit = false;
   constructor(
     public config: DynamicDialogConfig,
 
   ) { }
 
   ngOnInit(): void {
-    this.post = this.config.data;   
-
+    this.post = this.config.data.post;   
+    if(this.config.data.isEdit){
+      this.isEdit = true;
+    }
   }
 
 }

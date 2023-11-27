@@ -52,17 +52,20 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
       (res : any) => {
         console.log(res);
         this.posts= res;       
+        this.seeEdit(this.posts[0])
       },
       (err) => {
         console.log(err);
       }
     )
+
   }
   seeDetails(post){
-    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : post,maximizable: true});
+    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : {post,"isEdit" :false},maximizable: true});
   }
 
   seeEdit(post){
+    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : {post,"isEdit" :true},maximizable: true});
 
   }
   clear(table: Table) {

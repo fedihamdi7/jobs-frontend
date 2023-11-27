@@ -22,4 +22,11 @@ export class PostService {
    
     return this.http.post(this.API_URL + '/post/apply/' + postId,{}, { headers: headers });
   }
+
+  findAllPostsOfCompany(companyId: string) {
+    const headers = {
+      'Authorization': `${this.localStorageService.getToken()}`,
+    };
+    return this.http.get(this.API_URL + '/post/user/' + companyId,{ headers: headers });
+  }
 }

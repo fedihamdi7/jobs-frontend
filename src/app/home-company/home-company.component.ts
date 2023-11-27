@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { LocalStorageService } from '../shared/local-storage.service';
+import { PostService } from '../post/post.service';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-home-company',
@@ -9,13 +11,16 @@ import { LocalStorageService } from '../shared/local-storage.service';
   styleUrl: './home-company.component.css'
 })
 export class HomeCompanyComponent implements AfterViewInit, OnInit {
+  @ViewChild('dt1') dt1: Table;
   
   isFromAuthGuard = false;
   company : any;
+  posts : any[];
   constructor(
     private messageService: MessageService,
     private router: Router,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private postService : PostService
   ) {
     if (this.router.getCurrentNavigation()?.extras?.state) {
       if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {        
@@ -35,6 +40,25 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.company = this.localStorage.getUser();
+    this.postService.findAllPostsOfCompany(this.company._id).subscribe(
+      (res : any) => {
+        console.log(res);
+        this.posts= res;       
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+  seeDetails(post){
+
+  }
+  clear(table: Table) {
+    table.clear();
+  }
+  onInputChange(event: any) {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.dt1.filterGlobal(inputValue, 'contains');
   }
 
 }

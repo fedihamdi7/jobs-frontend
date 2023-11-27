@@ -9,6 +9,10 @@ import { AvatarModule } from 'primeng/avatar';
 import { DropdownModule } from 'primeng/dropdown';
 import { MenuModule } from 'primeng/menu';
 import { DividerModule } from 'primeng/divider';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
 
 
 @NgModule({
@@ -24,7 +28,11 @@ import { DividerModule } from 'primeng/divider';
     ToastModule,
     DropdownModule,
     MenuModule,
-    DividerModule
+    DividerModule,
+    TableModule,
+    ButtonModule,
+    InputTextModule,
+    RippleModule
   ]
 })
 export class HomeCompanyModule { }

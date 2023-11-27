@@ -1,71 +1,145 @@
 <p-toast></p-toast>
 <div class="container">
 
-    <div class="company-details">
-      <div class="header">
-        <div class="logo">
-          <img src="http://localhost:3000/assets/profile-pics/{{company.profilePic}}" alt="logo">
-        </div>
-        <div class="company-name">
-          <h1>{{company.name}} </h1>
-        </div>
+  <div class="company-details">
+    <div class="header">
+      <div class="logo">
+        <img src="http://localhost:3000/assets/profile-pics/{{company.profilePic}}" alt="logo">
       </div>
-      <p-divider></p-divider>
-  
-      <div class="company-infos">
-        <div class="info">
-          <img src="../../assets/post-icons/Email.svg" alt="" class="info-logo">
-          <div class="info-text">{{company.email || 'N/A'}} </div>
-        </div>
-        @if (company.phone) {
-        <div class="info">
-          <img src="../../assets/post-icons/Phone.svg" alt="" class="info-logo">
-          <div class="info-text">{{company.phone || 'N/A'}}</div>
-        </div>
-        }
-        @if (company.links.location) {
-        <div class="info">
-          <img src="../../assets/post-icons/Address.svg" alt="" class="info-logo">
-          <a href="{{company.links.location || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
-        </div>
-        }
-        @if (company.links.facebook) {
-  
-        <div class="info">
-          <img src="../../assets/post-icons/Facebook.svg" alt="" class="info-logo">
-          <a href="{{company.links.facebook || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
-        </div>
-        }
-        @if (company.links.linkedin) {
-  
-        <div class="info">
-          <img src="../../assets/post-icons/LinkedIn.svg" alt="" class="info-logo">
-          <a href="{{company.links.linkedin || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
-        </div>
-        }
-        @if (company.links.twitter) {
-  
-        <div class="info">
-          <img src="../../assets/post-icons/TwitterX.svg" alt="" class="info-logo">
-          <a href="{{company.links.twitter || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
-        </div>
-        }
-        @if (company.links.instagram ){
-        <div class="info">
-          <img src="../../assets/post-icons/Instagram.svg" alt="" class="info-logo">
-          <a href="{{company.links.instagram || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
-        </div>
-        }
-        @if (company.links.website) {
-        <div class="info">
-          <img src="../../assets/post-icons/Website.svg" alt="" class="info-logo">
-          <a href="{{company.links.website || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
-        </div>
-        }
+      <div class="company-name">
+        <h1>{{company.name}} </h1>
       </div>
     </div>
+    <p-divider></p-divider>
 
-    <div class="right-side">
+    <div class="company-infos">
+      <div class="info">
+        <img src="../../assets/post-icons/Email.svg" alt="" class="info-logo">
+        <div class="info-text">{{company.email || 'N/A'}} </div>
+      </div>
+      @if (company.phone) {
+      <div class="info">
+        <img src="../../assets/post-icons/Phone.svg" alt="" class="info-logo">
+        <div class="info-text">{{company.phone || 'N/A'}}</div>
+      </div>
+      }
+      @if (company.links.location) {
+      <div class="info">
+        <img src="../../assets/post-icons/Address.svg" alt="" class="info-logo">
+        <a href="{{company.links.location || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (company.links.facebook) {
 
+      <div class="info">
+        <img src="../../assets/post-icons/Facebook.svg" alt="" class="info-logo">
+        <a href="{{company.links.facebook || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (company.links.linkedin) {
+
+      <div class="info">
+        <img src="../../assets/post-icons/LinkedIn.svg" alt="" class="info-logo">
+        <a href="{{company.links.linkedin || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (company.links.twitter) {
+
+      <div class="info">
+        <img src="../../assets/post-icons/TwitterX.svg" alt="" class="info-logo">
+        <a href="{{company.links.twitter || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (company.links.instagram ){
+      <div class="info">
+        <img src="../../assets/post-icons/Instagram.svg" alt="" class="info-logo">
+        <a href="{{company.links.instagram || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+      </div>
+      }
+      @if (company.links.website) {
+      <div class="info">
+        <img src="../../assets/post-icons/Website.svg" alt="" class="info-logo">
+        <a href="{{company.links.website || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+      </div>
+      }
     </div>
+  </div>
+
+  <div class="right-side">
+
+    <p-table #dt1 [value]="posts" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Posts" [globalFilterFields]="['title']">
+
+      <ng-template pTemplate="caption">
+        <div class="flex gap-2">
+          <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+            (click)="clear(dt1)"></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="onInputChange($event)" placeholder="Search by Title" />
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width:15rem">
+            Post Title
+          </th>
+          <th style="min-width:15rem" pSortableColumn="dateOfCreation">
+            Creation Date
+            <p-sortIcon field="dateOfCreation"></p-sortIcon>
+          </th>
+          <th style="min-width:15rem">
+            Expiration Date
+          </th>
+          <th style="min-width:10rem" pSortableColumn="applicants">
+            Applicants
+            <p-sortIcon field="applicants"></p-sortIcon>
+          </th>
+          <th style="min-width:10rem">
+            Edit Post
+          </th>
+          <th style="min-width:10rem">
+            Details
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-post>
+        <tr>
+          <td>
+            {{ post.title }}
+          </td>
+          <td>
+            @if (post.dateOfCreation) {
+            {{post.dateOfCreation | date : "mediumDate" }}
+            }
+            @else {
+            N/A
+            }
+          </td>
+          <td>
+            @if (post.dateOfExpiration) {
+            {{post.dateOfExpiration | date : "mediumDate" }}
+            }
+            @else {
+            N/A
+            }
+          </td>
+          <td>
+            {{ post.applicants || '0'}}
+          </td>
+          <td>
+
+            <button pButton pRipple class="p-button-rounded" (click)="seeDetails(post)" icon="pi pi-file-edit"></button>
+          </td>
+          <td>
+            <button pButton pRipple class="p-button-rounded" (click)="seeDetails(post)">Details</button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>

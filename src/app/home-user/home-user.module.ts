@@ -10,7 +10,6 @@ import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { DropdownModule } from 'primeng/dropdown';
 import { NavComponent } from './nav/nav.component';
-import { HomePostsComponent } from './home-posts/home-posts.component';
 import { ChipModule } from 'primeng/chip';
 import { RippleModule } from 'primeng/ripple';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +27,6 @@ import { ConfirmationService } from 'primeng/api';
   declarations: [
     HomeUserComponent,
     NavComponent,
-    HomePostsComponent,
     AppliedInPostsComponent
   ],
   imports: [

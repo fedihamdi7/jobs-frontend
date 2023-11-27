@@ -4,6 +4,8 @@ import { MessageService } from 'primeng/api';
 import { LocalStorageService } from '../shared/local-storage.service';
 import { PostService } from '../post/post.service';
 import { Table } from 'primeng/table';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 @Component({
   selector: 'app-home-company',
@@ -16,11 +18,17 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
   isFromAuthGuard = false;
   company : any;
   posts : any[];
+  refDetails: DynamicDialogRef | undefined;
+  refEdit: DynamicDialogRef | undefined;
+
   constructor(
     private messageService: MessageService,
     private router: Router,
     private localStorage: LocalStorageService,
-    private postService : PostService
+    private postService : PostService,
+    public dialogService: DialogService
+
+
   ) {
     if (this.router.getCurrentNavigation()?.extras?.state) {
       if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {        
@@ -51,6 +59,10 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
     )
   }
   seeDetails(post){
+    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : post,maximizable: true});
+  }
+
+  seeEdit(post){
 
   }
   clear(table: Table) {

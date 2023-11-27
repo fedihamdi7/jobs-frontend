@@ -1,0 +1,36 @@
+<div class="post-details">
+    <div class="post-header">
+        <h1> {{post.title}} </h1>
+    </div>
+
+    <div class="post-reqs">
+      <div class="left-side-reqs">
+        <div class="req-title">Contract Type : <span class="req-data"> {{post.typeOfEmployment || 'N/A'}} </span></div>
+        <div class="req-title">Education : <span class="req-data">{{post.levelOfStudy || 'N/A'}}</span></div>
+        <div class="req-title">Experience : <span class="req-data">{{post.experienceLevel || 'N/A'}}</span></div>
+        <div class="req-title">Salary : <span class="req-data">{{post.salary || 'N/A'}}</span></div>
+      </div>
+
+      <div class="right-side-reqs">
+        <div class="req-title">Language : <span class="req-data">{{post.language || 'N/A'}}</span></div>
+        <div class="req-title">Available Positions : <span
+            class="req-data">{{post.numberOfAvailablePositions || 'N/A'}}</span></div>
+        <div class="req-title">Posted Date : <span
+            class="req-data">{{post.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
+        <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration || 'N/A'}}</span></div>
+      </div>
+    </div>
+    <!-- DIVIDER -->
+    <p-divider></p-divider>
+
+    <div class="post-description">
+      <h2>Description</h2>
+      <div class="divider">
+        <p-divider></p-divider>
+      </div>
+
+      <div class="description" [innerHTML]="post.description">
+
+      </div>
+    </div>
+  </div>

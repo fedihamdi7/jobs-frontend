@@ -14,12 +14,15 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { TooltipModule } from 'primeng/tooltip';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 @NgModule({
   declarations: [
     HomeCompanyComponent,
-    CompanyNavComponent
+    CompanyNavComponent,
+    PostDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,9 @@ import { TooltipModule } from 'primeng/tooltip';
     ButtonModule,
     InputTextModule,
     RippleModule,
-    TooltipModule
-  ]
+    TooltipModule,
+    DynamicDialogModule
+  ],
+  providers :[DialogService]
 })
 export class HomeCompanyModule { }

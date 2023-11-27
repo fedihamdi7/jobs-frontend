@@ -14,6 +14,8 @@ export class NavComponent implements OnInit,AfterViewInit{
   items: any[] = [];
   isFromAuthGuard = false;
   isFromAfterAuth = false;
+  isFromIsCompanyGuard = false;
+
   constructor(
     private messageService: MessageService,
     private router: Router,
@@ -25,7 +27,8 @@ export class NavComponent implements OnInit,AfterViewInit{
         this.isFromAuthGuard = true;
       }else if (this.router.getCurrentNavigation()?.extras?.state['redirectedAfterAuth']) {
         this.isFromAfterAuth = true;
-        // remove the state from the url
+      }else if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromIsCompanyGuard']){
+        this.isFromIsCompanyGuard = true;
       }
       if (history.state) {
         history.replaceState({}, '', this.router.url.split('?')[0]);
@@ -40,6 +43,10 @@ export class NavComponent implements OnInit,AfterViewInit{
     }
     if (this.isFromAfterAuth) {
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login Successfully, Welcome back' });
+    }
+    if (this.isFromIsCompanyGuard) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You are not allowed to go there' });
+      
     }
   }
   ngOnInit(): void {

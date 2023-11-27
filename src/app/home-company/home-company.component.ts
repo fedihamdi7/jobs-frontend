@@ -16,11 +16,12 @@ export class HomeCompanyComponent implements AfterViewInit {
     private router: Router
   ) {
     if (this.router.getCurrentNavigation()?.extras?.state) {
-      if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {
-        console.log(this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']);
-        
+      if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {        
         this.isFromAuthGuard = true;
       }
+    }
+    if (history.state) {
+      history.replaceState({}, '', this.router.url.split('?')[0]);
     }
   }
 

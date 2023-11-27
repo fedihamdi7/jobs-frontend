@@ -1,2 +1,71 @@
-<p>home-company works!</p>
 <p-toast></p-toast>
+<div class="container">
+
+    <div class="company-details">
+      <div class="header">
+        <div class="logo">
+          <img src="http://localhost:3000/assets/profile-pics/{{company.profilePic}}" alt="logo">
+        </div>
+        <div class="company-name">
+          <h1>{{company.name}} </h1>
+        </div>
+      </div>
+      <p-divider></p-divider>
+  
+      <div class="company-infos">
+        <div class="info">
+          <img src="../../assets/post-icons/Email.svg" alt="" class="info-logo">
+          <div class="info-text">{{company.email || 'N/A'}} </div>
+        </div>
+        @if (company.phone) {
+        <div class="info">
+          <img src="../../assets/post-icons/Phone.svg" alt="" class="info-logo">
+          <div class="info-text">{{company.phone || 'N/A'}}</div>
+        </div>
+        }
+        @if (company.links.location) {
+        <div class="info">
+          <img src="../../assets/post-icons/Address.svg" alt="" class="info-logo">
+          <a href="{{company.links.location || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (company.links.facebook) {
+  
+        <div class="info">
+          <img src="../../assets/post-icons/Facebook.svg" alt="" class="info-logo">
+          <a href="{{company.links.facebook || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (company.links.linkedin) {
+  
+        <div class="info">
+          <img src="../../assets/post-icons/LinkedIn.svg" alt="" class="info-logo">
+          <a href="{{company.links.linkedin || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (company.links.twitter) {
+  
+        <div class="info">
+          <img src="../../assets/post-icons/TwitterX.svg" alt="" class="info-logo">
+          <a href="{{company.links.twitter || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (company.links.instagram ){
+        <div class="info">
+          <img src="../../assets/post-icons/Instagram.svg" alt="" class="info-logo">
+          <a href="{{company.links.instagram || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (company.links.website) {
+        <div class="info">
+          <img src="../../assets/post-icons/Website.svg" alt="" class="info-logo">
+          <a href="{{company.links.website || 'N/A'}}" target="_blank">{{company.name || 'N/A'}}</a>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="right-side">
+
+    </div>
+</div>

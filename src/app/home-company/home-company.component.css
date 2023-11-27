@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    width: 100%;
+    gap: 5%;
+  }
+  
+  .company-details {
+    display: flex;
+    flex-direction: column;
+    background-color: #161d21;
+    margin-top: 2%;
+    margin-left: 2%;
+    border-radius: 19px;
+    padding: 2%;
+    position: fixed;
+    height: 76vh;
+    width: 21vw;
+  }
+  
+  .company-details .header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  
+  }
+  .logo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .company-name {
+    font-size: .7rem;
+    color: #fff;
+  
+  }
+  
+  .company-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 4%;
+    gap: 15px;
+  }
+  
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .info .info-text,
+  .info a {
+    font-size: 1rem;
+    color: #fff;
+    margin-left: 10px;
+  }
+  
+  .info-logo {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+
+
+  .right-side{
+    background-color: #161d21;
+    margin-left: 25vw;
+    margin-top: 2%;
+    border-radius: 19px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    width: 73vw;
+  }

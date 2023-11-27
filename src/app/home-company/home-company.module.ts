@@ -8,6 +8,7 @@ import { CompanyNavComponent } from './company-nav/company-nav.component';
 import { AvatarModule } from 'primeng/avatar';
 import { DropdownModule } from 'primeng/dropdown';
 import { MenuModule } from 'primeng/menu';
+import { DividerModule } from 'primeng/divider';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MenuModule } from 'primeng/menu';
     AvatarModule,
     ToastModule,
     DropdownModule,
-    MenuModule
+    MenuModule,
+    DividerModule
   ]
 })
 export class HomeCompanyModule { }

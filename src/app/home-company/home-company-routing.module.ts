@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeCompanyComponent } from './home-company.component';
+import { CompanyNavComponent } from './company-nav/company-nav.component';
 
 const routes: Routes = [
-  // TODO continue here start with nav company
-  {path : '',component : HomeCompanyComponent}
+  {path : '',redirectTo :'c-home',pathMatch : 'full'},
+  {
+    path : '',component: CompanyNavComponent, children :[
+      {path : 'c-home', component : HomeCompanyComponent}
+    ]
+  }
 ];
 
 @NgModule({

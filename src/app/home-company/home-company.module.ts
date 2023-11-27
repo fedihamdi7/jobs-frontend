@@ -13,6 +13,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RippleModule } from 'primeng/ripple';
     TableModule,
     ButtonModule,
     InputTextModule,
-    RippleModule
+    RippleModule,
+    TooltipModule
   ]
 })
 export class HomeCompanyModule { }

@@ -17,6 +17,11 @@
   width: 21vw;
 }
 
+.edit{
+  margin-left: 90%;
+  cursor: pointer;
+}
+
 .company-details .header {
   display: flex;
   align-items: center;

@@ -30,6 +30,13 @@ export class NegotiationComponent implements OnInit {
   ngOnInit() {
     this.negotiation = this.config.data;
     this.additionalInfoCompany = this.negotiation.additionalInfoCompany || 'No additional info';
+    console.log(this.negotiation);
+    if (this.negotiation.dateFromTheUser) {
+      this.dateFromUserSuggestion = new Date(this.negotiation.dateFromTheUser.when);
+      this.placeFromUserSuggestion = this.negotiation.dateFromTheUser.where;
+      this.additionalInfoUser = this.negotiation.additionalInfoUser || 'No additional info'; 
+    }
+    
   }
 
   copyToClipboard(text: string) {
@@ -40,7 +47,7 @@ export class NegotiationComponent implements OnInit {
   confirmAccept(event: Event) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
-      message: 'Are you sure that you want to proceed?',
+      message: 'Are you sure that you want to proceed? You want be able to act again!!',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.negotiationService.userAccept(this.negotiation).subscribe(res => {
@@ -58,7 +65,7 @@ export class NegotiationComponent implements OnInit {
   confirmSuggest(event: Event) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
-      message: 'Are you sure that you want to proceed?',
+      message: 'Are you sure that you want to proceed? You want be able to act again!!',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
 

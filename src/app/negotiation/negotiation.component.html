@@ -101,36 +101,37 @@
     }
 
     @if (negotiation.status == "ACCEPTED") {
-      <div class="negotiation-body">
-        <div class="company-suggestion">
-          <div class="small-title">
-            Company's Suggestions
+    <div class="negotiation-body">
+      <div class="company-suggestion">
+        <div class="small-title">
+          Company's Suggestions
+        </div>
+        <div class="infos">
+          <div class="date-of-interview">
+            <div class="title">Date Of The Interview</div>
+            <div class="data"> {{negotiation.agreedOnDate.when | date:'mediumDate' }} </div>
           </div>
-          <div class="infos">
-            <div class="date-of-interview">
-              <div class="title">Date Of The Interview</div>
-              <div class="data"> {{negotiation.agreedOnDate.when | date:'mediumDate' }} </div>
-            </div>
-            <div class="place-of-interview">
-              <div class="title">Place Of The Interview</div>
-              <div class="data">{{negotiation.agreedOnDate.where || 'N/A'}}</div>
-            </div>
-            <div class="link">
-              <div class="title">Link</div>
-              <input style="cursor: pointer;" type="text" pInputText [value]="negotiation.link" readonly (click)="copyToClipboard(negotiation.link)" pTooltip="Click To Copie To Clipboard"/>
-            </div>
+          <div class="place-of-interview">
+            <div class="title">Place Of The Interview</div>
+            <div class="data">{{negotiation.agreedOnDate.where || 'N/A'}}</div>
           </div>
-          <div class="additional-info">
-            <div class="additional-info-data">
-              <p-editor [readonly]="true" [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
-                <ng-template pTemplate="header">
-                  <div class="additional-info-title">Additional Informations</div>
-                </ng-template>
-              </p-editor>
-            </div>
+          <div class="link">
+            <div class="title">Link</div>
+            <input style="cursor: pointer;" type="text" pInputText [value]="negotiation.link" readonly
+              (click)="copyToClipboard(negotiation.link)" pTooltip="Click To Copie To Clipboard" />
           </div>
         </div>
+        <div class="additional-info">
+          <div class="additional-info-data">
+            <p-editor [readonly]="true" [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
+              <ng-template pTemplate="header">
+                <div class="additional-info-title">Additional Informations</div>
+              </ng-template>
+            </p-editor>
+          </div>
         </div>
+      </div>
+    </div>
     }
 
 
@@ -174,17 +175,18 @@
         <div class="infos">
           <div class="date-of-interview">
             <div class="title">Date Of The Interview </div>
-            
+
             <div class="data">
-              <p-calendar [(ngModel)]="dateFromUserSuggestion" [showTime]="true" ></p-calendar>
+              <p-calendar [showIcon]="true" [(ngModel)]="dateFromUserSuggestion" [showTime]="true"></p-calendar>
             </div>
             <!-- <div class="data">{{negotiation.dateOfInterview | date:'mediumDate' || 'N/A'}}</div> -->
           </div>
           <div class="place-of-interview">
             <div class="title">Place Of The Interview</div>
             <div class="data">
-              <p-dropdown [(ngModel)]="placeFromUserSuggestion" [options]="[{name : 'Online', code : 'ONLINE'},{name : 'On Site', code : 'ONSITE'}]"
-                optionLabel="name" [showClear]="true" placeholder="Select Place"></p-dropdown>
+              <p-dropdown [(ngModel)]="placeFromUserSuggestion"
+                [options]="[{name : 'Online', code : 'ONLINE'},{name : 'On Site', code : 'ONSITE'}]" optionLabel="name"
+                [showClear]="true" placeholder="Select Place"></p-dropdown>
             </div>
           </div>
           <!-- <div class="link">
@@ -203,17 +205,83 @@
       </div>
       <div class="btns">
         <p-confirmPopup></p-confirmPopup>
-        <button pButton pRipple label="Accept" (click)="confirmAccept($event)" tooltipStyleClass="toolta" tooltipPosition="top" pTooltip="Confirm The Company's Suggestions" class="p-button-success"></button>
-        <button pButton pRipple label="Suggess" (click)="confirmSuggest($event)" tooltipStyleClass="tooltip-suggest" tooltipPosition="right" pTooltip="Request For Changes" class="p-button-info"></button>
+        <button pButton pRipple label="Accept" (click)="confirmAccept($event)" tooltipStyleClass="toolta"
+          tooltipPosition="top" pTooltip="Confirm The Company's Suggestions" class="p-button-success"></button>
+        <button pButton pRipple label="Suggess" (click)="confirmSuggest($event)" tooltipStyleClass="tooltip-suggest"
+          tooltipPosition="right" pTooltip="Request For Changes" class="p-button-info"></button>
       </div>
     </div>
     }
 
 
+    @if (negotiation.status == "PENDING_COMPANY_CONFIRMATION") {
+    <p-divider></p-divider>
+    <div class="negotiation-body">
+      <div class="company-suggestion">
+        <div class="small-title">
+          Company's Suggestions
+        </div>
+        <div class="infos">
+          <div class="date-of-interview">
+            <div class="title">Date Of The Interview</div>
+            <div class="data"> {{negotiation.dateFromTheCompany.when | date:'MMM d, y, HH:mm' }} </div>
+          </div>
+          <div class="place-of-interview">
+            <div class="title">Place Of The Interview</div>
+            <div class="data">{{negotiation.dateFromTheCompany.where || 'N/A'}}</div>
+          </div>
+          <div class="link">
+            <div class="title">Link</div>
+            <input type="text" pInputText [value]="negotiation.link" readonly />
+          </div>
+        </div>
+        <div class="additional-info">
+          <div class="additional-info-data">
+            <p-editor [readonly]="true" [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
+              <ng-template pTemplate="header">
+                <div class="additional-info-title">Additional Informations</div>
+              </ng-template>
+            </p-editor>
+          </div>
+        </div>
+      </div>
+      <p-divider></p-divider>
 
+      <div class="company-suggestion">
+        <div class="small-title">
+          User's Suggestions
+        </div>
+        <div class="infos">
+          <div class="date-of-interview">
+            <div class="title">Date Of The Interview </div>
 
+            <div class="data">
+              <p-calendar [(ngModel)]="dateFromUserSuggestion" [showTime]="true" [disabled]="true"></p-calendar>
+            </div>
+          </div>
+          <div class="place-of-interview">
+            <div class="title">Place Of The Interview</div>
+            <div class="data">
+              <div class="data">{{negotiation.dateFromTheUser.where || 'N/A'}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="additional-info">
+          <div class="additional-info-title">Additional Informations</div>
+          <div class="additional-info-data">
+            <p-editor [readonly]="true" [(ngModel)]="additionalInfoUser" [style]="{ height: '320px' }">
 
-
+            </p-editor>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <div>
+          Waiting for company's response...
+        </div>
+      </div>
+    </div>
+    }
 
 
 

@@ -34,8 +34,7 @@ export class PostComponent implements OnInit{
         this.messageService.add({severity:'success', summary: 'Success', detail: 'Applied Successfully'});
       },
       (err)=>{
-        console.log(err);
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Error Applying'});
+        this.messageService.add({severity:'error', summary: 'Error', detail: err.error.message});
       }
     );
   }

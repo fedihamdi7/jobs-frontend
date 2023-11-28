@@ -36,4 +36,8 @@ export class PostService {
     };
     return this.http.get(this.API_URL + '/post/user/' + companyId,{ headers: headers });
   }
+
+  editPost(post: any) {
+    return this.http.patch(this.API_URL + '/post/'+post.id, post, { headers: { 'Authorization': `${this.localStorageService.getToken()}` } });
+  }
 }

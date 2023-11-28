@@ -4,40 +4,64 @@
   <!-- ################## EDIT ################## -->
   @if (mode =="EDIT") {
 
-  <span class="p-float-label">
-    <input pInputText id="title" />
-    <label for="title">Title</label>
-  </span>
-  <p-divider></p-divider>
-  <div class="post-reqs">
-    <div class="left-side-reqs">
-      <div class="req-title">Contract Type : <span class="req-data"> {{post.typeOfEmployment || 'N/A'}} </span></div>
-      <div class="req-title">Education : <span class="req-data">{{post.levelOfStudy || 'N/A'}}</span></div>
-      <div class="req-title">Experience : <span class="req-data">{{post.experienceLevel || 'N/A'}}</span></div>
-      <div class="req-title">Salary : <span class="req-data">{{post.salary || 'N/A'}}</span></div>
-    </div>
+    <form [formGroup]="formEdit" (submit)="onEditPost()">
 
-    <div class="right-side-reqs">
-      <div class="req-title">Language : <span class="req-data">{{post.language || 'N/A'}}</span></div>
-      <div class="req-title">Available Positions : <span
-          class="req-data">{{post.numberOfAvailablePositions || 'N/A'}}</span></div>
-      <div class="req-title">Posted Date : <span
-          class="req-data">{{post.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
-      <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration | date:'mediumDate' || 'N/A'}}</span></div>
-    </div>
-  </div>
-  <p-divider></p-divider>
 
-  <div class="post-description">
-    <h2>Description</h2>
-    <div class="divider">
+      <div class="add-header">
+        Requirements
+      </div>
+      <div class="requirements">
+        <div class="upper-requirements">
+          <div>
+            <div class="input-name"> Title</div>
+            <input pInputText id="title" formControlName="title"/>
+          </div>
+          <div>
+            <div class="input-name">N° of Available Positions</div>
+            <p-inputNumber inputId="integeronly" formControlName="numberOfAvailablePositions"> </p-inputNumber>
+          </div>
+          <div style="width: 14%;">
+            <div class="input-name">Sexe</div>
+            <p-dropdown [options]="sexe" formControlName="sexe"  [showClear]="true" placeholder="Sexe" class="sexe"></p-dropdown>
+          </div>
+          
+          <div>
+            <div class="input-name">Expiration Date</div>
+            <p-calendar formControlName="dateOfExpiration"></p-calendar>
+          </div>
+          <div style="width: 14%;">
+            <div class="input-name"> Experience Level</div>
+            <input pInputText id="title" formControlName="experienceLevel" placeholder="Ex. 1-3 years"/>
+          </div>
+        </div>
+  
+        <div class="lower-requirements">
+          <div>
+            <div class="input-name">Type Of Employment</div>
+            <p-listbox [options]="listTypesOfEmployment" formControlName="typeOfEmployment"   styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+          </div>
+  
+          <div>
+            <div class="input-name">Languages</div>
+            <p-listbox [options]="listLanguages" formControlName="language" styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+          </div>
+          <div>
+            <div class="input-name">Education</div>
+            <p-listbox [options]="listOfEducationLevels" formControlName="levelOfStudy"  styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+          </div>
+  
+        </div>
+      </div>
       <p-divider></p-divider>
-    </div>
-
-    <div class="description" [innerHTML]="post.description">
-
-    </div>
-  </div>
+      <div class="description add-header">Description</div>
+      <div class="editor">
+        <p-editor [style]="{ height: '500px'}" formControlName="description"></p-editor>
+      </div>
+      <div class="btn-add">
+  
+        <button type="submit" pButton pRipple label="EDIT POST"> </button>
+      </div>
+    </form>
 
   <!-- ################## DETAILS ################## -->
 
@@ -98,7 +122,7 @@
         </div>
         <div style="width: 14%;">
           <div class="input-name">Sexe</div>
-          <p-dropdown [options]="sexe" formControlName="sexe" optionLabel="name" [showClear]="true" placeholder="Sexe" class="sexe"></p-dropdown>
+          <p-dropdown [options]="sexe" formControlName="sexe"  [showClear]="true" placeholder="Sexe" class="sexe"></p-dropdown>
         </div>
         
         <div>
@@ -115,20 +139,20 @@
       <div class="lower-requirements">
         <div>
           <div class="input-name">Type Of Employment</div>
-          <p-listbox [options]="listTypesOfEmployment" formControlName="typeOfEmployment" optionLabel="name"  styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+          <p-listbox [options]="listTypesOfEmployment" formControlName="typeOfEmployment"   styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
         </div>
 
         <div>
           <div class="input-name">Languages</div>
-          <p-listbox [options]="listLanguages" formControlName="language" optionLabel="name" styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+          <p-listbox [options]="listLanguages" formControlName="language"  styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
         </div>
         <!-- <div>
           <div class="input-name">Experience Level</div>
-          <p-listbox [options]="listExperienceLevels" formControlName="experienceLevel" optionLabel="name" styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+          <p-listbox [options]="listExperienceLevels" formControlName="experienceLevel"  styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
         </div> -->
         <div>
           <div class="input-name">Education</div>
-          <p-listbox [options]="listOfEducationLevels" formControlName="levelOfStudy" optionLabel="name" styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+          <p-listbox [options]="listOfEducationLevels" formControlName="levelOfStudy"  styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
         </div>
 
       </div>

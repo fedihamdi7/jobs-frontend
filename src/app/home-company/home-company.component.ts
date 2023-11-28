@@ -81,8 +81,10 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
   }
 
   seeEdit(post){
-    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Edit Post',data : {post,"mode" :"EDIT"},maximizable: true,width: '70%'});
-
+    this.refEdit = this.dialogService.open(PostDetailsComponent, { header: 'Edit Post',data : {post,"mode" :"EDIT"},maximizable: true,width: '90%',height :'90%'});
+    this.refEdit.onClose.subscribe(()=>{
+      this.getPosts();
+    })
   }
   clear(table: Table) {
     table.clear();

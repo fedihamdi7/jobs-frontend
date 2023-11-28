@@ -92,7 +92,7 @@
             class="req-data">{{post.numberOfAvailablePositions || 'N/A'}}</span></div>
         <div class="req-title">Posted Date : <span
             class="req-data">{{post.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
-        <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration || 'N/A'}}</span></div>
+        <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration | date : "mediumDate" || 'N/A'}}</span></div>
       </div>
     </div>
     <!-- DIVIDER -->

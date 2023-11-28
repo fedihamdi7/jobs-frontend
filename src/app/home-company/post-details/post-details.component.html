@@ -1,7 +1,8 @@
 <div class="post-details">
 
 
-  @if (isEdit) {
+  <!-- ################## EDIT ################## -->
+  @if (mode =="EDIT") {
 
   <span class="p-float-label">
     <input pInputText id="title" />
@@ -22,10 +23,9 @@
           class="req-data">{{post.numberOfAvailablePositions || 'N/A'}}</span></div>
       <div class="req-title">Posted Date : <span
           class="req-data">{{post.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
-      <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration || 'N/A'}}</span></div>
+      <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration | date:'mediumDate' || 'N/A'}}</span></div>
     </div>
   </div>
-  <!-- DIVIDER -->
   <p-divider></p-divider>
 
   <div class="post-description">
@@ -38,7 +38,10 @@
 
     </div>
   </div>
-  }@else {
+
+  <!-- ################## DETAILS ################## -->
+
+  }@else if(mode =="DETAILS"){
   <div class="post-header">
     <h1> {{post.title}} </h1>
   </div>
@@ -57,10 +60,9 @@
           class="req-data">{{post.numberOfAvailablePositions || 'N/A'}}</span></div>
       <div class="req-title">Posted Date : <span
           class="req-data">{{post.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
-      <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration || 'N/A'}}</span></div>
+      <div class="req-title">Expiration Date : <span class="req-data">{{post.dateOfExpiration | date:'mediumDate' || 'N/A'}}</span></div>
     </div>
   </div>
-  <!-- DIVIDER -->
   <p-divider></p-divider>
 
   <div class="post-description">
@@ -73,5 +75,74 @@
 
     </div>
   </div>
+
+  <!-- ################## ADD ################## -->
+
+  }
+  @else if (mode == "ADD"){
+  <form [formGroup]="formAdd" (submit)="onAddPost()">
+
+
+    <div class="add-header">
+      Requirements
+    </div>
+    <div class="requirements">
+      <div class="upper-requirements">
+        <div>
+          <div class="input-name"> Title</div>
+          <input pInputText id="title" formControlName="title"/>
+        </div>
+        <div>
+          <div class="input-name">N° of Available Positions</div>
+          <p-inputNumber inputId="integeronly" formControlName="numberOfAvailablePositions"> </p-inputNumber>
+        </div>
+        <div style="width: 14%;">
+          <div class="input-name">Sexe</div>
+          <p-dropdown [options]="sexe" formControlName="sexe" optionLabel="name" [showClear]="true" placeholder="Sexe" class="sexe"></p-dropdown>
+        </div>
+        
+        <div>
+          <div class="input-name">Expiration Date</div>
+          <p-calendar formControlName="dateOfExpiration"></p-calendar>
+        </div>
+        <div style="width: 14%;">
+          <div class="input-name"> Experience Level</div>
+          <input pInputText id="title" formControlName="experienceLevel" placeholder="Ex. 1-3 years"/>
+        </div>
+      </div>
+
+      <!-- <p-divider layout="vertical"></p-divider> -->
+      <div class="lower-requirements">
+        <div>
+          <div class="input-name">Type Of Employment</div>
+          <p-listbox [options]="listTypesOfEmployment" formControlName="typeOfEmployment" optionLabel="name"  styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+        </div>
+
+        <div>
+          <div class="input-name">Languages</div>
+          <p-listbox [options]="listLanguages" formControlName="language" optionLabel="name" styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+        </div>
+        <!-- <div>
+          <div class="input-name">Experience Level</div>
+          <p-listbox [options]="listExperienceLevels" formControlName="experienceLevel" optionLabel="name" styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+        </div> -->
+        <div>
+          <div class="input-name">Education</div>
+          <p-listbox [options]="listOfEducationLevels" formControlName="levelOfStudy" optionLabel="name" styleClass="listbox" [multiple]="true" [metaKeySelection]="false" ></p-listbox>
+        </div>
+
+      </div>
+      <!-- TODO : continue here, add editor for description + btn + maybe chips -->
+    </div>
+    <p-divider></p-divider>
+    <div class="description add-header">Description</div>
+    <div class="editor">
+      <p-editor [style]="{ height: '500px'}" formControlName="description"></p-editor>
+    </div>
+    <div class="btn-add">
+
+      <button type="submit" pButton pRipple label="ADD POST"> </button>
+    </div>
+  </form>
   }
 </div>

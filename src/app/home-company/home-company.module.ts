@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { HomeCompanyRoutingModule } from './home-company-routing.module';
 import { HomeCompanyComponent } from './home-company.component';
@@ -16,8 +16,12 @@ import { RippleModule } from 'primeng/ripple';
 import { TooltipModule } from 'primeng/tooltip';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { PostDetailsComponent } from './post-details/post-details.component';
-
-
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
+import { EditorModule } from 'primeng/editor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ChipsModule } from 'primeng/chips';
+import { ListboxModule } from 'primeng/listbox';
 @NgModule({
   declarations: [
     HomeCompanyComponent,
@@ -38,8 +42,14 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     InputTextModule,
     RippleModule,
     TooltipModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    InputNumberModule,
+    CalendarModule,
+    EditorModule,
+    ReactiveFormsModule,
+    ChipsModule,
+    ListboxModule
   ],
-  providers :[DialogService]
+  providers :[DialogService,DatePipe]
 })
 export class HomeCompanyModule { }

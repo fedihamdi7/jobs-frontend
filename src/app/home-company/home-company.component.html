@@ -69,7 +69,7 @@
   </div>
 
   <div class="right-side">
-
+    <button pButton label="Add Post" class="add-post-btn" (click)="addPost()"></button>
     <p-table #dt1 [value]="posts" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Posts" [globalFilterFields]="['title']">

@@ -14,6 +14,13 @@ export class PostService {
     private localStorageService: LocalStorageService
   ) { }
 
+  addPost(post: any) {
+    const headers = {
+      'Authorization': `${this.localStorageService.getToken()}`,
+    };
+
+    return this.http.post(this.API_URL + '/post', post, { headers: headers });
+  }
   applyToPost(userId: string, postId: string) {
     const headers = {
       'Authorization': `${this.localStorageService.getToken()}`,

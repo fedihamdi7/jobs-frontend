@@ -20,6 +20,7 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
   posts : any[];
   refDetails: DynamicDialogRef | undefined;
   refEdit: DynamicDialogRef | undefined;
+  refAdd : DynamicDialogRef | undefined;
 
   constructor(
     private messageService: MessageService,
@@ -50,9 +51,7 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
     this.company = this.localStorage.getUser();
     this.postService.findAllPostsOfCompany(this.company._id).subscribe(
       (res : any) => {
-        console.log(res);
         this.posts= res;       
-        this.seeEdit(this.posts[0])
       },
       (err) => {
         console.log(err);
@@ -60,12 +59,29 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
     )
 
   }
+
+  getPosts(){
+    this.postService.findAllPostsOfCompany(this.company._id).subscribe(
+      (res : any) => {
+        this.posts= res;       
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+  addPost(){
+    this.refAdd = this.dialogService.open(PostDetailsComponent, { header: 'Add Post',data : {"mode" :"ADD"},maximizable: true,width: '90%',height :'90%'});
+    this.refAdd.onClose.subscribe(()=>{
+      this.getPosts();
+    })
+  }
   seeDetails(post){
-    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : {post,"isEdit" :false},maximizable: true});
+    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : {post,"mode" :"DETAILS"},maximizable: true, width: '50%'});
   }
 
   seeEdit(post){
-    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : {post,"isEdit" :true},maximizable: true});
+    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Edit Post',data : {post,"mode" :"EDIT"},maximizable: true,width: '70%'});
 
   }
   clear(table: Table) {

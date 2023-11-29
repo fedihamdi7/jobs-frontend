@@ -23,11 +23,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChipsModule } from 'primeng/chips';
 import { ListboxModule } from 'primeng/listbox';
 import { TagModule } from 'primeng/tag';
+import { EditCompanyComponent } from './edit-company/edit-company.component';
+import { MessageModule } from 'primeng/message';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputMaskModule } from 'primeng/inputmask';
+import { PasswordModule } from 'primeng/password';
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     HomeCompanyComponent,
     CompanyNavComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    EditCompanyComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +59,12 @@ import { TagModule } from 'primeng/tag';
     ReactiveFormsModule,
     ChipsModule,
     ListboxModule,
-    TagModule
+    TagModule,
+    MessageModule,
+    FileUploadModule,
+    InputMaskModule,
+    PasswordModule,
+    HttpClientModule
   ],
   providers :[DialogService,DatePipe]
 })

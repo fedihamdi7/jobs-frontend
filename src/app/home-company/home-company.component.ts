@@ -6,6 +6,7 @@ import { PostService } from '../post/post.service';
 import { Table } from 'primeng/table';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { EditCompanyComponent } from './edit-company/edit-company.component';
 
 @Component({
   selector: 'app-home-company',
@@ -21,7 +22,7 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
   refDetails: DynamicDialogRef | undefined;
   refEdit: DynamicDialogRef | undefined;
   refAdd : DynamicDialogRef | undefined;
-
+  refEditCompany : DynamicDialogRef | undefined;
   constructor(
     private messageService: MessageService,
     private router: Router,
@@ -51,7 +52,8 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
     this.company = this.localStorage.getUser();
     this.postService.findAllPostsOfCompany(this.company._id).subscribe(
       (res : any) => {
-        this.posts= res;       
+        this.posts= res;  
+        // this.onEditCompany()     
       },
       (err) => {
         console.log(err);
@@ -60,6 +62,12 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
 
   }
 
+  onEditCompany(){
+    this.refEditCompany = this.dialogService.open(EditCompanyComponent, { header: 'Edit Company',data : {company : this.company},maximizable: true,width: '90%',height :'90%'});
+    this.refEditCompany.onClose.subscribe(()=>{
+      this.company = this.localStorage.getUser();
+    })
+  }
   toggleStatus(post_id){
     this.postService.toggleStatus(post_id).subscribe(
       (res : any) => {

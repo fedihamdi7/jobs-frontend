@@ -1,0 +1,99 @@
+.container{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#register-form{
+    display: flex;
+    border: 2px solid #9eade6;
+    border-radius: 20px;
+    padding: 1%;
+    flex-direction: column;
+    position: relative;
+    height: 73vh;
+    overflow: hidden;
+    box-shadow: 0px 0px 61.5px 3px #9eace633;
+}
+
+
+input, :host ::ng-deep .custom .p-inputtext, :host ::ng-deep #password .p-password-input{
+    width: 300px;
+}
+
+:host ::ng-deep #citiesDropDown .p-dropdown {
+    width: 277px;
+}
+#register-form .formLeft, .formRight{
+    /* border : 1px solid red; */
+    width: 23vw;
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+
+
+#register-form .formLeft > *, #register-form .formRight > *{
+    margin: 30px 0 0 0;
+}
+
+#register-form .formLeft .switcher{
+    display: flex;
+    align-items: center;
+    gap : 12px;
+}
+
+
+
+#register-form .formLeft .phone, #register-form .formRight .birthDate{
+    display: flex;
+    flex-direction: column;
+}
+
+#register-form .formRight{
+    /* border : 1px solid green; */
+    margin-left: 2%;
+    padding-top: 1%;
+
+}
+
+.devider{
+    display: flex;
+
+}
+#signup-button{
+    position: absolute;
+    bottom: 1%;
+    left: 42%;
+    margin: 1%;
+}
+
+/* LINKS */
+.links-row{
+    display: flex;
+    gap: 10px;
+}
+.links-row span {
+    width: 50%;
+}
+
+:host ::ng-deep .links-row .p-inputtext{
+ width: 100%;
+}
+
+.msg-name{
+    position: absolute;
+    right: -19%;
+    top: 36%;
+    z-index: 10;
+}
+.msg-mail-invalid {
+    right: -13%;
+}
+
+.required-container{
+    position: relative;
+}
+

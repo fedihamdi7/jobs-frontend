@@ -97,7 +97,7 @@
             Post Title
           </th>
           <th style="min-width:15rem" pSortableColumn="dateOfCreation">
-            Creation Date
+            Applicants
             <p-sortIcon field="dateOfCreation"></p-sortIcon>
           </th>
           <th style="min-width:15rem" pSortableColumn="dateOfExpiration">
@@ -124,12 +124,7 @@
             {{ post.title }}
           </td>
           <td>
-            @if (post.dateOfCreation) {
-            {{post.dateOfCreation | date : "mediumDate" }}
-            }
-            @else {
-            N/A
-            }
+            {{post.applicants}}
           </td>
           <td>
             @if (post.dateOfExpiration) {

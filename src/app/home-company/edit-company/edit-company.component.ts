@@ -25,32 +25,34 @@ export class EditCompanyComponent implements OnInit {
     private ref : DynamicDialogRef
   ) { }
 
-  cities = [
-    { name: 'Ariana', code: 'Ariana' },
-    { name: 'Béja', code: 'Béja' },
-    { name: 'Ben Arous', code: 'Ben Arous' },
-    { name: 'Bizerte', code: 'Bizerte' },
-    { name: 'El Kef', code: 'El Kef' },
-    { name: 'Gabès', code: 'Gabès' },
-    { name: 'Gafsa', code: 'Gafsa' },
-    { name: 'Jendouba', code: 'Jendouba' },
-    { name: 'Kairouan', code: 'Kairouan' },
-    { name: 'Kasserine', code: 'Kasserine' },
-    { name: 'Kébili', code: 'Kébili' },
-    { name: 'Mahdia', code: 'Mahdia' },
-    { name: 'Manouba', code: 'Manouba' },
-    { name: 'Medenine', code: 'Medenine' },
-    { name: 'Monastir', code: 'Monastir' },
-    { name: 'Nabeul', code: 'Nabeul' },
-    { name: 'Sfax', code: 'Sfax' },
-    { name: 'Siliana', code: 'Siliana' },
-    { name: 'Sidi Bouzid', code: 'Sidi Bouzid' },
-    { name: 'Sousse', code: 'Sousse' },
-    { name: 'Tataouine', code: 'Tataouine' },
-    { name: 'Tozeur', code: 'Tozeur' },
-    { name: 'Tunis', code: 'Tunis' },
-    { name: 'Zaghouan', code: 'Zaghouan' }
-  ]
+  cities = 
+    [
+      'Ariana',
+      'Béja',
+      'Ben Arous',
+      'Bizerte',
+      'El Kef',
+      'Gabès',
+      'Gafsa',
+      'Jendouba',
+      'Kairouan',
+      'Kasserine',
+      'Kébili',
+      'Mahdia',
+      'Manouba',
+      'Medenine',
+      'Monastir',
+      'Nabeul',
+      'Sfax',
+      'Siliana',
+      'Sidi Bouzid',
+      'Sousse',
+      'Tataouine',
+      'Tozeur',
+      'Tunis',
+      'Zaghouan'
+    ]
+  
   ngOnInit(): void {
     this.companyService.getCompany(this.config.data.company._id).subscribe((res)=>{
       this.company = res;

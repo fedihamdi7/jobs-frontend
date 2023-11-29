@@ -103,9 +103,9 @@
           <th style="min-width:15rem">
             Expiration Date
           </th>
-          <th style="min-width:10rem" pSortableColumn="applicants">
-            Applicants
-            <p-sortIcon field="applicants"></p-sortIcon>
+          <th style="min-width:10rem" pSortableColumn="Status">
+            Status
+            <p-sortIcon field="Status"></p-sortIcon>
           </th>
           <th style="min-width:10rem">
             Edit Post
@@ -138,7 +138,8 @@
             }
           </td>
           <td>
-            {{ post.applicants || '0'}}
+            @if (post.isActive) {<p-tag severity="success" value="Active"></p-tag>}
+            @else {<p-tag severity="danger" value="InActive"></p-tag>}
           </td>
           <td>
 

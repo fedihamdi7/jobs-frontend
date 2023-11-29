@@ -22,6 +22,7 @@ import { EditorModule } from 'primeng/editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChipsModule } from 'primeng/chips';
 import { ListboxModule } from 'primeng/listbox';
+import { TagModule } from 'primeng/tag';
 @NgModule({
   declarations: [
     HomeCompanyComponent,
@@ -48,7 +49,8 @@ import { ListboxModule } from 'primeng/listbox';
     EditorModule,
     ReactiveFormsModule,
     ChipsModule,
-    ListboxModule
+    ListboxModule,
+    TagModule
   ],
   providers :[DialogService,DatePipe]
 })

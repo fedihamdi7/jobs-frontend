@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 <div class="container">
 
-  <div class="company-details">
+  <div class="company-details" *ngIf="company">
     <div class="edit">
       <img src="/assets/post-icons/Edit.svg" alt="edit" pTooltip="Edit Company Info" (click)="onEditCompany()" style="cursor: pointer;">
     </div>
@@ -118,7 +118,7 @@
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-post>
+      <ng-template pTemplate="body" let-post >
         <tr>
           <td>
             {{ post.title }}

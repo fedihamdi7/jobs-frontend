@@ -97,3 +97,7 @@ input, :host ::ng-deep .custom .p-inputtext, :host ::ng-deep #password .p-passwo
     position: relative;
 }
 
+
+:host ::ng-deep .p-fileupload-choose-selected{
+    width: 72%;
+}

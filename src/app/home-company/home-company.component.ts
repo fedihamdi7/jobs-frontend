@@ -7,6 +7,7 @@ import { Table } from 'primeng/table';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditCompanyComponent } from './edit-company/edit-company.component';
+import { CompanyService } from './company.service';
 
 @Component({
   selector: 'app-home-company',
@@ -28,7 +29,8 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
     private router: Router,
     private localStorage: LocalStorageService,
     private postService : PostService,
-    public dialogService: DialogService
+    public dialogService: DialogService,
+    private companyService : CompanyService
 
 
   ) {
@@ -49,8 +51,10 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.company = this.localStorage.getUser();
-    this.postService.findAllPostsOfCompany(this.company._id).subscribe(
+    this.companyService.getCompany(this.localStorage.getUser()._id).subscribe((res)=>{
+      this.company = res;
+    })
+    this.postService.findAllPostsOfCompany(this.localStorage.getUser()._id).subscribe(
       (res : any) => {
         this.posts= res;  
         // this.onEditCompany()     
@@ -62,10 +66,16 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
 
   }
 
+  getCompany(){
+    this.companyService.getCompany(this.localStorage.getUser()._id).subscribe((res)=>{
+      this.company = res;
+    })
+  }
+
   onEditCompany(){
     this.refEditCompany = this.dialogService.open(EditCompanyComponent, { header: 'Edit Company',data : {company : this.company},maximizable: true,width: '90%',height :'90%'});
     this.refEditCompany.onClose.subscribe(()=>{
-      this.company = this.localStorage.getUser();
+      this.company = this.getCompany();
     })
   }
   toggleStatus(post_id){

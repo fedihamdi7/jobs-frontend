@@ -19,10 +19,19 @@ export class CompanyService {
   }
 
   updateCompany(id, company) {
-    console.log(company);
+
     if (company.password === null) {
       delete company.password;
     }
-    return this.http.patch(`${this.API_URL}/user/${id}`, company, {headers:this.headers});
+    const formData = new FormData();    
+    formData.append('name', company.name);
+    formData.append('email', company.email);
+    formData.append('password', company.password);
+    formData.append('profilePic', company.profilePic);
+    formData.append('phone', company.phone);
+    formData.append('birthDate',company.birthDate);
+    formData.append('governorate',company.governorate);
+    formData.append('links',JSON.stringify(company.links));
+    return this.http.patch(`${this.API_URL}/user/${id}`, formData, {headers:this.headers});
   }
 }

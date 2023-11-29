@@ -40,4 +40,8 @@ export class PostService {
   editPost(post: any) {
     return this.http.patch(this.API_URL + '/post/'+post.id, post, { headers: { 'Authorization': `${this.localStorageService.getToken()}` } });
   }
+
+  toggleStatus(postId: string) {
+    return this.http.patch(this.API_URL + '/post/toggleStatus/'+postId, {}, { headers: { 'Authorization': `${this.localStorageService.getToken()}` } });
+  }
 }

@@ -60,6 +60,19 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
 
   }
 
+  toggleStatus(post_id){
+    this.postService.toggleStatus(post_id).subscribe(
+      (res : any) => {
+        this.getPosts();
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Post status updated successfully' });
+      },
+      (err) => {
+        this.messageService.add({ severity: 'danger', summary: 'Error', detail: err.error.message });
+
+      }
+    )
+  }
+
   getPosts(){
     this.postService.findAllPostsOfCompany(this.company._id).subscribe(
       (res : any) => {

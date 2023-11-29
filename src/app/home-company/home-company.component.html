@@ -138,8 +138,8 @@
             }
           </td>
           <td>
-            @if (post.isActive) {<p-tag severity="success" value="Active"></p-tag>}
-            @else {<p-tag severity="danger" value="InActive"></p-tag>}
+            @if (post.isActive) {<p-tag severity="success" value="Active" (click)="toggleStatus(post._id)" [style]="{'cursor' : 'pointer'}" pTooltip="Click to toggle status"></p-tag>}
+            @else {<p-tag severity="danger" value="InActive" (click)="toggleStatus(post._id)" [style]="{'cursor' : 'pointer'}" pTooltip="Click to toggle status"></p-tag>}
           </td>
           <td>
 

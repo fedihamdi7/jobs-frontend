@@ -21,6 +21,12 @@ export class PostComponent implements OnInit{
 
   ngOnInit(): void {
     this.post = this.config.data;   
+    for (let link in this.post.company.links) {  
+      // TODO make this reusable in a service 
+      if (!this.post.company.links[link]?.startsWith("http://") && !this.post.company.links[link]?.startsWith("https://")) {
+        this.post.company.links[link] = "http://" + this.post.company.links[link];
+      }
+  }
     if(this.localStorageService.getUser().postsAppliedIn.includes(this.post._id)){
       this.alreadyApplied = true;
     }

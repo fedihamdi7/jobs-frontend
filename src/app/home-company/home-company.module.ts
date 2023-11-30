@@ -19,7 +19,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { EditorModule } from 'primeng/editor';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChipsModule } from 'primeng/chips';
 import { ListboxModule } from 'primeng/listbox';
 import { TagModule } from 'primeng/tag';
@@ -30,6 +30,11 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { PasswordModule } from 'primeng/password';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyNegotiationsComponent } from './company-negotiations/company-negotiations.component';
+import { StatusPipe } from '../pipes/status.pipe';
+import { ConfirmationService } from 'primeng/api';
+import { CompanyNegotiationOverlayComponent } from './company-negotiations/company-negotiation-overlay/company-negotiation-overlay.component';
+import { ApplicantOverlayComponent } from './company-negotiations/applicant-overlay/applicant-overlay.component';
+import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 
 
 @NgModule({
@@ -38,7 +43,9 @@ import { CompanyNegotiationsComponent } from './company-negotiations/company-neg
     CompanyNavComponent,
     PostDetailsComponent,
     EditCompanyComponent,
-    CompanyNegotiationsComponent
+    CompanyNegotiationsComponent,
+    CompanyNegotiationOverlayComponent,
+    ApplicantOverlayComponent
   ],
   imports: [
     CommonModule,
@@ -66,8 +73,11 @@ import { CompanyNegotiationsComponent } from './company-negotiations/company-neg
     FileUploadModule,
     InputMaskModule,
     PasswordModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    StatusPipe,
+    SafeUrlPipe
   ],
-  providers :[DialogService,DatePipe]
+  providers :[DialogService,DatePipe,ConfirmationService]
 })
 export class HomeCompanyModule { }

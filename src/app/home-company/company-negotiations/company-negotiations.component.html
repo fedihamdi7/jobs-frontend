@@ -1,1 +1,93 @@
-<p>company-negotiations works!</p>
+<p-table
+        #dt1
+        [value]="negotiations"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Applications"
+        [globalFilterFields]="['company_id.name']"
+        >
+        <ng-template pTemplate="caption">
+            <div class="flex gap-2">
+                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="onInputChange($event)" placeholder="Search by name" />
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Applicant name
+                        <p-columnFilter type="text" field="company_id.name" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem" pSortableColumn="creationDate">
+                        Applied Date
+                        <p-sortIcon field="creationDate"></p-sortIcon>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Post Title
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Applicant Details
+                    </div>
+                </th>
+         
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Status
+                        <p-columnFilter field="status" matchMode="equals" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Pick a status">
+                                    <ng-template let-option pTemplate="item">
+                                        <p-tag [value]="option.label" [severity]="getSeverity(option.label)"></p-tag>
+                                    </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Details
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>
+                    {{ customer.user_id.name }}
+                </td>
+                <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer.creationDate | date : "mediumDate" }}</span>
+                </td>
+                <td>
+                    <span class="ml-1 vertical-align-middle">{{ customer.post_id.title }}</span>
+                </td>
+                <td>
+                    <button pButton pRipple class="p-button-rounded" (click)="seeApplicantDetails(customer.user_id)">See Details</button>
+                </td>
+                <td>
+                    <p-tag [value]="customer.status | status" [severity]="getSeverity(customer.status)"></p-tag>
+                </td>
+                <td>
+                    <button pButton pRipple class="p-button-rounded" (click)="seeDetails(customer)">See Details</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No Applications found.</td>
+            </tr>
+        </ng-template>
+</p-table>

@@ -1,0 +1,87 @@
+<div class="container">
+
+    <div class="company-details">
+      <div class="header">
+        <div class="logo">
+          <img src="http://localhost:3000/assets/profile-pics/{{applicant.profilePic}}" alt="logo">
+        </div>
+        <div class="company-name">
+          <h1>{{applicant.name}} </h1>
+        </div>
+      </div>
+      <p-divider></p-divider>
+  
+      <div class="company-infos">
+        <div class="info">
+          <img src="../../assets/post-icons/Email.svg" alt="" class="info-logo">
+          <div class="info-text">{{applicant.email || 'N/A'}} </div>
+        </div>
+        @if (applicant.phone) {
+        <div class="info">
+          <img src="../../assets/post-icons/Phone.svg" alt="" class="info-logo">
+          <div class="info-text">{{applicant.phone || 'N/A'}}</div>
+        </div>
+        }
+        @if (applicant.governorate) {
+            <div class="info">
+              <img src="../../assets/post-icons/Address.svg" alt="" class="info-logo">
+              <div class="info-text">{{applicant.governorate || 'N/A'}}</div>
+            </div>
+            }
+        @if (applicant.birthDate) {
+            <div class="info">
+              <img src="../../assets/post-icons/Birthday.svg" alt="" class="info-logo">
+              <div class="info-text">{{applicant.birthDate | date:'mediumDate' || 'N/A' }}</div>
+            </div>
+            }
+        @if (applicant.links.github) {
+        <div class="info">
+          <img src="../../assets/post-icons/GitHub.svg" alt="" class="info-logo">
+          <a href="{{applicant.links.github || 'N/A'}}" target="_blank">{{applicant.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (applicant.links.facebook) {
+  
+        <div class="info">
+          <img src="../../assets/post-icons/Facebook.svg" alt="" class="info-logo">
+          <a href="{{applicant.links.facebook || 'N/A'}}" target="_blank">{{applicant.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (applicant.links.linkedin) {
+  
+        <div class="info">
+          <img src="../../assets/post-icons/LinkedIn.svg" alt="" class="info-logo">
+          <a href="{{applicant.links.linkedin || 'N/A'}}" target="_blank">{{applicant.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (applicant.links.twitter) {
+  
+        <div class="info">
+          <img src="../../assets/post-icons/TwitterX.svg" alt="" class="info-logo">
+          <a href="{{applicant.links.twitter || 'N/A'}}" target="_blank">{{applicant.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (applicant.links.instagram ){
+        <div class="info">
+          <img src="../../assets/post-icons/Instagram.svg" alt="" class="info-logo">
+          <a href="{{applicant.links.instagram || 'N/A'}}" target="_blank">{{applicant.name || 'N/A'}}</a>
+        </div>
+        }
+        @if (applicant.links.website) {
+        <div class="info">
+          <img src="../../assets/post-icons/Website.svg" alt="" class="info-logo">
+          <a href="{{applicant.links.website || 'N/A'}}" target="_blank">{{applicant.name || 'N/A'}}</a>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="post-details">
+        <!-- <pdf-viewer *ngIf="applicant" [src]="'http://localhost:3000/assets/resumes/'+applicant.resume"
+              [render-text]="true"
+              [original-size]="false"
+              style="width: 400px; height: 500px"
+    ></pdf-viewer> -->
+    <object [data]="'http://localhost:3000/assets/resumes/'+applicant.resume + '#toolbar=1&navpanes=0&view=Fit' | safeUrl" type="application/pdf" width="100%" height="620px"></object>
+    </div>
+</div>

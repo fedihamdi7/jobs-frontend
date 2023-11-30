@@ -50,9 +50,9 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
             }
           },
           {
-            label: 'My Posts',
-            icon: 'pi pi-file',
-            routerLink: 'my-posts'
+            label: 'Negotiations',
+            icon: 'pi pi-eject',
+            routerLink: 'negotiations'
           },
           {
             label: 'Logout',

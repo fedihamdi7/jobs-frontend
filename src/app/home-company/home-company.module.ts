@@ -29,6 +29,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PasswordModule } from 'primeng/password';
 import { HttpClientModule } from '@angular/common/http';
+import { CompanyNegotiationsComponent } from './company-negotiations/company-negotiations.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeCompanyComponent,
     CompanyNavComponent,
     PostDetailsComponent,
-    EditCompanyComponent
+    EditCompanyComponent,
+    CompanyNegotiationsComponent
   ],
   imports: [
     CommonModule,

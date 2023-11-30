@@ -22,7 +22,6 @@ export class AppliedInPostsComponent implements OnInit {
   ngOnInit() {
     this.userService.getNegotiations().subscribe((res: any) => {
       this.negotiations = res;      
-      this.seeDetails(this.negotiations[0]);
    });
   }
 

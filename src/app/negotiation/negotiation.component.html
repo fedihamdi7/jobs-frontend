@@ -27,8 +27,10 @@
         <div class="req-title">Posted Date : <span
             class="req-data">{{negotiation.post_id.dateOfCreation | date:'mediumDate' || 'N/A'}}</span></div>
         <div class="req-title">Expiration Date : <span
-            class="req-data">{{negotiation.post_id.dateOfExpiration || 'N/A'}}</span>
+            class="req-data">{{negotiation.post_id.dateOfExpiration | date:'mediumDate' || 'N/A'}}</span>
         </div>
+      <div class="req-title">Gender : <span class="req-data">{{negotiation.post_id.sexe || 'N/A'}}</span></div>
+
       </div>
     </div>
 

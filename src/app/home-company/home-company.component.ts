@@ -16,26 +16,26 @@ import { CompanyService } from './company.service';
 })
 export class HomeCompanyComponent implements AfterViewInit, OnInit {
   @ViewChild('dt1') dt1: Table;
-  
+
   isFromAuthGuard = false;
-  company : any;
-  posts : any[];
+  company: any;
+  posts: any[];
   refDetails: DynamicDialogRef | undefined;
   refEdit: DynamicDialogRef | undefined;
-  refAdd : DynamicDialogRef | undefined;
-  refEditCompany : DynamicDialogRef | undefined;
+  refAdd: DynamicDialogRef | undefined;
+  refEditCompany: DynamicDialogRef | undefined;
   constructor(
     private messageService: MessageService,
     private router: Router,
     private localStorage: LocalStorageService,
-    private postService : PostService,
+    private postService: PostService,
     public dialogService: DialogService,
-    private companyService : CompanyService
+    private companyService: CompanyService
 
 
   ) {
     if (this.router.getCurrentNavigation()?.extras?.state) {
-      if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {        
+      if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {
         this.isFromAuthGuard = true;
       }
     }
@@ -51,12 +51,19 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.companyService.getCompany(this.localStorage.getUser()._id).subscribe((res)=>{
-      this.company = res;
+    this.companyService.getCompany(this.localStorage.getUser()._id).subscribe((res) => {
+      this.company = res;      
+      for (let link in this.company.links) {
+        
+          if (!this.company.links[link]?.startsWith("http://") && !this.company.links[link]?.startsWith("https://")) {
+            this.company.links[link] = "http://" + this.company.links[link];
+          }
+      }
+    
     })
     this.postService.findAllPostsOfCompany(this.localStorage.getUser()._id).subscribe(
-      (res : any) => {
-        this.posts= res;  
+      (res: any) => {
+        this.posts = res;
         // this.onEditCompany()     
       },
       (err) => {
@@ -66,21 +73,28 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
 
   }
 
-  getCompany(){
-    this.companyService.getCompany(this.localStorage.getUser()._id).subscribe((res)=>{
+  getCompany() {
+    this.companyService.getCompany(this.localStorage.getUser()._id).subscribe((res) => {
       this.company = res;
+      // check on the company.links one by one and if the link does not start with http:// or https:// then add it
+      for (let link in this.company.links) {
+        
+        if (!this.company.links[link]?.startsWith("http://") && !this.company.links[link]?.startsWith("https://")) {
+          this.company.links[link] = "http://" + this.company.links[link];
+        }
+    }
     })
   }
 
-  onEditCompany(){
-    this.refEditCompany = this.dialogService.open(EditCompanyComponent, { header: 'Edit Company',data : {company : this.company},maximizable: true,width: '90%',height :'90%'});
-    this.refEditCompany.onClose.subscribe(()=>{
+  onEditCompany() {
+    this.refEditCompany = this.dialogService.open(EditCompanyComponent, { header: 'Edit Company', data: { company: this.company }, maximizable: true, width: '90%', height: '90%' });
+    this.refEditCompany.onClose.subscribe(() => {
       this.company = this.getCompany();
     })
   }
-  toggleStatus(post_id){
+  toggleStatus(post_id) {
     this.postService.toggleStatus(post_id).subscribe(
-      (res : any) => {
+      (res: any) => {
         this.getPosts();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Post status updated successfully' });
       },
@@ -91,29 +105,29 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
     )
   }
 
-  getPosts(){
+  getPosts() {
     this.postService.findAllPostsOfCompany(this.company._id).subscribe(
-      (res : any) => {
-        this.posts= res;       
+      (res: any) => {
+        this.posts = res;
       },
       (err) => {
         console.log(err);
       }
     )
   }
-  addPost(){
-    this.refAdd = this.dialogService.open(PostDetailsComponent, { header: 'Add Post',data : {"mode" :"ADD"},maximizable: true,width: '90%',height :'90%'});
-    this.refAdd.onClose.subscribe(()=>{
+  addPost() {
+    this.refAdd = this.dialogService.open(PostDetailsComponent, { header: 'Add Post', data: { "mode": "ADD" }, maximizable: true, width: '90%', height: '90%' });
+    this.refAdd.onClose.subscribe(() => {
       this.getPosts();
     })
   }
-  seeDetails(post){
-    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details',data : {post,"mode" :"DETAILS"},maximizable: true, width: '50%'});
+  seeDetails(post) {
+    this.refDetails = this.dialogService.open(PostDetailsComponent, { header: 'Post Details', data: { post, "mode": "DETAILS" }, maximizable: true, width: '50%' });
   }
 
-  seeEdit(post){
-    this.refEdit = this.dialogService.open(PostDetailsComponent, { header: 'Edit Post',data : {post,"mode" :"EDIT"},maximizable: true,width: '90%',height :'90%'});
-    this.refEdit.onClose.subscribe(()=>{
+  seeEdit(post) {
+    this.refEdit = this.dialogService.open(PostDetailsComponent, { header: 'Edit Post', data: { post, "mode": "EDIT" }, maximizable: true, width: '90%', height: '90%' });
+    this.refEdit.onClose.subscribe(() => {
       this.getPosts();
     })
   }

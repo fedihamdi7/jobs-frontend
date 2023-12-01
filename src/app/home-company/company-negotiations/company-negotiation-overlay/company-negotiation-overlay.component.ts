@@ -77,5 +77,9 @@ export class CompanyNegotiationOverlayComponent implements OnInit {
       }
     });
   }
+  copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text);
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Copied to clipboard' });
+  }
   
 }

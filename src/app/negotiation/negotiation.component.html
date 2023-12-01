@@ -125,9 +125,18 @@
         </div>
         <div class="additional-info">
           <div class="additional-info-data">
-            <p-editor [readonly]="true" [(ngModel)]="additionalInfoCompany" [style]="{ height: '320px' }">
+            <p-editor [readonly]="true" [(ngModel)]="negotiation.additionalInfoCompany" [style]="{ height: '320px' }">
               <ng-template pTemplate="header">
-                <div class="additional-info-title">Additional Informations</div>
+                <div class="additional-info-title">Additional Informations From Company</div>
+              </ng-template>
+            </p-editor>
+          </div>
+        </div>
+        <div class="additional-info" style="margin-top: 3%;">
+          <div class="additional-info-data">
+            <p-editor [readonly]="true" [(ngModel)]="negotiation.additionalInfoUser" [style]="{ height: '320px' }">
+              <ng-template pTemplate="header">
+                <div class="additional-info-title">Additional Informations From User</div>
               </ng-template>
             </p-editor>
           </div>

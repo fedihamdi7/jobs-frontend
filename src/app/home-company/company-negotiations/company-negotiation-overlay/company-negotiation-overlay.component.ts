@@ -77,6 +77,37 @@ export class CompanyNegotiationOverlayComponent implements OnInit {
       }
     });
   }
+
+  requestChanges(event : Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure that you want to proceed? You want be able to act again!!',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        if (this.dateFromCompanySuggestion == null) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please select a date' });
+        } else if (this.placeFromCompanySuggestion == null) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please select a place' });
+        } else {
+          this.negotiation.dateFromTheCompany.when = this.datePipe.transform(this.dateFromCompanySuggestion, 'yyyy-MM-ddTHH:mm:ss.SSS');
+          this.negotiation.dateFromTheCompany.where = this.placeFromCompanySuggestion.code;
+          this.negotiation.additionalInfoCompany = this.additionalInfoCompany;
+
+          this.negotiationService.companyRequestChanges(this.negotiation).subscribe(res => {
+            if (res) {
+              this.messageService.add({ severity: 'info', summary: 'Operation Success', detail: 'Changes Sent, Waiting User Confirmation' });
+              this.dialogRef.close();
+            }
+          });
+        }
+
+      },
+      reject: () => {
+
+      }
+    });
+  }
+
   copyToClipboard(text: string) {
     navigator.clipboard.writeText(text);
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Copied to clipboard' });

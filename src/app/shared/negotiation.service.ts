@@ -45,7 +45,15 @@ export class NegotiationService {
     negotiation.post_id = negotiation.post_id._id;
     negotiation.company_id = negotiation.company_id._id;
     negotiation.user_id = negotiation.user_id._id;
-    console.log(negotiation);
     return this.http.post(`${this.API_URL}/negotiation/accept`, negotiation, {headers: this.headers});
+  }
+
+  companyRequestChanges(negotiation){
+    negotiation.post_id = negotiation.post_id._id;
+    negotiation.company_id = negotiation.company_id._id;
+    negotiation.user_id = negotiation.user_id._id;
+    console.log(negotiation);
+    return this.http.post(`${this.API_URL}/negotiation/requestChanges`, negotiation, {headers: this.headers});
+
   }
 }

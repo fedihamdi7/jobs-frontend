@@ -11,7 +11,6 @@ import { LocalStorageService } from 'src/app/shared/local-storage.service';
 export class CompanyNavComponent implements OnInit,AfterViewInit{
   user : any;
   items : any[] = []
-  isFromAuthGuard = false;
   isFromAfterAuth = false;
   isFromIsUserGuard = false;
 
@@ -22,9 +21,7 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
 
   ){
     if (this.router.getCurrentNavigation()?.extras?.state) {
-      if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromAuthGuard']) {
-        this.isFromAuthGuard = true;
-      }else if (this.router.getCurrentNavigation()?.extras?.state['redirectedAfterAuth']) {
+      if (this.router.getCurrentNavigation()?.extras?.state['redirectedAfterAuth']) {
         this.isFromAfterAuth = true;
       }else if (this.router.getCurrentNavigation()?.extras?.state['redirectedFromIsUserGuard']){
         this.isFromIsUserGuard = true;
@@ -68,9 +65,6 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
   }
 
   ngAfterViewInit(): void {
-    if (this.isFromAuthGuard) {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'You are already logged in' });
-    }
     if (this.isFromAfterAuth) {
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login Successfully, Welcome back' });
     }

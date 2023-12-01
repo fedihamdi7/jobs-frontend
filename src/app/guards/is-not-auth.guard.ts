@@ -11,13 +11,9 @@ export const IsNotAuthGuard: CanActivateFn = (route, state) => {
   
   if (user) {
     if (user.role === 'user') {
-      router.navigate(['/home-user'],{ 
-                      state: {redirectedFromAuthGuard : true}
-                    });
+      router.navigate(['/home-user']);
     }else if (user.role === 'company') {
-      router.navigate(['/home-company'],{ 
-                      state: {redirectedFromAuthGuard : true}
-                    });
+      router.navigate(['/home-company']);
     }
     return false;
   }else{

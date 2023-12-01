@@ -25,7 +25,7 @@ export class CompanyNegotiationsComponent implements OnInit{
       this.negotiationService.getNegotiationsByCompany().subscribe(
         (res : any) => {
           this.negotiations = res ;
-          this.seeApplicantDetails(this.negotiations[0].user_id)
+          this.seeDetails(this.negotiations[0])
         },
         err => {
           console.log(err);

@@ -35,6 +35,7 @@ import { ConfirmationService } from 'primeng/api';
 import { CompanyNegotiationOverlayComponent } from './company-negotiations/company-negotiation-overlay/company-negotiation-overlay.component';
 import { ApplicantOverlayComponent } from './company-negotiations/applicant-overlay/applicant-overlay.component';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 
 @NgModule({
@@ -76,7 +77,9 @@ import { SafeUrlPipe } from '../pipes/safe-url.pipe';
     HttpClientModule,
     FormsModule,
     StatusPipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    EditorModule,
+    ConfirmPopupModule
   ],
   providers :[DialogService,DatePipe,ConfirmationService]
 })

@@ -33,4 +33,11 @@ export class NegotiationService {
   getNegotiationsByCompany(){
     return this.http.get(`${this.API_URL}/negotiation/getNegotiationsByCompany/`, {headers: this.headers});
   }
+
+  companyReject(negotiation){
+    negotiation.post_id = negotiation.post_id._id;
+    negotiation.company_id = negotiation.company_id._id;
+    negotiation.user_id = negotiation.user_id._id;
+    return this.http.post(`${this.API_URL}/negotiation/reject`, negotiation, {headers: this.headers});
+  }
 }

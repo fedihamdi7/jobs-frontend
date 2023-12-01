@@ -31,10 +31,10 @@ export class NegotiationComponent implements OnInit {
     this.negotiation = this.config.data;
     this.additionalInfoCompany = this.negotiation.additionalInfoCompany || 'No additional info';
     console.log(this.negotiation);
-    if (this.negotiation.dateFromTheUser) {
+    if (this.negotiation.dateFromTheUser.when) {
       this.dateFromUserSuggestion = new Date(this.negotiation.dateFromTheUser.when);
       this.placeFromUserSuggestion = this.negotiation.dateFromTheUser.where;
-      this.additionalInfoUser = this.negotiation.additionalInfoUser || 'No additional info'; 
+      this.additionalInfoUser = this.negotiation.additionalInfoUser; 
     }
     
   }

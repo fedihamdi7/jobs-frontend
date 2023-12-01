@@ -55,7 +55,7 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
       this.company = res;      
       for (let link in this.company.links) {
         
-          if (!this.company.links[link]?.startsWith("http://") && !this.company.links[link]?.startsWith("https://")) {
+          if (!this.company.links[link]?.startsWith("http://") && !this.company.links[link]?.startsWith("https://") && this.company.links[link]) {
             this.company.links[link] = "http://" + this.company.links[link];
           }
       }
@@ -64,7 +64,6 @@ export class HomeCompanyComponent implements AfterViewInit, OnInit {
     this.postService.findAllPostsOfCompany(this.localStorage.getUser()._id).subscribe(
       (res: any) => {
         this.posts = res;
-        // this.onEditCompany()     
       },
       (err) => {
         console.log(err);

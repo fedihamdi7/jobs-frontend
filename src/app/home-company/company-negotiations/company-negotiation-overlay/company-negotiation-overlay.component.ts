@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -19,7 +20,8 @@ export class CompanyNegotiationOverlayComponent implements OnInit {
     private negotiationService: NegotiationService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private dialogRef: DynamicDialogRef
+    private dialogRef: DynamicDialogRef,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +30,34 @@ export class CompanyNegotiationOverlayComponent implements OnInit {
 
   }
 
-  confirmAccept(event: Event) {}
+  confirmAccept(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure that you want to proceed? You want be able to act again!!',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        if (this.dateFromCompanySuggestion == null) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please select a date' });
+        } else if (this.placeFromCompanySuggestion == null) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please select a place' });
+        } else {
+          this.negotiation.dateFromTheCompany.when = this.datePipe.transform(this.dateFromCompanySuggestion, 'yyyy-MM-ddTHH:mm:ss.SSS');
+          this.negotiation.dateFromTheCompany.where = this.placeFromCompanySuggestion.code;
+          this.negotiation.additionalInfoCompany = this.additionalInfoCompany;
+
+          this.negotiationService.companyAccepts(this.negotiation).subscribe(res => {
+            if (res) {
+              this.messageService.add({ severity: 'info', summary: 'Changes Sent', detail: 'Status Updated' });
+              this.dialogRef.close();
+            }
+          });
+        }
+      },
+      reject: () => {
+
+      }
+    });
+  }
 
   decline(event : Event) {
     this.confirmationService.confirm({

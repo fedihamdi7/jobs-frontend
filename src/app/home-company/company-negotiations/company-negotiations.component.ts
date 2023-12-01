@@ -41,7 +41,7 @@ export class CompanyNegotiationsComponent implements OnInit{
     seeDetails(negotiation: any) {
       this.refNegotiation = this.dialogService.open(CompanyNegotiationOverlayComponent, {
         header: 'Negotiation Details',
-        width: '90%',
+        width: '60%',
         height: '90%',
         baseZIndex: 10000,
         data: negotiation,

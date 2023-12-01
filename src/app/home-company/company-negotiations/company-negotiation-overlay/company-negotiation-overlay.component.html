@@ -85,4 +85,38 @@
       </div>
   </div>
   }
+
+  @if (negotiation.status == "PENDING_USER_CONFIRMATION") {
+    <div class="negotiation-body">
+        <div class="company-suggestion">
+          <div class="small-title">
+            Company's Suggestions
+          </div>
+          <div class="infos">
+            <div class="date-of-interview">
+              <div class="title">Date Of The Interview</div>
+              <div class="data"> {{negotiation.dateFromTheCompany.when | date:'mediumDate' }} </div>
+            </div>
+            <div class="place-of-interview">
+              <div class="title">Place Of The Interview</div>
+              <div class="data">{{negotiation.dateFromTheCompany.where || 'N/A'}}</div>
+            </div>
+            <div class="link" *ngIf="negotiation.link">
+              <div class="title">Link</div>
+              <input  style="cursor: pointer;" type="text" pInputText [value]="negotiation.link" readonly
+                pTooltip="Click To Copie To Clipboard" />
+            </div>
+          </div>
+          <div class="additional-info">
+            <div class="additional-info-data">
+              <p-editor [readonly]="true" [(ngModel)]="negotiation.additionalInfoCompany" [style]="{ height: '320px' }">
+                <ng-template pTemplate="header">
+                  <div class="additional-info-title">Additional Informations</div>
+                </ng-template>
+              </p-editor>
+            </div>
+          </div>
+        </div>
+      </div>
+  }
 </div>

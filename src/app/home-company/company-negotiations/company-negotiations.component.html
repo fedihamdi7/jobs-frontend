@@ -81,7 +81,7 @@
                     <p-tag [value]="customer.status | status" [severity]="getSeverity(customer.status)"></p-tag>
                 </td>
                 <td>
-                    <button pButton pRipple class="p-button-rounded" (click)="seeDetails(customer)">See Details</button>
+                    <button pButton pRipple class="p-button-rounded" (click)="seeDetails(customer)" [disabled]="customer.status =='REJECTED'">See Details</button>
                 </td>
             </tr>
         </ng-template>

@@ -38,7 +38,6 @@ export class CompanyNegotiationsComponent implements OnInit{
         this.negotiations = res;      
      });
     }
-    //TODO continue here
     seeDetails(negotiation: any) {
       this.refNegotiation = this.dialogService.open(CompanyNegotiationOverlayComponent, {
         header: 'Negotiation Details',

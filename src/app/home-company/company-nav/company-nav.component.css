@@ -76,3 +76,8 @@ p-avatar {
     width: 40px;
     aspect-ratio: 1/1;
   }
+
+  .one-notif:hover{
+    background-color: #5756564f;
+    cursor: pointer;
+  }

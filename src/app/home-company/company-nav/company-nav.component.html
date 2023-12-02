@@ -19,7 +19,8 @@
             There are no notifications.
           }@else {
             @for (notif of notifications; track $index) {
-              <div class="one-notif">
+              <!-- TODO : make it clickable and change it's status to seen when notifications opened-->
+              <div class="one-notif" (click)="navigateTo(notif.negotiation)">
                 <div class="left-notif">
                   <div class="name"> {{notif.user.name}}</div>
                   <div class="message">{{notif.message}} </div>

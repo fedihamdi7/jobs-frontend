@@ -87,4 +87,11 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
     this.localStorageService.clear();
     this.router.navigate(['/']);
   }
+
+  navigateTo(negotiation){
+    
+    this.router.navigate(['home-company/negotiations'],{
+      state : {fromNotification : true, negotiation : negotiation}
+    });
+  }
 }

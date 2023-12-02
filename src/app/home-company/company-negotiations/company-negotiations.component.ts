@@ -4,6 +4,7 @@ import { Table } from 'primeng/table';
 import { NegotiationService } from 'src/app/shared/negotiation.service';
 import { CompanyNegotiationOverlayComponent } from './company-negotiation-overlay/company-negotiation-overlay.component';
 import { ApplicantOverlayComponent } from './applicant-overlay/applicant-overlay.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-negotiations',
@@ -17,15 +18,25 @@ export class CompanyNegotiationsComponent implements OnInit{
     negotiations : any[];
     constructor(
       private negotiationService: NegotiationService,
-      private dialogService: DialogService
+      private dialogService: DialogService,
+      private router : Router
 
-    ) { }
+    ) { 
+      if (this.router.getCurrentNavigation()?.extras?.state){
+        if (this.router.getCurrentNavigation()?.extras?.state['fromNotification']) {
+          this.seeDetails(this.router.getCurrentNavigation()?.extras?.state['negotiation']);
+          
+        }
+      }
+      if (history.state) {
+        history.replaceState({}, '', this.router.url.split('?')[0]);
+      }
+    }
   
     ngOnInit(): void {
       this.negotiationService.getNegotiationsByCompany().subscribe(
         (res : any) => {
           this.negotiations = res ;
-          // this.seeDetails(this.negotiations[0])
         },
         err => {
           console.log(err);

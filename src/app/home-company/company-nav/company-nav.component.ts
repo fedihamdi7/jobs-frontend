@@ -1,4 +1,4 @@
-import { AfterViewInit, Component,OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component,OnInit, ViewChild, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { LocalStorageService } from 'src/app/shared/local-storage.service';
@@ -38,7 +38,7 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
   ngOnInit(): void {
     this.user = this.localStorageService.getUser();    
     this.companyService.getNotificationsStream().subscribe((data) => {
-      this.notifCount=JSON.parse(data).notifications[0].length;
+      this.notifCount = JSON.parse(data).notifications[0].filter((notif) => !notif.seen).length.toString();      
       this.notifications=JSON.parse(data).notifications[0];
     });
     this.items = [
@@ -88,10 +88,22 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
     this.router.navigate(['/']);
   }
 
-  navigateTo(negotiation){
+  @ViewChild('notifs') notifsOverlay : any;
+
+  navigateTo(notification){
+    this.companyService.markNotificationAsSeen(notification._id).subscribe((data) => {
+      this.notifsOverlay.hide();
+      if (this.router.url === '/home-company/negotiations') {
+        
+      }else{
+        this.router.navigate(['home-company/negotiations'],{
+          state : {fromNotification : true, negotiation : notification.negotiation}
+        });
+      }
+    })
+
+    // check if already in negotiations page
     
-    this.router.navigate(['home-company/negotiations'],{
-      state : {fromNotification : true, negotiation : negotiation}
-    });
+
   }
 }

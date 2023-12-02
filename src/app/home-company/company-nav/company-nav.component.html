@@ -20,7 +20,7 @@
           }@else {
             @for (notif of notifications; track $index) {
               <!-- TODO : make it clickable and change it's status to seen when notifications opened-->
-              <div class="one-notif" (click)="navigateTo(notif.negotiation)">
+              <div class="one-notif" (click)="navigateTo(notif)">
                 <div class="left-notif">
                   <div class="name"> {{notif.user.name}}</div>
                   <div class="message">{{notif.message}} </div>
@@ -28,7 +28,8 @@
                 </div>
                 <div class="right-notif">
                   <img src="/assets/notif-icons/new_applicant.svg" alt="new_applicant">
-                  <p-tag value="New" severity="success" [rounded]="true"></p-tag>
+                  <p-tag value="New" *ngIf="!notif.seen" severity="success" [rounded]="true"></p-tag>
+                  <p-tag value="Seen" *ngIf="notif.seen" severity="danger" [rounded]="true"></p-tag>
                 </div>
               </div>
               <p-divider></p-divider>

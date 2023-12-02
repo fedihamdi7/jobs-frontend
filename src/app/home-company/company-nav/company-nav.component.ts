@@ -14,8 +14,8 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
   items : any[] = []
   isFromAfterAuth = false;
   isFromIsUserGuard = false;
-  notifications : any[];
-  notifCount = signal('0');
+  notifications : any[] ;
+  notifCount = '0';
   constructor(
     private messageService : MessageService,
     private localStorageService : LocalStorageService,
@@ -38,9 +38,8 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
   ngOnInit(): void {
     this.user = this.localStorageService.getUser();    
     this.companyService.getNotificationsStream().subscribe((data) => {
-      console.log(JSON.parse(data).notifications[0]);
-      this.notifCount.set(JSON.parse(data).notifications[0].length);
-      this.notifications = JSON.parse(data).notifications[0];
+      this.notifCount=JSON.parse(data).notifications[0].length;
+      this.notifications=JSON.parse(data).notifications[0];
     });
     this.items = [
       {

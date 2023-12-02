@@ -29,3 +29,50 @@ p-avatar {
   :host ::ng-deep .menu .p-menu{
     width: 11%;
   }
+
+  nav .navbar-right {
+    display: flex;
+    align-items: flex-end;
+    gap: 17%;
+  }
+
+  .notif-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .notif-container .one-notif{
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    width: 16vw;
+  }
+
+  .left-notif{
+    display: flex;
+    flex-basis: 80%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3%;
+    row-gap: 9px;
+    .name{
+      font-weight: 700;
+    }
+
+    .date{
+      color: #B3B3B3;
+    }
+  }
+
+  .right-notif{
+    flex-basis: 20%;
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-notif img{
+    width: 40px;
+    aspect-ratio: 1/1;
+  }

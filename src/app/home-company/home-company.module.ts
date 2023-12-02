@@ -36,7 +36,8 @@ import { CompanyNegotiationOverlayComponent } from './company-negotiations/compa
 import { ApplicantOverlayComponent } from './company-negotiations/applicant-overlay/applicant-overlay.component';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
-
+import { BadgeModule } from 'primeng/badge';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,10 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     StatusPipe,
     SafeUrlPipe,
     EditorModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    BadgeModule,
+    OverlayPanelModule
+    
   ],
   providers :[DialogService,DatePipe,ConfirmationService]
 })

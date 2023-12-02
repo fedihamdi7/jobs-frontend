@@ -1,7 +1,8 @@
-import { AfterViewInit, Component,OnInit } from '@angular/core';
+import { AfterViewInit, Component,OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { LocalStorageService } from 'src/app/shared/local-storage.service';
+import { CompanyService } from '../company.service';
 
 @Component({
   selector: 'app-company-nav',
@@ -13,11 +14,13 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
   items : any[] = []
   isFromAfterAuth = false;
   isFromIsUserGuard = false;
-
+  notifications : any[];
+  notifCount = signal('0');
   constructor(
     private messageService : MessageService,
     private localStorageService : LocalStorageService,
-    private router: Router
+    private router: Router,
+    private companyService : CompanyService
 
   ){
     if (this.router.getCurrentNavigation()?.extras?.state) {
@@ -34,7 +37,14 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
 
   ngOnInit(): void {
     this.user = this.localStorageService.getUser();    
-        
+    this.companyService.getNotificationsStream().subscribe((data) => {
+      console.log(JSON.parse(data).notifications[0]);
+      console.log(JSON.parse(data).notifications[0].length);
+      
+      // this.notifCount = signal(JSON.parse(data).notifications[0].length);
+      this.notifCount.set(JSON.parse(data).notifications[0].length);
+      this.notifications = JSON.parse(data).notifications[0];
+    });
     this.items = [
       {
         label : this.user.name || "Fedi Hamdi",

@@ -18,7 +18,7 @@ export class CompanyService {
     private localStorageService: LocalStorageService
   ) { 
     const user = this.localStorageService.getUser();
-    this.whenUserApplyNotif = new EventSource(`${this.API_URL}/post/notification/stream/${user._id}`);
+    this.whenUserApplyNotif = new EventSource(`${this.API_URL}/notification/stream/${user._id}`);
   }
 
   getCompany(id) {    

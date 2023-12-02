@@ -39,9 +39,6 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
     this.user = this.localStorageService.getUser();    
     this.companyService.getNotificationsStream().subscribe((data) => {
       console.log(JSON.parse(data).notifications[0]);
-      console.log(JSON.parse(data).notifications[0].length);
-      
-      // this.notifCount = signal(JSON.parse(data).notifications[0].length);
       this.notifCount.set(JSON.parse(data).notifications[0].length);
       this.notifications = JSON.parse(data).notifications[0];
     });

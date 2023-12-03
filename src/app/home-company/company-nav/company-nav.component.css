@@ -81,3 +81,11 @@ p-avatar {
     background-color: #5756564f;
     cursor: pointer;
   }
+
+  .clear-notifs{
+    margin-bottom: 9%;
+    width: 50%;
+    font-size: 12px;
+    margin-left: 51%;
+
+  }

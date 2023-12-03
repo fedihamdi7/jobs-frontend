@@ -53,4 +53,8 @@ export class CompanyService {
   markNotificationAsSeen(notif_id) {
     return this.http.patch(`${this.API_URL}/post/markNotificationAsSeen/${notif_id}`, {}, {headers:this.headers});
   }
+
+  clearNotifications() {
+    return this.http.patch(`${this.API_URL}/post/clearNotifications`, {}, {headers:this.headers});
+  }
 }

@@ -106,4 +106,13 @@ export class CompanyNavComponent implements OnInit,AfterViewInit{
     
 
   }
+
+  clearNotifications(){
+    this.companyService.clearNotifications().subscribe((data) => {
+      this.notifsOverlay.hide();
+      this.notifCount = '0';
+      this.notifications = [];
+      this.messageService.add({severity: 'success', summary: 'Success', detail: 'Notifications cleared successfully'})
+    })
+  }
 }

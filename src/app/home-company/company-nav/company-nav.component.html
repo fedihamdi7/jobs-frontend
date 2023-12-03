@@ -18,8 +18,10 @@
           @if (notifications.length ==0) {
             There are no notifications.
           }@else {
+            <!-- TODO  add clear all notifications -->
+            <!-- TODO if in the negotiations page do something better -->
+            <button class="clear-notifs" pButton pRipple label="Clear Notifications" (click)="clearNotifications()"></button>
             @for (notif of notifications; track $index) {
-              <!-- TODO : make it clickable and change it's status to seen when notifications opened-->
               <div class="one-notif" (click)="navigateTo(notif)">
                 <div class="left-notif">
                   <div class="name"> {{notif.user.name}}</div>

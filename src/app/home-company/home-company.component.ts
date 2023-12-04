@@ -74,7 +74,7 @@ export class HomeCompanyComponent implements OnInit {
   }
 
   onEditCompany() {
-    this.refEditCompany = this.dialogService.open(EditCompanyComponent, { header: 'Edit Company', data: { company: this.company }, maximizable: true, width: '90%', height: '90%' });
+    this.refEditCompany = this.dialogService.open(EditCompanyComponent, { header: 'Edit Company', data: { company: this.company }, maximizable: true, width: '65%', height: '90%' });
     this.refEditCompany.onClose.subscribe(() => {
       this.company = this.getCompany();
     })

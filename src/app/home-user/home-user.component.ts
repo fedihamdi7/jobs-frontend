@@ -40,7 +40,7 @@ export class HomeUserComponent implements OnInit {
   }
 
   show(post) {
-    this.ref = this.dialogService.open(PostComponent, { header: 'Post Details',data : post,maximizable: true,height: '100%'});
+    this.ref = this.dialogService.open(PostComponent, { header: 'Post Details',data : post,maximizable: true,height: '100%',width: '80%'});
 }
 
 

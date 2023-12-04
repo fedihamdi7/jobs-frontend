@@ -83,6 +83,7 @@ export class PostDetailsComponent implements OnInit {
         experienceLevel: new FormControl(null),
         levelOfStudy: new FormControl(null),
         description: new FormControl(null, Validators.required),
+        salary : new FormControl(null),
       });
     }
     if (this.mode == "EDIT") {
@@ -97,6 +98,8 @@ export class PostDetailsComponent implements OnInit {
         experienceLevel: new FormControl(this.config.data.post.experienceLevel),
         levelOfStudy: new FormControl(this.config.data.post.levelOfStudy),
         description: new FormControl(this.config.data.post.description, Validators.required),
+        salary : new FormControl(this.config.data.post.salary),
+        
       })
     }
   }

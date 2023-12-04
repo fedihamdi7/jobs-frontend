@@ -53,7 +53,10 @@
           <p-listbox [options]="listOfEducationLevels" formControlName="levelOfStudy" styleClass="listbox"
             [multiple]="true" [metaKeySelection]="false"></p-listbox>
         </div>
-
+        <div style="width: 14%;">
+          <div class="input-name"> Salary</div>
+          <input pInputText id="title" formControlName="salary" placeholder="Ex. 1000-1500 DT" />
+        </div>
       </div>
     </div>
     <p-divider></p-divider>
@@ -166,6 +169,11 @@
           <div class="input-name">Education</div>
           <p-listbox [options]="listOfEducationLevels" formControlName="levelOfStudy" styleClass="listbox"
             [multiple]="true" [metaKeySelection]="false"></p-listbox>
+        </div>
+
+        <div style="width: 14%;">
+          <div class="input-name"> Salary</div>
+          <input pInputText id="title" formControlName="salary" placeholder="Ex. 1000-1500 DT" />
         </div>
 
       </div>

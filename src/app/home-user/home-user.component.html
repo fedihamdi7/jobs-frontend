@@ -1,6 +1,6 @@
 <ng-scrollbar style="height: 91vh;" thumbClass="scrollbar">
 <div class="container">
-  <p-dataView #dv [value]="posts" [rows]="10" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="title" >
+  <p-dataView #dv [value]="posts" [rows]="2" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="title" paginatorPosition="bottom" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Posts">
     <ng-template pTemplate="header">
       <div>
           <p-dropdown [options]="sortOptions" placeholder="Sort By Applicants" (onChange)="onSortChange($event)"></p-dropdown>
@@ -31,13 +31,13 @@
           </div>
           <div class="post-body">
             <div class="chips">
-              <p-chip label="{{post.experienceLevel || 'N/A'}}">
+              <p-chip *ngIf="post.experienceLevel" label="{{post.experienceLevel || 'N/A'}}">
                 <img alt="school icon" src="/assets/chips-icons/work.svg">
               </p-chip>
-              <p-chip label="{{post.levelOfStudy || 'N/A'}}">
+              <p-chip *ngIf="post.levelOfStudy" label="{{post.levelOfStudy || 'N/A'}}">
                 <img alt="school icon" src="/assets/chips-icons/school.svg">
               </p-chip>
-              <p-chip label="{{post.salary || 'N/A'}}">
+              <p-chip *ngIf="post.salary" label="{{post.salary || 'N/A'}}">
                 <img alt="school icon" src="/assets/chips-icons/salary.svg">
               </p-chip>
             </div>

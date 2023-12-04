@@ -1,12 +1,12 @@
 <ng-scrollbar style="height: 91vh;" thumbClass="scrollbar">
 <div class="container">
-  <p-dataView #dv [value]="posts" [rows]="2" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="applicants" >
+  <p-dataView #dv [value]="posts" [rows]="10" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="title" >
     <ng-template pTemplate="header">
       <div>
           <p-dropdown [options]="sortOptions" placeholder="Sort By Applicants" (onChange)="onSortChange($event)"></p-dropdown>
           <span class="p-input-icon-left" id="searchInput">
             <i class="pi pi-search"></i>
-            <input  type="text" pInputText [(ngModel)]="filterValue" (keyup)="applyFilter($event)" />
+            <input  type="text" pInputText [(ngModel)]="filterValue" (keyup)="applyFilter($event)" placeholder="Seach by post title" />
         </span>
       </div>
       

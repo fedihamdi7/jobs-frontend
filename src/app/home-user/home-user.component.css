@@ -1,6 +1,6 @@
 .container {
   background-color: #161D21;
-  width: 95vw;
+  width: 79vw;
   margin: 3% auto;
   padding: 2%;
   border-radius: 10px;
@@ -34,7 +34,7 @@
 
 }
 .company-info img {
-    width: 200px;
+    width: 156px;
     aspect-ratio: 1/1;
     border-radius: 50%;
   }
@@ -54,7 +54,7 @@
 
 .post-info .post-header .post-title {
   color: #9EADE6;
-  font-size: 26px;
+  font-size: 23px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

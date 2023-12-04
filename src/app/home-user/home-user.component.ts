@@ -56,23 +56,24 @@ export class HomeUserComponent implements OnInit {
     }
   }
 
-  originalProducts: any[];
+  originalPosts: any[];
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
 
     // If the original products array is not yet initialized, store a copy
-    if (!this.originalProducts) {
-      this.originalProducts = [...this.posts];
+    if (!this.originalPosts) {
+      this.originalPosts = [...this.posts];
     }
 
     // Filter posts by applicants
-    this.posts = this.originalProducts.filter((product: any) => {
-      return product.applicants.toString().toLowerCase().includes(filterValue.toLowerCase());
+    this.posts = this.originalPosts.filter((post: any) => {
+      
+      return post.title.toString().toLowerCase().includes(filterValue.toLowerCase());
     });
 
     // If empty filter, return all original posts
     if (filterValue === '') {
-      this.posts = [...this.originalProducts];
+      this.posts = [...this.originalPosts];
     }
   }
 }

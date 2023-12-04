@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostService } from 'src/app/post/post.service';
@@ -67,10 +68,15 @@ export class PostDetailsComponent implements OnInit {
     private postService: PostService,
     private messageService: MessageService,
     private dialogRef: DynamicDialogRef,
-  ) { }
+    private sanitizer: DomSanitizer
+  ) {
 
+   }
+  sanitizedDescription: SafeHtml;
   ngOnInit(): void {
     this.post = this.config.data.post;
+    this.sanitizedDescription = this.sanitizer.bypassSecurityTrustHtml(this.config.data.post.description);
+
     this.mode = this.config.data.mode;
     if (this.mode == "ADD") {
       this.formAdd = new FormGroup({
